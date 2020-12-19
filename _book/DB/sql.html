@@ -1,0 +1,281 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>SQL优化 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="db_design.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="sql.html">
+            
+                <a href="sql.html">
+            
+                    
+                    SQL优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="db_design.html">
+            
+                <a href="db_design.html">
+            
+                    
+                    数据库设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >SQL优化</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x5982;&#x4F55;&#x4F18;&#x5316;sql">&#x5982;&#x4F55;&#x4F18;&#x5316;SQL</h2>
+<h3 id="&#x907F;&#x514D;&#x5168;&#x8868;&#x626B;&#x63CF;">&#x907F;&#x514D;&#x5168;&#x8868;&#x626B;&#x63CF;</h3>
+<ol>
+<li>&#x9996;&#x5148;&#x5E94;&#x8003;&#x8651;&#x5728;Where &#x4EE5;&#x53CA; order by &#x8BBE;&#x8BA1;&#x7684;&#x5217;&#x4E0A;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;</li>
+<li>&#x907F;&#x514D;&#x5728;Where&#x5B50;&#x53E5;&#x4E2D;&#x5BF9;&#x5B57;&#x6BB5;&#x8FDB;&#x884C;null&#x503C;&#x5224;&#x65AD;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x653E;&#x5F03;&#x7D22;&#x5F15;</li>
+<li>&#x5728;&#x7D22;&#x5F15;&#x5217;&#x4E0A;&#x5EFA;&#x7ACB;&#x9ED8;&#x8BA4;&#x503C;</li>
+<li>&#x907F;&#x514D;&#x5728;where&#x5B50;&#x53E5;&#x4E2D;&#x4F7F;&#x7528;!=&#x6216;&lt;&gt;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x653E;&#x5F03;&#x7D22;&#x5F15;</li>
+<li>in&#xFF0C;not in &#x614E;&#x7528;&#xFF0C;&#x7528;exists&#x4EE3;&#x66FF;in&#xFF0C;&#x5BF9;&#x8FDE;&#x7EED;&#x7684;&#x503C;&#x53EF;&#x4EE5;&#x7528;between</li>
+<li>&#x907F;&#x514D;&#x5728;where&#x4E2D;&#x5BF9;&#x5B57;&#x6BB5;&#x5217;&#x8FDB;&#x884C;&#x8868;&#x8FBE;&#x5F0F;&#x53CA;&#x51FD;&#x6570;&#x64CD;&#x4F5C;&#xFF0C;&#x907F;&#x514D;&#x5728;&#x201C;=&#x201D;&#x5DE6;&#x8FB9;&#x8FDB;&#x884C;&#x51FD;&#x6570;&#x3001;&#x7B97;&#x672F;&#x8FD0;&#x7B97;&#x6216;&#x5176;&#x4ED6;&#x8868;&#x8FBE;&#x5F0F;&#x8FD0;&#x7B97;</li>
+<li>&#x4F7F;&#x7528;&#x7D22;&#x5F15;&#x5B57;&#x6BB5;&#x4F5C;&#x4E3A;&#x6761;&#x4EF6;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x590D;&#x5408;&#x7D22;&#x5F15;&#xFF0C;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x6539;&#x7D22;&#x5F15;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x4F5C;&#x4E3A;&#x6761;&#x4EF6;&#xFF0C;&#x5E76;&#x4E14;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x8BA9;&#x5B57;&#x6BB5;&#x987A;&#x5E8F;&#x4E0E;&#x7D22;&#x5F15;&#x987A;&#x5E8F;&#x4E00;&#x81F4;</li>
+<li>&#x7D22;&#x5F15;&#x5217;&#x5982;&#x679C;&#x6709;&#x5927;&#x91CF;&#x91CD;&#x590D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x67E5;&#x8BE2;&#x5C06;&#x653E;&#x5F03;&#x7D22;&#x5F15;</li>
+<li>&#x4E00;&#x822C;&#x7D22;&#x5F15;&#x6570;&#x4E0D;&#x8981;&#x67E5;&#x8FC7;6&#x4E2A;</li>
+<li>&#x5C3D;&#x91CF;&#x4F7F;&#x7528;&#x6570;&#x503C;&#x578B;&#x5B57;&#x6BB5;&#xFF0C;&#x82E5;&#x53EA;&#x542B;&#x6570;&#x503C;&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x8BBE;&#x8BA1;&#x6210;&#x5B57;&#x7B26;&#x578B;&#xFF0C;&#x4F1A;&#x964D;&#x4F4E;&#x67E5;&#x8BE2;&#x548C;&#x8FDE;&#x63A5;&#x6027;&#x80FD;&#xFF0C;&#x589E;&#x52A0;&#x5B58;&#x50A8;&#x5F00;&#x9500;&#xFF08;&#x67E5;&#x8BE2;&#x65F6;&#x4F1A;&#x6BD4;&#x8F83;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x548C;&#x6570;&#x503C;&#x578B;&#x53EA;&#x6BD4;&#x8F83;&#x4E00;&#x6B21;&#xFF09;</li>
+<li>&#x5C3D;&#x91CF;&#x4F7F;&#x7528;varchcar/nvarchar &#x4EE3;&#x66FF;char/nchar, &#x53D8;&#x957F;&#x5B57;&#x6BB5;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x5C0F;</li>
+<li>&#x4EFB;&#x4F55;&#x67E5;&#x8BE2;&#x90FD;&#x4E0D;&#x8981;&#x7528;select * , &#x53EA;&#x8FD4;&#x56DE;&#x9700;&#x8981;&#x7684;&#x5217;</li>
+<li>&#x5982;&#x679C;&#x4F60;&#x7684;&#x6570;&#x636E;&#x53EA;&#x6709;&#x4F60;&#x6240;&#x77E5;&#x7684;&#x5C11;&#x91CF;&#x7684;&#x51E0;&#x4E2A;, &#x6700;&#x597D;&#x4F7F;&#x7528; ENUM &#x7C7B;&#x578B;</li>
+<li>&#x7528;union all&#x66FF;&#x6362;union</li>
+<li>&#x628A;IP&#x5730;&#x5740;&#x5B58;&#x6210; UNSIGNED INT
+&#x53EF;&#x4EE5;&#x4F7F;&#x7528; INET_ATON() &#x6765;&#x628A;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;IP&#x8F6C;&#x6210;&#x4E00;&#x4E2A;&#x6574;&#x5F62;&#xFF0C;&#x5E76;&#x4F7F;&#x7528; INET_NTOA() &#x628A;&#x4E00;&#x4E2A;&#x6574;&#x5F62;&#x8F6C;&#x6210;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;IP</li>
+<li>&#x5B9A;&#x671F;&#x5206;&#x6790;&#x8868;&#x548C;&#x68C0;&#x67E5;&#x8868;
+&#x5206;&#x6790;&#x8868;&#x7684;&#x8BED;&#x6CD5;&#xFF1A;ANALYZE [LOCAL | NO_WRITE_TO_BINLOG] TABLE tb1_name[, tbl_name]...</li>
+<li>&#x5B9A;&#x671F;&#x4F18;&#x5316;&#x8868;
+&#x4F18;&#x5316;&#x8868;&#x7684;&#x8BED;&#x6CD5;&#xFF1A;OPTIMIZE [LOCAL | NO_WRITE_TO_BINLOG] TABLE tb1_name [,tbl_name]...
+&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x5C06;&#x8868;&#x4E2D;&#x7684;&#x7A7A;&#x95F4;&#x788E;&#x7247;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x6D88;&#x9664;&#x7531;&#x4E8E;&#x5220;&#x9664;&#x6216;&#x8005;&#x66F4;&#x65B0;&#x9020;&#x6210;&#x7684;&#x7A7A;&#x95F4;&#x6D6A;&#x8D39;&#xFF0C;&#x4F46;OPTIMIZE TABLE &#x547D;&#x4EE4;&#x53EA;&#x5BF9;MyISAM&#x3001; BDB &#x548C;InnoDB&#x8868;&#x8D77;&#x4F5C;&#x7528;
+&#x6CE8;&#x610F;&#xFF1A; analyze&#x3001;check&#x3001;optimize&#x6267;&#x884C;&#x671F;&#x95F4;&#x5C06;&#x5BF9;&#x8868;&#x8FDB;&#x884C;&#x9501;&#x5B9A;&#xFF0C;&#x56E0;&#x6B64;&#x4E00;&#x5B9A;&#x6CE8;&#x610F;&#x8981;&#x5728;MySQL&#x6570;&#x636E;&#x5E93;&#x4E0D;&#x7E41;&#x5FD9;&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#x3002;</li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="db_design.html" class="navigation navigation-next " aria-label="Next page: 数据库设计">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"SQL优化","level":"1.2","depth":1,"next":{"title":"数据库设计","level":"1.3","depth":1,"path":"DB/db_design.md","ref":"DB/db_design.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"DB/sql.md","mtime":"2020-12-19T08:41:55.024Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-19T08:43:08.182Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
