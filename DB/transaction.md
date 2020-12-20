@@ -81,6 +81,5 @@ innodb中表锁和行锁一起用，所以为了提高效率才会有意向锁�
 
 
 ### MYSQL 中的锁 及 索引结构
-Refer to 
-https://www.aneasystone.com/archives/2017/11/solving-dead-locks-two.html
+Refer to https://www.aneasystone.com/archives/2017/11/solving-dead-locks-two.html
 
