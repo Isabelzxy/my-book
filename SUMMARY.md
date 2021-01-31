@@ -6,6 +6,8 @@
 * [数据库设计](DB/db_design.md)
 * [事务隔离级别,索引,性能](DB/transaction.md)
 
+* [JAVA 锁](JAVA/all_locks.md)
+
 * [Kafka 常见问题](Kafka/common_problems.md)
 * [Kafka 架构原理](Kafka/architecture.md)
 
