@@ -7,6 +7,7 @@
 * [事务隔离级别,索引,性能](DB/transaction.md)
 
 * [JAVA 锁](JAVA/all_locks.md)
+* [JVM 分代GC](JAVA/jvm.md)
 
 * [Kafka 常见问题](Kafka/common_problems.md)
 * [Kafka 架构原理](Kafka/architecture.md)
