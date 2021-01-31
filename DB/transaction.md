@@ -173,11 +173,11 @@ explain执行计划包含的信息
 
 查询的类型，主要是用于区分普通查询、联合查询、子查询等复杂的查询
 
-1、SIMPLE：简单的select查询，查询中不包含子查询或者union
-2、PRIMARY：查询中包含任何复杂的子部分，最外层查询则被标记为primary
-3、SUBQUERY：在select 或 where列表中包含了子查询
-4、DERIVED：在from列表中包含的子查询被标记为derived（衍生），mysql或递归执行这些子查询，把结果放在零时表里
-5、UNION：若第二个select出现在union之后，则被标记为union；若union包含在from子句的子查询中，外层select将被标记为derived
+1、SIMPLE：简单的select查询，查询中不包含子查询或者union<br/>
+2、PRIMARY：查询中包含任何复杂的子部分，最外层查询则被标记为primary<br/>
+3、SUBQUERY：在select 或 where列表中包含了子查询<br/>
+4、DERIVED：在from列表中包含的子查询被标记为derived（衍生），mysql或递归执行这些子查询，把结果放在零时表里<br/>
+5、UNION：若第二个select出现在union之后，则被标记为union；若union包含在from子句的子查询中，外层select将被标记为derived<br/>
 6、UNION RESULT：从union表获取结果的select 
 
 #### type
