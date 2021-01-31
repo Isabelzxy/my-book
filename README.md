@@ -7,7 +7,7 @@ https://isabelzxy.github.io/my-book/
 
 # How to contribute
 
-* Edit the pages in master branch
+* Edit the pages in `master` branch
 * Copy the content that generated in `_book` to branch `gh-pages`
 * Deliver the change 
 * You should see the changes in the gitbook pages
