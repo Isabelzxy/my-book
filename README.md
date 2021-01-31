@@ -1,6 +1,7 @@
 # Introduction
 
 **Gitbook Pages**
+
 https://isabelzxy.github.io/my-book/
 
 
@@ -12,13 +13,14 @@ https://isabelzxy.github.io/my-book/
 * You should see the changes in the gitbook pages
 
 # How to run the gitbook
+
 * Clone the repo, and run `gitbook serve`
 * Visit via http://localhost:4000
 
 
-# Install gitbook refer to 
-http://www.chengweiyang.cn/gitbook/index.html
-https://tonydeng.github.io/gitbook-zh/gitbook-howtouse/index.html
+**Install gitbook refer to** 
+- http://www.chengweiyang.cn/gitbook/index.html
+- https://tonydeng.github.io/gitbook-zh/gitbook-howtouse/index.html
 
 
 
