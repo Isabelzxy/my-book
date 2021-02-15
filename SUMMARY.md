@@ -21,6 +21,8 @@
     * [6.redis集群有哪几种形式](Redis/redis.md#6redis集群有哪几种形式)
     * [7.有海量key和value都比较小的数据，在redis中如何存储才更省内存](Redis/redis.md#7有海量key和value都比较小的数据，在redis中如何存储才更省内存)
     * [8.如何保证redis和DB中的数据一致性](Redis/redis.md#8如何保证redis和db中的数据一致性)
+    * [9.如何解决缓存穿透和缓存雪崩](Redis/redis.md#9如何解决缓存穿透和缓存雪崩)
+    * [10.如何用redis实现分布式锁](Redis/redis.md#10如何用redis实现分布式锁)
 
 * [Spring Framework]()
 * [Spring Boot]()
