@@ -23,6 +23,7 @@
     * [8.如何保证redis和DB中的数据一致性](Redis/redis.md#8如何保证redis和db中的数据一致性)
     * [9.如何解决缓存穿透和缓存雪崩](Redis/redis.md#9如何解决缓存穿透和缓存雪崩)
     * [10.如何用redis实现分布式锁](Redis/redis.md#10如何用redis实现分布式锁)
+    * [11.Redis为什么用跳表而不用平衡树](Redis/redis.md#11redis为什么用跳表而不用平衡树)
 
 * [Spring Framework]()
 * [Spring Boot]()
