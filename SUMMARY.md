@@ -6,7 +6,17 @@
 * [数据库设计](DB/db_design.md)
 * [事务隔离级别,索引,性能](DB/transaction.md)
 
+* [JAVA 集合](JAVA/collections.md)
+
 * [JAVA 锁](JAVA/all_locks.md)
+* [JAVA 并发编程](JAVA/threads.md)
+    * [1.了解LinkedBlockingQueue、ArrayBlockingQueue、DelayQueue、SynchronousQueue](JAVA/threads.md#1了解linkedblockingqueue、arrayblockingqueue、delayqueue、synchronousqueue)
+    * [2.了解AtomicInteger实现原理、CAS适用场景、如何实现乐观锁](JAVA/threads.md#2了解atomicinteger实现原理、cas适用场景、如何实现乐观锁)
+    * [3.了解AQS内部实现、及依靠AQS的同步类比如ReentrantLock、Semaphore、CountDownLatch、CyclicBarrier等的实现](JAVA/threads.md#3了解aqs内部实现、及依靠aqs的同步类比如reentrantlock、semaphore、countdownlatch、cyclicbarrier等的实现)
+    * [4.ThreadLocal使用场景和内部实现](JAVA/threads.md#4threadlocal使用场景和内部实现)
+    * [5.线程池的工作原理以及几个重要参数的设置](JAVA/threads.md#5线程池的工作原理以及几个重要参数的设置)
+    * [6.如何排查死锁及避免](JAVA/threads.md#6如何排查死锁及避免)
+
 * [JVM 分代GC](JAVA/jvm.md)
 
 * [Kafka 常见问题](Kafka/common_problems.md)
