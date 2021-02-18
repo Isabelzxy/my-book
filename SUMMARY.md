@@ -7,6 +7,9 @@
 * [事务隔离级别,索引,性能](DB/transaction.md)
 
 * [JAVA 集合](JAVA/collections.md)
+    * [1.ArrayList与LinkedList的实现和区别](JAVA/collections.md#1arraylist与linkedlist的实现和区别)
+    * [2.HashMap了解其数据结构、hash冲突如何解决（链表和红黑树）、扩容时机、扩容时避免rehash的优化](JAVA/collections.md#2hashmap了解其数据结构、hash冲突如何解决（链表和红黑树）、扩容时机、扩容时避免rehash的优化)
+    * [3.LinkedHashMap了解基本原理、哪两种有序、如何用它实现LRU](JAVA/collections.md#3linkedhashmap了解基本原理、哪两种有序、如何用它实现lru)
 
 * [JAVA 锁](JAVA/all_locks.md)
 * [JAVA 并发编程](JAVA/threads.md)
