@@ -198,6 +198,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.5.4" data-path="collections.html">
+            
+                <a href="collections.html#4treemap了解数据结构、了解其key对象为什么必须要实现compare接口、如何用它实现一致性哈希">
+            
+                    
+                    4.TreeMap了解数据结构、了解其key对象为什么必须要实现Compare接口、如何用它实现一致性哈希
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1018,6 +1031,459 @@ static int indexFor(int h, int length) {  //jdk1.7&#x7684;&#x6E90;&#x7801;&#xFF0
 <li>JDK1.8&#x5F15;&#x5165;&#x7EA2;&#x9ED1;&#x6811;&#x5927;&#x7A0B;&#x5EA6;&#x4F18;&#x5316;&#x4E86;HashMap&#x7684;&#x6027;&#x80FD;&#x3002;</li>
 </ul>
 <h3 id="3linkedhashmap&#x4E86;&#x89E3;&#x57FA;&#x672C;&#x539F;&#x7406;&#x3001;&#x54EA;&#x4E24;&#x79CD;&#x6709;&#x5E8F;&#x3001;&#x5982;&#x4F55;&#x7528;&#x5B83;&#x5B9E;&#x73B0;lru">3.LinkedHashMap&#x4E86;&#x89E3;&#x57FA;&#x672C;&#x539F;&#x7406;&#x3001;&#x54EA;&#x4E24;&#x79CD;&#x6709;&#x5E8F;&#x3001;&#x5982;&#x4F55;&#x7528;&#x5B83;&#x5B9E;&#x73B0;LRU</h3>
+<h4 id="&#x6982;&#x8FF0;">&#x6982;&#x8FF0;</h4>
+<p>HashMap &#x662F; Java Collection Framework &#x7684;&#x91CD;&#x8981;&#x6210;&#x5458;&#xFF0C;&#x4E5F;&#x662F;Map&#x65CF;(&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;)&#x4E2D;&#x6211;&#x4EEC;&#x6700;&#x4E3A;&#x5E38;&#x7528;&#x7684;&#x4E00;&#x79CD;&#x3002;&#x4E0D;&#x8FC7;&#x9057;&#x61BE;&#x7684;&#x662F;&#xFF0C;HashMap&#x662F;&#x65E0;&#x5E8F;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x8FED;&#x4EE3;HashMap&#x6240;&#x5F97;&#x5230;&#x7684;&#x5143;&#x7D20;&#x987A;&#x5E8F;&#x5E76;&#x4E0D;&#x662F;&#x5B83;&#x4EEC;&#x6700;&#x521D;&#x653E;&#x7F6E;&#x5230;HashMap&#x7684;&#x987A;&#x5E8F;&#x3002;</p>
+<p>HashMap&#x7684;&#x8FD9;&#x4E00;&#x7F3A;&#x70B9;&#x5F80;&#x5F80;&#x4F1A;&#x9020;&#x6210;&#x8BF8;&#x591A;&#x4E0D;&#x4FBF;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x6709;&#x4E9B;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x786E;&#x9700;&#x8981;&#x7528;&#x5230;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x4FDD;&#x6301;&#x63D2;&#x5165;&#x987A;&#x5E8F;&#x7684;Map&#x3002;&#x5E86;&#x5E78;&#x7684;&#x662F;&#xFF0C;JDK&#x4E3A;&#x6211;&#x4EEC;&#x89E3;&#x51B3;&#x4E86;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5B83;&#x4E3A;HashMap&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5B50;&#x7C7B; &#x2014;&#x2014; LinkedHashMap&#x3002;&#x867D;&#x7136;LinkedHashMap&#x589E;&#x52A0;&#x4E86;&#x65F6;&#x95F4;&#x548C;&#x7A7A;&#x95F4;&#x4E0A;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x901A;&#x8FC7;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x989D;&#x5916;&#x7684;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4FDD;&#x8BC1;&#x4E86;&#x8FED;&#x4EE3;&#x987A;&#x5E8F;&#x3002;</p>
+<p>&#x7279;&#x522B;&#x5730;&#xFF0C;<strong>&#x8BE5;&#x8FED;&#x4EE3;&#x987A;&#x5E8F;&#x53EF;&#x4EE5;&#x662F;&#x63D2;&#x5165;&#x987A;&#x5E8F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x8BBF;&#x95EE;&#x987A;&#x5E8F;</strong>&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6839;&#x636E;&#x94FE;&#x8868;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x987A;&#x5E8F;&#x53EF;&#x4EE5;&#x5C06;LinkedHashMap&#x5206;&#x4E3A;&#xFF1A;<strong>&#x4FDD;&#x6301;&#x63D2;&#x5165;&#x987A;&#x5E8F;&#x7684;LinkedHashMap&#x548C;&#x4FDD;&#x6301;&#x8BBF;&#x95EE;&#x987A;&#x5E8F;&#x7684;LinkedHashMap&#xFF0C;&#x5176;&#x4E2D;LinkedHashMap&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x662F;&#x6309;&#x63D2;&#x5165;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#x7684;</strong>&#x3002;</p>
+<p>&#x66F4;&#x76F4;&#x89C2;&#x5730;&#xFF0C;&#x4E0B;&#x56FE;&#x5F88;&#x597D;&#x5730;&#x8FD8;&#x539F;&#x4E86;LinkedHashMap&#x7684;&#x539F;&#x8C8C;&#xFF1A;HashMap&#x548C;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5BC6;&#x5207;&#x914D;&#x5408;&#x548C;&#x5206;&#x5DE5;&#x5408;&#x4F5C;&#x9020;&#x5C31;&#x4E86;LinkedHashMap&#x3002;&#x7279;&#x522B;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;next&#x7528;&#x4E8E;&#x7EF4;&#x62A4;HashMap&#x5404;&#x4E2A;&#x6876;&#x4E2D;&#x7684;Entry&#x94FE;&#xFF0C;before&#x3001;after&#x7528;&#x4E8E;&#x7EF4;&#x62A4;LinkedHashMap&#x7684;&#x53CC;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x867D;&#x7136;&#x5B83;&#x4EEC;&#x7684;&#x4F5C;&#x7528;&#x5BF9;&#x8C61;&#x90FD;&#x662F;Entry&#xFF0C;&#x4F46;&#x662F;&#x5404;&#x81EA;&#x5206;&#x79BB;&#xFF0C;&#x662F;&#x4E24;&#x7801;&#x4E8B;&#x513F;&#x3002;</p>
+<p><img src="../_images/java_linkedhm_1.png" alt="linkedhm_1"></p>
+<p>&#x5176;&#x4E2D;&#xFF0C;HashMap&#x4E0E;LinkedHashMap&#x7684;Entry&#x7ED3;&#x6784;&#x793A;&#x610F;&#x56FE;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="../_images/java_linkedhm_2.png" alt="linkedhm_2"></p>
+<p>&#x7279;&#x522B;&#x5730;&#xFF0C;&#x7531;&#x4E8E;LinkedHashMap&#x662F;HashMap&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x6240;&#x4EE5;LinkedHashMap&#x81EA;&#x7136;&#x4F1A;&#x62E5;&#x6709;HashMap&#x7684;&#x6240;&#x6709;&#x7279;&#x6027;&#x3002;&#x6BD4;&#x5982;&#xFF0C;LinkedHashMap&#x4E5F;&#x6700;&#x591A;&#x53EA;&#x5141;&#x8BB8;&#x4E00;&#x6761;Entry&#x7684;&#x952E;&#x4E3A;Null(&#x591A;&#x6761;&#x4F1A;&#x8986;&#x76D6;)&#xFF0C;&#x4F46;&#x5141;&#x8BB8;&#x591A;&#x6761;Entry&#x7684;&#x503C;&#x4E3A;Null&#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;LinkedHashMap &#x4E5F;&#x662F; Map &#x7684;&#x4E00;&#x4E2A;&#x975E;&#x540C;&#x6B65;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x6B64;&#x5916;&#xFF0C;LinkedHashMap&#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5B9E;&#x73B0;LRU (Least recently used, &#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;)&#x7B97;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x4F1A;&#x5728;&#x4E0B;&#x6587;&#x7684;&#x7279;&#x522B;&#x8C08;&#x5230;&#x3002;</p>
+<h4 id="linkedhashmap-&#x5728;-jdk-&#x4E2D;&#x7684;&#x5B9A;&#x4E49;">LinkedHashMap &#x5728; JDK &#x4E2D;&#x7684;&#x5B9A;&#x4E49;</h4>
+<h4 id="&#x6210;&#x5458;&#x53D8;&#x91CF;">&#x6210;&#x5458;&#x53D8;&#x91CF;</h4>
+<p>LinkedHashMap&#x7EE7;&#x627F;&#x4E8E;HashMap, &#x4E0E;HashMap&#x76F8;&#x6BD4;&#xFF0C;LinkedHashMap&#x589E;&#x52A0;&#x4E86;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x7528;&#x4E8E;&#x4FDD;&#x8BC1;&#x8FED;&#x4EE3;&#x987A;&#x5E8F;&#xFF0C;&#x5206;&#x522B;&#x662F; <strong>&#x53CC;&#x5411;&#x94FE;&#x8868;&#x5934;&#x7ED3;&#x70B9;header &#x548C; &#x6807;&#x5FD7;&#x4F4D;accessOrder (&#x503C;&#x4E3A;true&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x6309;&#x7167;&#x8BBF;&#x95EE;&#x987A;&#x5E8F;&#x8FED;&#x4EE3;&#xFF1B;&#x503C;&#x4E3A;false&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x6309;&#x7167;&#x63D2;&#x5165;&#x987A;&#x5E8F;&#x8FED;&#x4EE3;)</strong>&#x3002;</p>
+<pre><code>/**
+ * The head of the doubly linked list.
+ */
+private transient Entry&lt;K,V&gt; header;  // &#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x8868;&#x5934;&#x5143;&#x7D20;
+
+/**
+ * The iteration ordering method for this linked hash map: &lt;tt&gt;true&lt;/tt&gt;
+ * for access-order, &lt;tt&gt;false&lt;/tt&gt; for insertion-order.
+ *
+ * @serial
+ */
+private final boolean accessOrder;  //true&#x8868;&#x793A;&#x6309;&#x7167;&#x8BBF;&#x95EE;&#x987A;&#x5E8F;&#x8FED;&#x4EE3;&#xFF0C;false&#x65F6;&#x8868;&#x793A;&#x6309;&#x7167;&#x63D2;&#x5165;&#x987A;&#x5E8F;
+</code></pre><h4 id="&#x6210;&#x5458;&#x65B9;&#x6CD5;">&#x6210;&#x5458;&#x65B9;&#x6CD5;</h4>
+<p>LinkedHashMap&#x4E2D;&#x5E76;&#x589E;&#x52A0;&#x6CA1;&#x6709;&#x989D;&#x5916;&#x65B9;&#x6CD5;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;LinkedHashMap&#x4E0E;HashMap&#x5728;&#x64CD;&#x4F5C;&#x4E0A;&#x5927;&#x81F4;&#x76F8;&#x540C;&#xFF0C;&#x53EA;&#x662F;&#x5728;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#x4E0A;&#x7565;&#x6709;&#x4E0D;&#x540C;&#x7F62;&#x4E86;&#x3002;</p>
+<h4 id="&#x57FA;&#x672C;&#x5143;&#x7D20;-entry">&#x57FA;&#x672C;&#x5143;&#x7D20; Entry</h4>
+<p>LinkedHashMap&#x91C7;&#x7528;&#x7684;hash&#x7B97;&#x6CD5;&#x548C;HashMap&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E86;Entry&#x3002;LinkedHashMap&#x4E2D;&#x7684;Entry&#x589E;&#x52A0;&#x4E86;&#x4E24;&#x4E2A;&#x6307;&#x9488; before &#x548C; after&#xFF0C;&#x5B83;&#x4EEC;&#x5206;&#x522B;&#x7528;&#x4E8E;&#x7EF4;&#x62A4;&#x53CC;&#x5411;&#x94FE;&#x63A5;&#x5217;&#x8868;&#x3002;&#x7279;&#x522B;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;next&#x7528;&#x4E8E;&#x7EF4;&#x62A4;HashMap&#x5404;&#x4E2A;&#x6876;&#x4E2D;Entry&#x7684;&#x8FDE;&#x63A5;&#x987A;&#x5E8F;&#xFF0C;before&#x3001;after&#x7528;&#x4E8E;&#x7EF4;&#x62A4;Entry&#x63D2;&#x5165;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x7684;&#xFF0C;&#x6E90;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>private static class Entry&lt;K,V&gt; extends HashMap.Entry&lt;K,V&gt; {
+
+    // These fields comprise the doubly linked list used for iteration.
+    Entry&lt;K,V&gt; before, after;
+
+    Entry(int hash, K key, V value, HashMap.Entry&lt;K,V&gt; next) {
+        super(hash, key, value, next);
+    }
+    ...
+}
+</code></pre><h4 id="&#x6784;&#x9020;&#x51FD;&#x6570;">&#x6784;&#x9020;&#x51FD;&#x6570;</h4>
+<p>LinkedHashMap &#x4E00;&#x5171;&#x63D0;&#x4F9B;&#x4E86;&#x4E94;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x662F;&#x5728;HashMap&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x9664;&#x4E86;&#x9ED8;&#x8BA4;&#x7A7A;&#x53C2;&#x6570;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5305;&#x542B;&#x4E86;&#x5927;&#x90E8;&#x5206;&#x5176;&#x4ED6;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x4F7F;&#x7528;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5C31;&#x4E0D;&#x4E00;&#x4E00;&#x5217;&#x4E3E;&#x4E86;&#x3002;</p>
+<p>LinkedHashMap(int initialCapacity, float loadFactor, boolean accessOrder)</p>
+<p>&#x521D;&#x59CB;&#x5BB9;&#x91CF; &#x548C;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;&#x662F;&#x5F71;&#x54CD;HashMap&#x6027;&#x80FD;&#x7684;&#x4E24;&#x4E2A;&#x91CD;&#x8981;&#x53C2;&#x6570;&#x3002;&#x540C;&#x6837;&#x5730;&#xFF0C;&#x5B83;&#x4EEC;&#x4E5F;&#x662F;&#x5F71;&#x54CD;LinkedHashMap&#x6027;&#x80FD;&#x7684;&#x4E24;&#x4E2A;&#x91CD;&#x8981;&#x53C2;&#x6570;&#x3002;&#x6B64;&#x5916;&#xFF0C;LinkedHashMap &#x589E;&#x52A0;&#x4E86;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x5934;&#x7ED3;&#x70B9; header&#x548C;&#x6807;&#x5FD7;&#x4F4D; accessOrder&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x7528;&#x4E8E;&#x4FDD;&#x8BC1;&#x8FED;&#x4EE3;&#x987A;&#x5E8F;&#x3002;</p>
+<p>&#x8BE5;&#x6784;&#x9020;&#x51FD;&#x6570;&#x610F;&#x5728;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x4E0E;&#x6307;&#x5B9A; Map &#x5177;&#x6709;&#x76F8;&#x540C;&#x6620;&#x5C04;&#x7684; LinkedHashMap&#xFF0C;&#x5176; &#x521D;&#x59CB;&#x5BB9;&#x91CF;&#x4E0D;&#x5C0F;&#x4E8E; 16 (&#x5177;&#x4F53;&#x4F9D;&#x8D56;&#x4E8E;&#x6307;&#x5B9A;Map&#x7684;&#x5927;&#x5C0F;)&#xFF0C;&#x8D1F;&#x8F7D;&#x56E0;&#x5B50;&#x662F; 0.75&#xFF0C;&#x662F; Java Collection Framework &#x89C4;&#x8303;&#x63A8;&#x8350;&#x63D0;&#x4F9B;&#x7684;&#xFF0C;&#x5176;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>/**
+ * Constructs an insertion-ordered &lt;tt&gt;LinkedHashMap&lt;/tt&gt; instance with
+ * the same mappings as the specified map.  The &lt;tt&gt;LinkedHashMap&lt;/tt&gt;
+ * instance is created with a default load factor (0.75) and an initial
+ * capacity sufficient to hold the mappings in the specified map.
+ *
+ * @param  m the map whose mappings are to be placed in this map
+ * @throws NullPointerException if the specified map is null
+ */
+public LinkedHashMap(Map&lt;? extends K, ? extends V&gt; m) {
+    super(m);       // &#x8C03;&#x7528;HashMap&#x5BF9;&#x5E94;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;
+    accessOrder = false;    // &#x8FED;&#x4EE3;&#x987A;&#x5E8F;&#x7684;&#x9ED8;&#x8BA4;&#x503C;
+}
+</code></pre><h5 id="init-&#x65B9;&#x6CD5;">init &#x65B9;&#x6CD5;</h5>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x4E94;&#x79CD;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x65E0;&#x8BBA;&#x91C7;&#x7528;&#x4F55;&#x79CD;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;LinkedHashMap&#xFF0C;&#x5176;&#x90FD;&#x4F1A;&#x8C03;&#x7528;HashMap&#x76F8;&#x5E94;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x4E0D;&#x7BA1;&#x8C03;&#x7528;HashMap&#x7684;&#x54EA;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;HashMap&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x90FD;&#x4F1A;&#x5728;&#x6700;&#x540E;&#x8C03;&#x7528;&#x4E00;&#x4E2A;init()&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5728;HashMap&#x4E2D;&#x662F;&#x4E00;&#x4E2A;&#x7A7A;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x5728;LinkedHashMap&#x4E2D;&#x91CD;&#x5199;&#x4E86;&#x5B83;&#x7528;&#x4E8E;&#x521D;&#x59CB;&#x5316;&#x5B83;&#x6240;&#x7EF4;&#x62A4;&#x7684;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x3002;&#x4F8B;&#x5982;&#xFF0C;HashMap&#x7684;&#x53C2;&#x6570;&#x4E3A;&#x7A7A;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4EE5;&#x53CA;init&#x65B9;&#x6CD5;&#x7684;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>/**
+ * Constructs an empty &lt;tt&gt;HashMap&lt;/tt&gt; with the default initial capacity
+ * (16) and the default load factor (0.75).
+ */
+public HashMap() {
+    this.loadFactor = DEFAULT_LOAD_FACTOR;
+    threshold = (int)(DEFAULT_INITIAL_CAPACITY * DEFAULT_LOAD_FACTOR);
+    table = new Entry[DEFAULT_INITIAL_CAPACITY];
+    init();
+}
+</code></pre><pre><code>/** 
+* Initialization hook for subclasses. This method is called 
+* in all constructors and pseudo-constructors (clone, readObject) 
+* after HashMap has been initialized but before any entries have 
+* been inserted. (In the absence of this method, readObject would 
+* require explicit knowledge of subclasses.) */ 
+void init() { }
+</code></pre><p>&#x5728;LinkedHashMap&#x4E2D;&#xFF0C;&#x5B83;&#x91CD;&#x5199;&#x4E86;init&#x65B9;&#x6CD5;&#x4EE5;&#x4FBF;&#x521D;&#x59CB;&#x5316;&#x53CC;&#x5411;&#x5217;&#x8868;&#xFF0C;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>/** 
+* Called by superclass constructors and pseudoconstructors (clone, 
+* readObject) before any entries are inserted into the map. Initializes 
+* the chain. 
+*/ 
+void init() { 
+    header = new Entry&lt;K,V&gt;(-1, null, null, null); 
+    header.before = header.after = header; 
+}
+</code></pre><p>&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x521B;&#x5EFA;LinkedHashMap&#x7684;&#x540C;&#x65F6;&#x5C31;&#x4F1A;&#x4E0D;&#x77E5;&#x4E0D;&#x89C9;&#x5730;&#x5BF9;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x3002;</p>
+<h4 id="linkedhashmap-&#x7684;&#x5FEB;&#x901F;&#x5B58;&#x53D6;">LinkedHashMap &#x7684;&#x5FEB;&#x901F;&#x5B58;&#x53D6;</h4>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x5728;HashMap&#x4E2D;&#x6700;&#x5E38;&#x7528;&#x7684;&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#x5C31;&#x662F;&#xFF1A;put(Key,Value) &#x548C; get(Key)&#x3002;&#x540C;&#x6837;&#x5730;&#xFF0C;&#x5728; LinkedHashMap &#x4E2D;&#x6700;&#x5E38;&#x7528;&#x7684;&#x4E5F;&#x662F;&#x8FD9;&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;put(Key,Value)&#x65B9;&#x6CD5;&#x800C;&#x8A00;&#xFF0C;LinkedHashMap&#x5B8C;&#x5168;&#x7EE7;&#x627F;&#x4E86;HashMap&#x7684; put(Key,Value) &#x65B9;&#x6CD5;&#xFF0C;<strong>&#x53EA;&#x662F;&#x5BF9;put(Key,Value)&#x65B9;&#x6CD5;&#x6240;&#x8C03;&#x7528;&#x7684;recordAccess&#x65B9;&#x6CD5;&#x548C;addEntry&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E86;&#x91CD;&#x5199;&#xFF1B;&#x5BF9;&#x4E8E;get(Key)&#x65B9;&#x6CD5;&#x800C;&#x8A00;&#xFF0C;LinkedHashMap&#x5219;&#x76F4;&#x63A5;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x4E86;&#x91CD;&#x5199;</strong>&#x3002;</p>
+<h5 id="linkedhashmap-&#x7684;&#x5B58;&#x50A8;&#x5B9E;&#x73B0;--putkey-vlaue">LinkedHashMap &#x7684;&#x5B58;&#x50A8;&#x5B9E;&#x73B0; : put(key, vlaue)</h5>
+<p>LinkedHashMap&#x6CA1;&#x6709;&#x5BF9; put(key,vlaue) &#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x76F4;&#x63A5;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x5B8C;&#x5168;&#x7EE7;&#x627F;&#x4E86;HashMap&#x7684; put(Key,Value) &#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>public V put(K key, V value) {
+
+    //&#x5F53;key&#x4E3A;null&#x65F6;&#xFF0C;&#x8C03;&#x7528;putForNullKey&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x5C06;&#x8BE5;&#x952E;&#x503C;&#x5BF9;&#x4FDD;&#x5B58;&#x5230;table&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E; 
+    if (key == null)
+        return putForNullKey(value); 
+
+    //&#x6839;&#x636E;key&#x7684;hashCode&#x8BA1;&#x7B97;hash&#x503C;
+    int hash = hash(key.hashCode());           
+
+    //&#x8BA1;&#x7B97;&#x8BE5;&#x952E;&#x503C;&#x5BF9;&#x5728;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;&#xFF08;&#x54EA;&#x4E2A;&#x6876;&#xFF09;
+    int i = indexFor(hash, table.length);              
+
+    //&#x5728;table&#x7684;&#x7B2C;i&#x4E2A;&#x6876;&#x4E0A;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#xFF0C;&#x5BFB;&#x627E; key &#x4FDD;&#x5B58;&#x7684;&#x4F4D;&#x7F6E;
+    for (Entry&lt;K,V&gt; e = table[i]; e != null; e = e.next) {      
+        Object k;
+        //&#x5224;&#x65AD;&#x8BE5;&#x6761;&#x94FE;&#x4E0A;&#x662F;&#x5426;&#x5B58;&#x5728;hash&#x503C;&#x76F8;&#x540C;&#x4E14;key&#x503C;&#x76F8;&#x7B49;&#x7684;&#x6620;&#x5C04;&#xFF0C;&#x82E5;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8986;&#x76D6; value&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x65E7;value
+        if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) {
+            V oldValue = e.value;
+            e.value = value;
+            e.recordAccess(this); // LinkedHashMap&#x91CD;&#x5199;&#x4E86;Entry&#x4E2D;&#x7684;recordAccess&#x65B9;&#x6CD5;--- (1)    
+            return oldValue;    // &#x8FD4;&#x56DE;&#x65E7;&#x503C;
+        }
+    }
+
+    modCount++; //&#x4FEE;&#x6539;&#x6B21;&#x6570;&#x589E;&#x52A0;1&#xFF0C;&#x5FEB;&#x901F;&#x5931;&#x8D25;&#x673A;&#x5236;
+
+    //&#x539F;Map&#x4E2D;&#x65E0;&#x8BE5;&#x6620;&#x5C04;&#xFF0C;&#x5C06;&#x8BE5;&#x6DFB;&#x52A0;&#x81F3;&#x8BE5;&#x94FE;&#x7684;&#x94FE;&#x5934;
+    addEntry(hash, key, value, i);  // LinkedHashMap&#x91CD;&#x5199;&#x4E86;HashMap&#x4E2D;&#x7684;createEntry&#x65B9;&#x6CD5; ---- (2)    
+    return null;
+}
+</code></pre><p>&#x4E0A;&#x8FF0;&#x6E90;&#x7801;&#x53CD;&#x6620;&#x4E86;LinkedHashMap&#x4E0E;HashMap&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x7279;&#x522B;&#x5730;&#xFF0C;&#x5728;LinkedHashMap&#x4E2D;&#xFF0C;&#x5B83;&#x5BF9;addEntry&#x65B9;&#x6CD5;&#x548C;Entry&#x7684;recordAccess&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E86;&#x91CD;&#x5199;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5BF9;&#x6BD4;&#x5730;&#x770B;&#x4E00;&#x4E0B;LinkedHashMap &#x548C;HashMap&#x7684;addEntry&#x65B9;&#x6CD5;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code>/**
+ * This override alters behavior of superclass put method. It causes newly
+ * allocated entry to get inserted at the end of the linked list and
+ * removes the eldest entry if appropriate.
+ *
+ * LinkedHashMap&#x4E2D;&#x7684;addEntry&#x65B9;&#x6CD5;
+ */
+void addEntry(int hash, K key, V value, int bucketIndex) {   
+
+    //&#x521B;&#x5EFA;&#x65B0;&#x7684;Entry&#xFF0C;&#x5E76;&#x63D2;&#x5165;&#x5230;LinkedHashMap&#x4E2D;  
+    createEntry(hash, key, value, bucketIndex);  // &#x91CD;&#x5199;&#x4E86;HashMap&#x4E2D;&#x7684;createEntry&#x65B9;&#x6CD5;
+
+    //&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x8282;&#x70B9;&#xFF08;header&#x540E;&#x7684;&#x90A3;&#x4E2A;&#x8282;&#x70B9;&#xFF09;&#x4E3A;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x8FD9;&#x662F;&#x7528;&#x6765;&#x652F;&#x6301;LRU&#x7B97;&#x6CD5;&#x7684;
+    Entry&lt;K,V&gt; eldest = header.after;  
+    //&#x5982;&#x679C;&#x6709;&#x5FC5;&#x8981;&#xFF0C;&#x5219;&#x5220;&#x9664;&#x6389;&#x8BE5;&#x8FD1;&#x671F;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7684;&#x8282;&#x70B9;&#xFF0C;  
+    //&#x8FD9;&#x8981;&#x770B;&#x5BF9;removeEldestEntry&#x7684;&#x8986;&#x5199;,&#x7531;&#x4E8E;&#x9ED8;&#x8BA4;&#x4E3A;false&#xFF0C;&#x56E0;&#x6B64;&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x5904;&#x7406;&#x7684;&#x3002;  
+    if (removeEldestEntry(eldest)) {  
+        removeEntryForKey(eldest.key);  
+    } else {  
+        //&#x6269;&#x5BB9;&#x5230;&#x539F;&#x6765;&#x7684;2&#x500D;  
+        if (size &gt;= threshold)  
+            resize(2 * table.length);  
+    }  
+} 
+
+-------------------------------&#x6211;&#x662F;&#x5206;&#x5272;&#x7EBF;------------------------------------
+
+ /**
+ * Adds a new entry with the specified key, value and hash code to
+ * the specified bucket.  It is the responsibility of this
+ * method to resize the table if appropriate.
+ *
+ * Subclass overrides this to alter the behavior of put method.
+ * 
+ * HashMap&#x4E2D;&#x7684;addEntry&#x65B9;&#x6CD5;
+ */
+void addEntry(int hash, K key, V value, int bucketIndex) {
+    //&#x83B7;&#x53D6;bucketIndex&#x5904;&#x7684;Entry
+    Entry&lt;K,V&gt; e = table[bucketIndex];
+
+    //&#x5C06;&#x65B0;&#x521B;&#x5EFA;&#x7684; Entry &#x653E;&#x5165; bucketIndex &#x7D22;&#x5F15;&#x5904;&#xFF0C;&#x5E76;&#x8BA9;&#x65B0;&#x7684; Entry &#x6307;&#x5411;&#x539F;&#x6765;&#x7684; Entry 
+    table[bucketIndex] = new Entry&lt;K,V&gt;(hash, key, value, e);
+
+    //&#x82E5;HashMap&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;&#x8D85;&#x8FC7;&#x6781;&#x9650;&#x4E86;&#xFF0C;&#x5219;&#x5BB9;&#x91CF;&#x6269;&#x5927;&#x4E24;&#x500D;
+    if (size++ &gt;= threshold)
+        resize(2 * table.length);
+}
+</code></pre><p>&#x7531;&#x4E8E;LinkedHashMap&#x672C;&#x8EAB;&#x7EF4;&#x62A4;&#x4E86;&#x63D2;&#x5165;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#xFF0C;&#x56E0;&#x6B64;&#x5176;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x505A;&#x7F13;&#x5B58;&#xFF0C;14~19&#x884C;&#x7684;&#x64CD;&#x4F5C;&#x5C31;&#x662F;&#x7528;&#x6765;&#x652F;&#x6301;LRU&#x7B97;&#x6CD5;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x6682;&#x65F6;&#x4E0D;&#x7528;&#x53BB;&#x5173;&#x5FC3;&#x5B83;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5728;LinkedHashMap&#x7684;addEntry&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x5B83;&#x91CD;&#x5199;&#x4E86;HashMap&#x4E2D;&#x7684;createEntry&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x63A5;&#x7740;&#x770B;&#x4E00;&#x4E0B;createEntry&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>void createEntry(int hash, K key, V value, int bucketIndex) { 
+    // &#x5411;&#x54C8;&#x5E0C;&#x8868;&#x4E2D;&#x63D2;&#x5165;Entry&#xFF0C;&#x8FD9;&#x70B9;&#x4E0E;HashMap&#x4E2D;&#x76F8;&#x540C; 
+    //&#x521B;&#x5EFA;&#x65B0;&#x7684;Entry&#x5E76;&#x5C06;&#x5176;&#x94FE;&#x5165;&#x5230;&#x6570;&#x7EC4;&#x5BF9;&#x5E94;&#x6876;&#x7684;&#x94FE;&#x8868;&#x7684;&#x5934;&#x7ED3;&#x70B9;&#x5904;&#xFF0C; 
+    HashMap.Entry&lt;K,V&gt; old = table[bucketIndex];  
+    Entry&lt;K,V&gt; e = new Entry&lt;K,V&gt;(hash, key, value, old);  
+    table[bucketIndex] = e;     
+
+    //&#x5728;&#x6BCF;&#x6B21;&#x5411;&#x54C8;&#x5E0C;&#x8868;&#x63D2;&#x5165;Entry&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x90FD;&#x4F1A;&#x5C06;&#x5176;&#x63D2;&#x5165;&#x5230;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x90E8;&#xFF0C;  
+    //&#x8FD9;&#x6837;&#x5C31;&#x6309;&#x7167;Entry&#x63D2;&#x5165;LinkedHashMap&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x6765;&#x8FED;&#x4EE3;&#x5143;&#x7D20;(LinkedHashMap&#x6839;&#x636E;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x91CD;&#x5199;&#x4E86;&#x8FED;&#x4EE3;&#x5668;)
+    //&#x540C;&#x65F6;&#xFF0C;&#x65B0;put&#x8FDB;&#x6765;&#x7684;Entry&#x662F;&#x6700;&#x8FD1;&#x8BBF;&#x95EE;&#x7684;Entry&#xFF0C;&#x628A;&#x5176;&#x653E;&#x5728;&#x94FE;&#x8868;&#x672B;&#x5C3E; &#xFF0C;&#x4E5F;&#x7B26;&#x5408;LRU&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;  
+    e.addBefore(header);  
+    size++;  
+}
+</code></pre><p>&#x7531;&#x4EE5;&#x4E0A;&#x6E90;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;&#x5728;LinkedHashMap&#x4E2D;&#x5411;&#x54C8;&#x5E0C;&#x8868;&#x4E2D;&#x63D2;&#x5165;&#x65B0;Entry&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x8FD8;&#x4F1A;&#x901A;&#x8FC7;Entry&#x7684;addBefore&#x65B9;&#x6CD5;&#x5C06;&#x5176;&#x94FE;&#x5165;&#x5230;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4E2D;&#x3002;&#x5176;&#x4E2D;&#xFF0C;addBefore&#x65B9;&#x6CD5;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#xFF0C;&#x5176;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>//&#x5728;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4E2D;&#xFF0C;&#x5C06;&#x5F53;&#x524D;&#x7684;Entry&#x63D2;&#x5165;&#x5230;existingEntry(header)&#x7684;&#x524D;&#x9762;  
+private void addBefore(Entry&lt;K,V&gt; existingEntry) {  
+    after  = existingEntry;  
+    before = existingEntry.before;  
+    before.after = this;  
+    after.before = this;  
+}
+</code></pre><p>&#x5230;&#x6B64;&#x4E3A;&#x6B62;&#xFF0C;&#x6211;&#x4EEC;&#x5206;&#x6790;&#x4E86;&#x5728;LinkedHashMap&#x4E2D;put&#x4E00;&#x6761;&#x952E;&#x503C;&#x5BF9;&#x7684;&#x5B8C;&#x6574;&#x8FC7;&#x7A0B;&#x3002;&#x603B;&#x7684;&#x6765;&#x8BF4;&#xFF0C;&#x76F8;&#x6BD4;HashMap&#x800C;&#x8A00;&#xFF0C;LinkedHashMap&#x5728;&#x5411;&#x54C8;&#x5E0C;&#x8868;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#x5BF9;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x4E5F;&#x4F1A;&#x5C06;&#x5176;&#x94FE;&#x5165;&#x5230;&#x5B83;&#x6240;&#x7EF4;&#x62A4;&#x7684;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4E2D;&#xFF0C;&#x4EE5;&#x4FBF;&#x8BBE;&#x5B9A;&#x8FED;&#x4EE3;&#x987A;&#x5E8F;&#x3002;</p>
+<h5 id="linkedhashmap-&#x7684;&#x6269;&#x5BB9;&#x64CD;&#x4F5C;--resize">LinkedHashMap &#x7684;&#x6269;&#x5BB9;&#x64CD;&#x4F5C; : resize()</h5>
+<p>&#x5728;HashMap&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x968F;&#x7740;HashMap&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x6570;&#x91CF;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#xFF0C;&#x53D1;&#x751F;&#x78B0;&#x649E;&#x7684;&#x6982;&#x7387;&#x5C06;&#x8D8A;&#x6765;&#x8D8A;&#x5927;&#xFF0C;&#x6240;&#x4EA7;&#x751F;&#x7684;&#x5B50;&#x94FE;&#x957F;&#x5EA6;&#x5C31;&#x4F1A;&#x8D8A;&#x6765;&#x8D8A;&#x957F;&#xFF0C;&#x8FD9;&#x6837;&#x52BF;&#x5FC5;&#x4F1A;&#x5F71;&#x54CD;HashMap&#x7684;&#x5B58;&#x53D6;&#x901F;&#x5EA6;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;HashMap&#x7684;&#x6548;&#x7387;&#xFF0C;&#x7CFB;&#x7EDF;&#x5FC5;&#x987B;&#x8981;&#x5728;&#x67D0;&#x4E2A;&#x4E34;&#x754C;&#x70B9;&#x8FDB;&#x884C;&#x6269;&#x5BB9;&#x5904;&#x7406;&#xFF0C;&#x8BE5;&#x4E34;&#x754C;&#x70B9;&#x5C31;&#x662F;HashMap&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x6570;&#x91CF;&#x5728;&#x6570;&#x503C;&#x4E0A;&#x7B49;&#x4E8E;threshold&#xFF08;table&#x6570;&#x7EC4;&#x957F;&#x5EA6;*&#x52A0;&#x8F7D;&#x56E0;&#x5B50;&#xFF09;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x4E0D;&#x5F97;&#x4E0D;&#x8BF4;&#xFF0C;&#x6269;&#x5BB9;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x8017;&#x65F6;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x8FD9;&#x4E9B;&#x5143;&#x7D20;&#x5728;&#x65B0;table&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x5E76;&#x8FDB;&#x884C;&#x590D;&#x5236;&#x5904;&#x7406;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x63D0;&#x524D;&#x9884;&#x77E5;HashMap&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x6784;&#x9020;HashMap&#x65F6;&#x9884;&#x8BBE;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;&#x80FD;&#x591F;&#x6709;&#x6548;&#x7684;&#x63D0;&#x9AD8;HashMap&#x7684;&#x6027;&#x80FD;&#x3002;</p>
+<p>&#x540C;&#x6837;&#x7684;&#x95EE;&#x9898;&#x4E5F;&#x5B58;&#x5728;&#x4E8E;LinkedHashMap&#x4E2D;&#xFF0C;&#x56E0;&#x4E3A;LinkedHashMap&#x672C;&#x6765;&#x5C31;&#x662F;&#x4E00;&#x4E2A;HashMap&#xFF0C;&#x53EA;&#x662F;&#x5B83;&#x8FD8;&#x5C06;&#x6240;&#x6709;Entry&#x8282;&#x70B9;&#x94FE;&#x5165;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4E2D;&#x3002;LinkedHashMap&#x5B8C;&#x5168;&#x7EE7;&#x627F;&#x4E86;HashMap&#x7684;resize()&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x662F;&#x5BF9;&#x5B83;&#x6240;&#x8C03;&#x7528;&#x7684;transfer&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E86;&#x91CD;&#x5199;&#x3002;&#x6211;&#x4EEC;&#x5148;&#x770B;resize()&#x65B9;&#x6CD5;&#x6E90;&#x7801;&#xFF1A;</p>
+<pre><code>void resize(int newCapacity) {
+    Entry[] oldTable = table;
+    int oldCapacity = oldTable.length;
+
+    // &#x82E5; oldCapacity &#x5DF2;&#x8FBE;&#x5230;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x76F4;&#x63A5;&#x5C06; threshold &#x8BBE;&#x4E3A; Integer.MAX_VALUE
+    if (oldCapacity == MAXIMUM_CAPACITY) {  
+        threshold = Integer.MAX_VALUE;
+        return;             // &#x76F4;&#x63A5;&#x8FD4;&#x56DE;
+    }
+
+    // &#x5426;&#x5219;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x66F4;&#x5927;&#x7684;&#x6570;&#x7EC4;
+    Entry[] newTable = new Entry[newCapacity];
+
+    //&#x5C06;&#x6BCF;&#x6761;Entry&#x91CD;&#x65B0;&#x54C8;&#x5E0C;&#x5230;&#x65B0;&#x7684;&#x6570;&#x7EC4;&#x4E2D;
+    transfer(newTable);  //LinkedHashMap&#x5BF9;&#x5B83;&#x6240;&#x8C03;&#x7528;&#x7684;transfer&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E86;&#x91CD;&#x5199;
+
+    table = newTable;
+    threshold = (int)(newCapacity * loadFactor);  // &#x91CD;&#x65B0;&#x8BBE;&#x5B9A; threshold
+}
+</code></pre><p>&#x4ECE;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;Map&#x6269;&#x5BB9;&#x64CD;&#x4F5C;&#x7684;&#x6838;&#x5FC3;&#x5728;&#x4E8E;&#x91CD;&#x54C8;&#x5E0C;&#x3002;&#x6240;&#x8C13;&#x91CD;&#x54C8;&#x5E0C;&#x662F;&#x6307;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x539F;HashMap&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x5728;&#x65B0;table&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x5E76;&#x8FDB;&#x884C;&#x590D;&#x5236;&#x5904;&#x7406;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x9274;&#x4E8E;&#x6027;&#x80FD;&#x548C;LinkedHashMap&#x81EA;&#x8EAB;&#x7279;&#x70B9;&#x7684;&#x8003;&#x91CF;&#xFF0C;LinkedHashMap&#x5BF9;&#x91CD;&#x54C8;&#x5E0C;&#x8FC7;&#x7A0B;(transfer&#x65B9;&#x6CD5;)&#x8FDB;&#x884C;&#x4E86;&#x91CD;&#x5199;&#xFF0C;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>/**
+ * Transfers all entries to new table array.  This method is called
+ * by superclass resize.  It is overridden for performance, as it is
+ * faster to iterate using our linked list.
+ */
+void transfer(HashMap.Entry[] newTable) {
+    int newCapacity = newTable.length;
+    // &#x4E0E;HashMap&#x76F8;&#x6BD4;&#xFF0C;&#x501F;&#x52A9;&#x4E8E;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x7279;&#x70B9;&#x8FDB;&#x884C;&#x91CD;&#x54C8;&#x5E0C;&#x4F7F;&#x5F97;&#x4EE3;&#x7801;&#x66F4;&#x52A0;&#x7B80;&#x6D01;
+    for (Entry&lt;K,V&gt; e = header.after; e != header; e = e.after) {
+        int index = indexFor(e.hash, newCapacity);   // &#x8BA1;&#x7B97;&#x6BCF;&#x4E2A;Entry&#x6240;&#x5728;&#x7684;&#x6876;
+        // &#x5C06;&#x5176;&#x94FE;&#x5165;&#x6876;&#x4E2D;&#x7684;&#x94FE;&#x8868;
+        e.next = newTable[index];
+        newTable[index] = e;   
+    }
+}
+</code></pre><h5 id="linkedhashmap-&#x7684;&#x8BFB;&#x53D6;&#x5B9E;&#x73B0;-&#xFF1A;getobject-key">LinkedHashMap &#x7684;&#x8BFB;&#x53D6;&#x5B9E;&#x73B0; &#xFF1A;get(Object key)</h5>
+<p>&#x76F8;&#x5BF9;&#x4E8E;LinkedHashMap&#x7684;&#x5B58;&#x50A8;&#x800C;&#x8A00;&#xFF0C;&#x8BFB;&#x53D6;&#x5C31;&#x663E;&#x5F97;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x4E86;&#x3002;LinkedHashMap&#x4E2D;&#x91CD;&#x5199;&#x4E86;HashMap&#x4E2D;&#x7684;get&#x65B9;&#x6CD5;&#xFF0C;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>public V get(Object key) {
+    // &#x6839;&#x636E;key&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;Entry&#xFF0C;&#x82E5;&#x6CA1;&#x6709;&#x8FD9;&#x6837;&#x7684;Entry&#xFF0C;&#x5219;&#x8FD4;&#x56DE;null
+    Entry&lt;K,V&gt; e = (Entry&lt;K,V&gt;)getEntry(key); 
+    if (e == null)      // &#x82E5;&#x4E0D;&#x5B58;&#x5728;&#x8FD9;&#x6837;&#x7684;Entry&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;
+        return null;
+    e.recordAccess(this);
+    return e.value;
+}
+
+/**
+    * Returns the entry associated with the specified key in the
+    * HashMap.  Returns null if the HashMap contains no mapping
+    * for the key.
+    * 
+    * HashMap &#x4E2D;&#x7684;&#x65B9;&#x6CD5;
+    *     
+    */
+final Entry&lt;K,V&gt; getEntry(Object key) {
+    if (size == 0) {
+        return null;
+    }
+
+    int hash = (key == null) ? 0 : hash(key);
+    for (Entry&lt;K,V&gt; e = table[indexFor(hash, table.length)];
+            e != null;
+            e = e.next) {
+        Object k;
+        if (e.hash == hash &amp;&amp;
+            ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))
+            return e;
+    }
+    return null;
+}
+</code></pre><p>&#x5728;LinkedHashMap&#x7684;get&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;HashMap&#x4E2D;&#x7684;getEntry&#x65B9;&#x6CD5;&#x83B7;&#x53D6;Entry&#x5BF9;&#x8C61;&#x3002;&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x7684;recordAccess&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x94FE;&#x8868;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x6392;&#x5E8F;&#x89C4;&#x5219;&#x662F;&#x6309;&#x7167;&#x63D2;&#x5165;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#x7684;&#x8BDD;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x505A;&#xFF1B;&#x5982;&#x679C;&#x94FE;&#x8868;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x6392;&#x5E8F;&#x89C4;&#x5219;&#x662F;&#x6309;&#x7167;&#x8BBF;&#x95EE;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#x7684;&#x8BDD;&#xFF0C;&#x5219;&#x5C06;e&#x79FB;&#x5230;&#x94FE;&#x8868;&#x7684;&#x672B;&#x5C3E;&#x5904;&#xFF0C;&#x7B14;&#x8005;&#x4F1A;&#x5728;&#x540E;&#x6587;&#x4E13;&#x95E8;&#x9610;&#x8FF0;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
+<h4 id="linkedhashmap-&#x4E0E;-lruleast-recently-used&#xFF0C;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7B97;&#x6CD5;">LinkedHashMap &#x4E0E; LRU(Least recently used&#xFF0C;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;)&#x7B97;&#x6CD5;</h4>
+<p>LinkedHashMap&#x533A;&#x522B;&#x4E8E;HashMap&#x6700;&#x5927;&#x7684;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x70B9;&#x662F;&#xFF0C;&#x524D;&#x8005;&#x662F;&#x6709;&#x5E8F;&#x7684;&#xFF0C;&#x800C;&#x540E;&#x8005;&#x662F;&#x65E0;&#x5E8F;&#x7684;&#x3002;&#x4E3A;&#x6B64;&#xFF0C;LinkedHashMap&#x589E;&#x52A0;&#x4E86;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x7528;&#x4E8E;&#x4FDD;&#x8BC1;&#x987A;&#x5E8F;&#xFF0C;&#x5206;&#x522B;&#x662F;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x5934;&#x7ED3;&#x70B9;header&#x548C;&#x6807;&#x5FD7;&#x4F4D;accessOrder&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;header&#x662F;LinkedHashMap&#x6240;&#x7EF4;&#x62A4;&#x7684;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5934;&#x7ED3;&#x70B9;&#xFF0C;&#x800C;accessOrder&#x7528;&#x4E8E;&#x51B3;&#x5B9A;&#x5177;&#x4F53;&#x7684;&#x8FED;&#x4EE3;&#x987A;&#x5E8F;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;accessOrder&#x6807;&#x5FD7;&#x4F4D;&#x7684;&#x4F5C;&#x7528;&#x53EF;&#x4E0D;&#x50CF;&#x6211;&#x4EEC;&#x63CF;&#x8FF0;&#x7684;&#x8FD9;&#x6837;&#x7B80;&#x5355;&#xFF0C;&#x6211;&#x4EEC;&#x63A5;&#x4E0B;&#x6765;&#x4ED4;&#x7EC6;&#x5206;&#x6790;&#x4E00;&#x6CE2;~</p>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;<strong>&#x5F53;accessOrder&#x6807;&#x5FD7;&#x4F4D;&#x4E3A;true&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x6309;&#x7167;&#x8BBF;&#x95EE;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x6392;&#x5217;</strong>&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x867D;&#x7136;Entry&#x63D2;&#x5165;&#x94FE;&#x8868;&#x7684;&#x987A;&#x5E8F;&#x4F9D;&#x7136;&#x662F;&#x6309;&#x7167;&#x5176;put&#x5230;LinkedHashMap&#x4E2D;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x4F46;put&#x548C;get&#x65B9;&#x6CD5;&#x5747;&#x6709;&#x8C03;&#x7528;recordAccess&#x65B9;&#x6CD5;&#xFF08;put&#x65B9;&#x6CD5;&#x5728;key&#x76F8;&#x540C;&#x65F6;&#x4F1A;&#x8C03;&#x7528;&#xFF09;&#x3002;</p>
+<p><strong>recordAccess&#x65B9;&#x6CD5;&#x5224;&#x65AD;accessOrder&#x662F;&#x5426;&#x4E3A;true&#xFF0C;&#x5982;&#x679C;&#x662F;&#xFF0C;&#x5219;&#x5C06;&#x5F53;&#x524D;&#x8BBF;&#x95EE;&#x7684;Entry&#xFF08;put&#x8FDB;&#x6765;&#x7684;Entry&#x6216;get&#x51FA;&#x6765;&#x7684;Entry&#xFF09;&#x79FB;&#x5230;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x90E8;&#xFF08;key&#x4E0D;&#x76F8;&#x540C;&#x65F6;&#xFF0C;put&#x65B0;Entry&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;addEntry&#xFF0C;&#x5B83;&#x4F1A;&#x8C03;&#x7528;createEntry&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x540C;&#x6837;&#x5C06;&#x65B0;&#x63D2;&#x5165;&#x7684;&#x5143;&#x7D20;&#x653E;&#x5165;&#x5230;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x90E8;&#xFF0C;&#x65E2;&#x7B26;&#x5408;&#x63D2;&#x5165;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#xFF0C;&#x53C8;&#x7B26;&#x5408;&#x8BBF;&#x95EE;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x65F6;&#x8BE5;Entry&#x4E5F;&#x88AB;&#x8BBF;&#x95EE;&#x4E86;&#xFF09;</strong>&#xFF1B;</p>
+<p>&#x5F53;&#x6807;&#x5FD7;&#x4F4D;accessOrder&#x7684;&#x503C;&#x4E3A;false&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x6309;&#x7167;Entry&#x63D2;&#x5165;LinkedHashMap&#x5230;&#x4E2D;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#xFF0C;&#x5373;&#x6BCF;&#x6B21;put&#x5230;LinkedHashMap&#x4E2D;&#x7684;Entry&#x90FD;&#x653E;&#x5728;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x90E8;&#xFF0C;&#x8FD9;&#x6837;&#x904D;&#x5386;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x65F6;&#xFF0C;Entry&#x7684;&#x8F93;&#x51FA;&#x987A;&#x5E8F;&#x4FBF;&#x548C;&#x63D2;&#x5165;&#x7684;&#x987A;&#x5E8F;&#x4E00;&#x81F4;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x9ED8;&#x8BA4;&#x7684;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5B58;&#x50A8;&#x987A;&#x5E8F;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x5F53;&#x6807;&#x5FD7;&#x4F4D;accessOrder&#x7684;&#x503C;&#x4E3A;false&#x65F6;&#xFF0C;&#x867D;&#x7136;&#x4E5F;&#x4F1A;&#x8C03;&#x7528;recordAccess&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;&#x3002;</p>
+<h5 id="put&#x64CD;&#x4F5C;&#x4E0E;&#x6807;&#x5FD7;&#x4F4D;accessorder">put&#x64CD;&#x4F5C;&#x4E0E;&#x6807;&#x5FD7;&#x4F4D;accessOrder</h5>
+<pre><code>/ &#x5C06;key/value&#x6DFB;&#x52A0;&#x5230;LinkedHashMap&#x4E2D;      
+public V put(K key, V value) {      
+    // &#x82E5;key&#x4E3A;null&#xFF0C;&#x5219;&#x5C06;&#x8BE5;&#x952E;&#x503C;&#x5BF9;&#x6DFB;&#x52A0;&#x5230;table[0]&#x4E2D;&#x3002;      
+    if (key == null)      
+        return putForNullKey(value);      
+    // &#x82E5;key&#x4E0D;&#x4E3A;null&#xFF0C;&#x5219;&#x8BA1;&#x7B97;&#x8BE5;key&#x7684;&#x54C8;&#x5E0C;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5176;&#x6DFB;&#x52A0;&#x5230;&#x8BE5;&#x54C8;&#x5E0C;&#x503C;&#x5BF9;&#x5E94;&#x7684;&#x94FE;&#x8868;&#x4E2D;&#x3002;      
+    int hash = hash(key.hashCode());      
+    int i = indexFor(hash, table.length);      
+    for (Entry&lt;K,V&gt; e = table[i]; e != null; e = e.next) {      
+        Object k;      
+        // &#x82E5;key&#x5BF9;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x7528;&#x65B0;&#x7684;value&#x53D6;&#x4EE3;&#x65E7;&#x7684;value     
+        if (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) {      
+            V oldValue = e.value;      
+            e.value = value;      
+            e.recordAccess(this);      
+            return oldValue;      
+        }      
+    }      
+
+    // &#x82E5;key&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x5C06;key/value&#x952E;&#x503C;&#x5BF9;&#x6DFB;&#x52A0;&#x5230;table&#x4E2D;      
+    modCount++;    
+    //&#x5C06;key/value&#x952E;&#x503C;&#x5BF9;&#x6DFB;&#x52A0;&#x5230;table[i]&#x5904;    
+    addEntry(hash, key, value, i);      
+    return null;      
+}
+</code></pre><p>&#x4ECE;&#x4E0A;&#x8FF0;&#x6E90;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5F53;&#x8981;put&#x8FDB;&#x6765;&#x7684;Entry&#x7684;key&#x5728;&#x54C8;&#x5E0C;&#x8868;&#x4E2D;&#x5DF2;&#x7ECF;&#x5728;&#x5B58;&#x5728;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;Entry&#x7684;recordAccess&#x65B9;&#x6CD5;&#xFF1B;&#x5F53;&#x8BE5;key&#x4E0D;&#x5B58;&#x5728;&#x65F6;&#xFF0C;&#x5219;&#x4F1A;&#x8C03;&#x7528;addEntry&#x65B9;&#x6CD5;&#x5C06;&#x65B0;&#x7684;Entry&#x63D2;&#x5165;&#x5230;&#x5BF9;&#x5E94;&#x6876;&#x7684;&#x5355;&#x94FE;&#x8868;&#x7684;&#x5934;&#x90E8;&#x3002;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;recordAccess&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code>/**
+* This method is invoked by the superclass whenever the value
+* of a pre-existing entry is read by Map.get or modified by Map.set.
+* If the enclosing Map is access-ordered, it moves the entry
+* to the end of the list; otherwise, it does nothing.
+*/
+void recordAccess(HashMap&lt;K,V&gt; m) {  
+    LinkedHashMap&lt;K,V&gt; lm = (LinkedHashMap&lt;K,V&gt;)m;  
+    //&#x5982;&#x679C;&#x94FE;&#x8868;&#x4E2D;&#x5143;&#x7D20;&#x6309;&#x7167;&#x8BBF;&#x95EE;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#xFF0C;&#x5219;&#x5C06;&#x5F53;&#x524D;&#x8BBF;&#x95EE;&#x7684;Entry&#x79FB;&#x5230;&#x53CC;&#x5411;&#x5FAA;&#x73AF;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x90E8;&#xFF0C;  
+    //&#x5982;&#x679C;&#x662F;&#x6309;&#x7167;&#x63D2;&#x5165;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#xFF0C;&#x5219;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x4E8B;&#x60C5;&#x3002;  
+    if (lm.accessOrder) {  
+        lm.modCount++;  
+        //&#x79FB;&#x9664;&#x5F53;&#x524D;&#x8BBF;&#x95EE;&#x7684;Entry  
+        remove();  
+        //&#x5C06;&#x5F53;&#x524D;&#x8BBF;&#x95EE;&#x7684;Entry&#x63D2;&#x5165;&#x5230;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x90E8;  
+        addBefore(lm.header);  
+      }  
+  }
+</code></pre><p>LinkedHashMap&#x91CD;&#x5199;&#x4E86;HashMap&#x4E2D;&#x7684;recordAccess&#x65B9;&#x6CD5;&#xFF08;HashMap&#x4E2D;&#x8BE5;&#x65B9;&#x6CD5;&#x4E3A;&#x7A7A;&#xFF09;&#xFF0C;&#x5F53;&#x8C03;&#x7528;&#x7236;&#x7C7B;&#x7684;put&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5728;&#x53D1;&#x73B0;key&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#xFF1B;&#x5F53;&#x8C03;&#x7528;&#x81EA;&#x5DF1;&#x7684;get&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4E5F;&#x4F1A;&#x8C03;&#x7528;&#x5230;&#x8BE5;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x8BE5;&#x65B9;&#x6CD5;&#x63D0;&#x4F9B;&#x4E86;LRU&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5B83;&#x5C06;&#x6700;&#x8FD1;&#x4F7F;&#x7528;&#x7684;Entry&#x653E;&#x5230;&#x53CC;&#x5411;&#x5FAA;&#x73AF;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x90E8;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5F53;accessOrder&#x4E3A;true&#x65F6;&#xFF0C;get&#x65B9;&#x6CD5;&#x548C;put&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x8C03;&#x7528;recordAccess&#x65B9;&#x6CD5;&#x4F7F;&#x5F97;&#x6700;&#x8FD1;&#x4F7F;&#x7528;&#x7684;Entry&#x79FB;&#x5230;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x672B;&#x5C3E;&#xFF1B;&#x5F53;accessOrder&#x4E3A;&#x9ED8;&#x8BA4;&#x503C;false&#x65F6;&#xFF0C;&#x4ECE;&#x6E90;&#x7801;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;recordAccess&#x65B9;&#x6CD5;&#x4EC0;&#x4E48;&#x4E5F;&#x4E0D;&#x4F1A;&#x505A;&#x3002;</p>
+<h5 id="get&#x64CD;&#x4F5C;&#x4E0E;&#x6807;&#x5FD7;&#x4F4D;accessorder">get&#x64CD;&#x4F5C;&#x4E0E;&#x6807;&#x5FD7;&#x4F4D;accessOrder</h5>
+<pre><code>public V get(Object key) {
+    // &#x6839;&#x636E;key&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;Entry&#xFF0C;&#x82E5;&#x6CA1;&#x6709;&#x8FD9;&#x6837;&#x7684;Entry&#xFF0C;&#x5219;&#x8FD4;&#x56DE;null
+    Entry&lt;K,V&gt; e = (Entry&lt;K,V&gt;)getEntry(key); 
+    if (e == null)      // &#x82E5;&#x4E0D;&#x5B58;&#x5728;&#x8FD9;&#x6837;&#x7684;Entry&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;
+        return null;
+    e.recordAccess(this);
+    return e.value;
+}
+</code></pre><p>&#x5728;LinkedHashMap&#x4E2D;&#x8FDB;&#x884C;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x4E00;&#x6837;&#x4E5F;&#x4F1A;&#x8C03;&#x7528;recordAccess&#x65B9;&#x6CD5;</p>
+<h5 id="linkedlistmap&#x4E0E;lru&#x5C0F;&#x7ED3;">LinkedListMap&#x4E0E;LRU&#x5C0F;&#x7ED3;</h5>
+<p>&#x4F7F;&#x7528;LinkedHashMap&#x5B9E;&#x73B0;LRU&#x7684;&#x5FC5;&#x8981;&#x524D;&#x63D0;&#x662F;&#x5C06;accessOrder&#x6807;&#x5FD7;&#x4F4D;&#x8BBE;&#x4E3A;true&#x4EE5;&#x4FBF;&#x5F00;&#x542F;&#x6309;&#x8BBF;&#x95EE;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#x7684;&#x6A21;&#x5F0F;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;put&#x65B9;&#x6CD5;&#x8FD8;&#x662F;get&#x65B9;&#x6CD5;&#xFF0C;&#x90FD;&#x4F1A;&#x5BFC;&#x81F4;&#x76EE;&#x6807;Entry&#x6210;&#x4E3A;&#x6700;&#x8FD1;&#x8BBF;&#x95EE;&#x7684;Entry&#xFF0C;&#x56E0;&#x6B64;&#x5C31;&#x628A;&#x8BE5;Entry&#x52A0;&#x5165;&#x5230;&#x4E86;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x672B;&#x5C3E;&#xFF1A;get&#x65B9;&#x6CD5;&#x901A;&#x8FC7;&#x8C03;&#x7528;recordAccess&#x65B9;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#xFF1B;</p>
+<p>put&#x65B9;&#x6CD5;&#x5728;&#x8986;&#x76D6;&#x5DF2;&#x6709;key&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E5F;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528;recordAccess&#x65B9;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x5728;&#x63D2;&#x5165;&#x65B0;&#x7684;Entry&#x65F6;&#xFF0C;&#x5219;&#x662F;&#x901A;&#x8FC7;createEntry&#x4E2D;&#x7684;addBefore&#x65B9;&#x6CD5;&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x4FBF;&#x628A;&#x6700;&#x8FD1;&#x4F7F;&#x7528;&#x7684;Entry&#x653E;&#x5165;&#x5230;&#x4E86;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x540E;&#x9762;&#x3002;&#x591A;&#x6B21;&#x64CD;&#x4F5C;&#x540E;&#xFF0C;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x524D;&#x9762;&#x7684;Entry&#x4FBF;&#x662F;&#x6700;&#x8FD1;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x8FD9;&#x6837;&#x5F53;&#x8282;&#x70B9;&#x4E2A;&#x6570;&#x6EE1;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5220;&#x9664;&#x6700;&#x524D;&#x9762;&#x7684;Entry(head&#x540E;&#x9762;&#x7684;&#x90A3;&#x4E2A;Entry)&#x5373;&#x53EF;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5C31;&#x662F;&#x6700;&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7684;Entry&#x3002;</p>
+<h5 id="&#x4F7F;&#x7528;linkedhashmap&#x5B9E;&#x73B0;lru&#x7B97;&#x6CD5;">&#x4F7F;&#x7528;LinkedHashMap&#x5B9E;&#x73B0;LRU&#x7B97;&#x6CD5;</h5>
+<p>&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF0C;&#x7B14;&#x8005;&#x4F7F;&#x7528;LinkedHashMap&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7B26;&#x5408;LRU&#x7B97;&#x6CD5;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x8BE5;&#x7ED3;&#x6784;&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x7F13;&#x5B58;6&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x4F46;&#x5143;&#x7D20;&#x591A;&#x4F59;&#x516D;&#x4E2A;&#x65F6;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x5220;&#x9664;&#x6700;&#x8FD1;&#x6700;&#x4E45;&#x6CA1;&#x6709;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>public class LRU&lt;K,V&gt; extends LinkedHashMap&lt;K, V&gt; implements Map&lt;K, V&gt;{
+
+    private static final long serialVersionUID = 1L;
+
+    public LRU(int initialCapacity,
+             float loadFactor,
+                        boolean accessOrder) {
+        super(initialCapacity, loadFactor, accessOrder);
+    }
+
+    /** 
+     * @description &#x91CD;&#x5199;LinkedHashMap&#x4E2D;&#x7684;removeEldestEntry&#x65B9;&#x6CD5;&#xFF0C;&#x5F53;LRU&#x4E2D;&#x5143;&#x7D20;&#x591A;&#x4F59;6&#x4E2A;&#x65F6;&#xFF0C;
+     *              &#x5220;&#x9664;&#x6700;&#x4E0D;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x5143;&#x7D20;
+     * @author rico       
+     * @created 2017&#x5E74;5&#x6708;12&#x65E5; &#x4E0A;&#x5348;11:32:51      
+     * @param eldest
+     * @return     
+     * @see java.util.LinkedHashMap#removeEldestEntry(java.util.Map.Entry)     
+     */  
+    @Override
+    protected boolean removeEldestEntry(java.util.Map.Entry&lt;K, V&gt; eldest) {
+        // TODO Auto-generated method stub
+        if(size() &gt; 6){
+            return true;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+
+        LRU&lt;Character, Integer&gt; lru = new LRU&lt;Character, Integer&gt;(
+                16, 0.75f, true);
+
+        String s = &quot;abcdefghijkl&quot;;
+        for (int i = 0; i &lt; s.length(); i++) {
+            lru.put(s.charAt(i), i);
+        }
+        System.out.println(&quot;LRU&#x4E2D;key&#x4E3A;h&#x7684;Entry&#x7684;&#x503C;&#x4E3A;&#xFF1A; &quot; + lru.get(&apos;h&apos;));
+        System.out.println(&quot;LRU&#x7684;&#x5927;&#x5C0F; &#xFF1A;&quot; + lru.size());
+        System.out.println(&quot;LRU &#xFF1A;&quot; + lru);
+    }
+}
+</code></pre><p>&#x4E0B;&#x56FE;&#x662F;&#x7A0B;&#x5E8F;&#x7684;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="../_images/java_linkedhm_3.png" alt="linkedhm_3"></p>
+<h4 id="jdk18&#x7684;&#x6539;&#x52A8;">JDK1.8&#x7684;&#x6539;&#x52A8;</h4>
+<p>&#x539F;&#x6587;&#x662F;&#x57FA;&#x4E8E;JDK1.6&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;JDK1.8&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x4E86;&#x6539;&#x52A8;&#x3002; &#x9996;&#x5148;&#x5B83;&#x5220;&#x9664;&#x4E86;addentry&#xFF0C;createenrty&#x7B49;&#x65B9;&#x6CD5;&#xFF08;&#x4E8B;&#x5B9E;&#x4E0A;&#x662F;hashmap&#x7684;&#x6539;&#x52A8;&#x5F71;&#x54CD;&#x4E86;&#x5B83;&#x800C;&#x5DF2;&#xFF09;&#x3002;</p>
+<p>linkedhashmap&#x540C;&#x6837;&#x4F7F;&#x7528;&#x4E86;&#x5927;&#x90E8;&#x5206;hashmap&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;&#x65B9;&#x6CD5;&#x3002; &#x65B0;&#x7248;&#x672C;linkedhashmap&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;&#x5BF9;hashmap&#x5185;&#x7F6E;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#x91CD;&#x5199;&#x6765;&#x5B9E;&#x73B0;lru&#x7684;&#x3002;</p>
+<p>hashmap&#x4E0D;&#x63D0;&#x4F9B;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code>void afterNodeAccess(Node&lt;K,V&gt; p) { }
+void afterNodeInsertion(boolean evict) { }
+void afterNodeRemoval(Node&lt;K,V&gt; p) { }
+</code></pre><p>linkedhashmap&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code>void afterNodeAccess(Node&lt;K,V&gt; e) { // move node to last
+        LinkedHashMap.Entry&lt;K,V&gt; last;
+        if (accessOrder &amp;&amp; (last = tail) != e) {
+            LinkedHashMap.Entry&lt;K,V&gt; p =
+                (LinkedHashMap.Entry&lt;K,V&gt;)e, b = p.before, a = p.after;
+            p.after = null;
+            if (b == null)
+                head = a;
+            else
+                b.after = a;
+            if (a != null)
+                a.before = b;
+            else
+                last = b;
+            if (last == null)
+                head = p;
+            else {
+                p.before = last;
+                last.after = p;
+            }
+            tail = p;
+            ++modCount;
+        }
+    }
+</code></pre><p>&#x5904;&#x7406;&#x5143;&#x7D20;&#x63D2;&#x5165;&#x540E;&#x7684;&#x60C5;&#x51B5;</p>
+<pre><code>void afterNodeInsertion(boolean evict) { // possibly remove eldest
+    LinkedHashMap.Entry&lt;K,V&gt; first;
+    if (evict &amp;&amp; (first = head) != null &amp;&amp; removeEldestEntry(first)) {
+        K key = first.key;
+        removeNode(hash(key), key, null, false, true);
+    }
+</code></pre><p>&#x5904;&#x7406;&#x5143;&#x7D20;&#x88AB;&#x5220;&#x9664;&#x540E;&#x7684;&#x60C5;&#x51B5;</p>
+<pre><code>void afterNodeRemoval(Node&lt;K,V&gt; e) { // unlink
+    LinkedHashMap.Entry&lt;K,V&gt; p =
+        (LinkedHashMap.Entry&lt;K,V&gt;)e, b = p.before, a = p.after;
+    p.before = p.after = null;
+    if (b == null)
+        head = a;
+    else
+        b.after = a;
+    if (a == null)
+        tail = b;
+    else
+        a.before = b;
+}
+}
+</code></pre><p>&#x53E6;&#x5916;1.8&#x7684;hashmap&#x5728;&#x94FE;&#x8868;&#x957F;&#x5EA6;&#x8D85;&#x8FC7;8&#x65F6;&#x81EA;&#x52A8;&#x8F6C;&#x4E3A;&#x7EA2;&#x9ED1;&#x6811;&#xFF0C;&#x4F1A;&#x6309;&#x987A;&#x5E8F;&#x63D2;&#x5165;&#x94FE;&#x8868;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x6BD4;&#x8F83;&#x5668;&#x6765;&#x5B9A;&#x4E49;&#x8282;&#x70B9;&#x7684;&#x63D2;&#x5165;&#x987A;&#x5E8F;&#x3002;</p>
+<p>1.8&#x7684;linkedhashmap&#x540C;&#x6837;&#x4F1A;&#x4F7F;&#x7528;&#x8FD9;&#x4E00;&#x7279;&#x6027;&#xFF0C;&#x5F53;&#x53D8;&#x4E3A;&#x7EA2;&#x9ED1;&#x6811;&#x4EE5;&#x540E;&#xFF0C;&#x8282;&#x70B9;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x540C;&#x6837;&#x662F;&#x63D2;&#x5165;&#x7EA2;&#x9ED1;&#x6811;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x5176;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x6027;&#x8D28;&#x6CA1;&#x6709;&#x6539;&#x8868;&#xFF0C;&#x53EA;&#x662F;&#x539F;&#x6765;hashmap&#x7684;&#x94FE;&#x8868;&#x53D8;&#x6210;&#x4E86;&#x7EA2;&#x9ED1;&#x6811;&#x800C;&#x5DF2;&#xFF0C;&#x5728;&#x6B64;&#x4E0D;&#x8981;&#x6DF7;&#x6DC6;&#x3002;</p>
+<h4 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h4>
+<p>&#x672C;&#x6587;&#x4ECE;linkedhashmap&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x4EE5;&#x53CA;&#x6E90;&#x7801;&#x5206;&#x6790;&#xFF0C;&#x5230;&#x6700;&#x540E;&#x7684;LRU&#x7F13;&#x5B58;&#x5B9E;&#x73B0;&#xFF0C;&#x6BD4;&#x8F83;&#x6DF1;&#x5165;&#x5730;&#x5256;&#x6790;&#x4E86;linkedhashmap&#x7684;&#x5E95;&#x5C42;&#x539F;&#x7406;&#x3002; &#x603B;&#x7ED3;&#x4EE5;&#x4E0B;&#x51E0;&#x70B9;&#xFF1A;</p>
+<ul>
+<li><p>1 linkedhashmap&#x5728;hashmap&#x7684;&#x6570;&#x7EC4;&#x52A0;&#x94FE;&#x8868;&#x7ED3;&#x6784;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x8282;&#x70B9;&#x8FDE;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x3002;</p>
+</li>
+<li><p>2 &#x5F53;&#x4E3B;&#x52A8;&#x4F20;&#x5165;&#x7684;accessOrder&#x53C2;&#x6570;&#x4E3A;false&#x65F6;, &#x4F7F;&#x7528;put&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x65B0;&#x52A0;&#x5165;&#x5143;&#x7D20;&#x4E0D;&#x4F1A;&#x88AB;&#x52A0;&#x5165;&#x53CC;&#x5411;&#x94FE;&#x8868;&#xFF0C;get&#x65B9;&#x6CD5;&#x4F7F;&#x7528;&#x65F6;&#x4E5F;&#x4E0D;&#x4F1A;&#x628A;&#x5143;&#x7D20;&#x653E;&#x5230;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x5C3E;&#x90E8;&#x3002;</p>
+</li>
+<li><p>3 &#x5F53;&#x4E3B;&#x52A8;&#x4F20;&#x5165;&#x7684;accessOrder&#x53C2;&#x6570;&#x4E3A;true&#x65F6;&#xFF0C;&#x4F7F;&#x7528;put&#x65B9;&#x6CD5;&#x65B0;&#x52A0;&#x5165;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x679C;&#x9047;&#x5230;&#x4E86;&#x54C8;&#x5E0C;&#x51B2;&#x7A81;&#xFF0C;&#x5E76;&#x4E14;&#x5BF9;key&#x503C;&#x76F8;&#x540C;&#x7684;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x4E86;&#x66FF;&#x6362;&#xFF0C;&#x5C31;&#x4F1A;&#x88AB;&#x653E;&#x5728;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5C3E;&#x90E8;&#xFF0C;&#x5F53;&#x5143;&#x7D20;&#x8D85;&#x8FC7;&#x4E0A;&#x9650;&#x4E14;removeEldestEntry&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;true&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x5220;&#x9664;&#x6700;&#x65E9;&#x5143;&#x7D20;&#x4EE5;&#x4FBF;&#x65B0;&#x5143;&#x7D20;&#x63D2;&#x5165;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x51B2;&#x7A81;&#x76F4;&#x63A5;&#x653E;&#x5165;&#xFF0C;&#x540C;&#x6837;&#x52A0;&#x5165;&#x5230;&#x94FE;&#x8868;&#x5C3E;&#x90E8;&#x3002;&#x4F7F;&#x7528;get&#x65B9;&#x6CD5;&#x65F6;&#x4F1A;&#x628A;get&#x5230;&#x7684;&#x5143;&#x7D20;&#x653E;&#x5165;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x5C3E;&#x90E8;&#x3002;</p>
+</li>
+<li><p>4 linkedhashmap&#x7684;&#x6269;&#x5BB9;&#x6BD4;hashmap&#x6765;&#x7684;&#x65B9;&#x4FBF;&#xFF0C;&#x56E0;&#x4E3A;hashmap&#x9700;&#x8981;&#x5C06;&#x539F;&#x6765;&#x7684;&#x6BCF;&#x4E2A;&#x94FE;&#x8868;&#x7684;&#x5143;&#x7D20;&#x5206;&#x522B;&#x5728;&#x65B0;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x53CD;&#x5411;&#x63D2;&#x5165;&#x94FE;&#x5316;&#xFF0C;&#x800C;linkedhashmap&#x7684;&#x5143;&#x7D20;&#x90FD;&#x8FDE;&#x5728;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FED;&#x4EE3;&#x7136;&#x540E;&#x63D2;&#x5165;&#x3002;</p>
+</li>
+<li><p>5 linkedhashmap&#x7684;removeEldestEntry&#x65B9;&#x6CD5;&#x9ED8;&#x8BA4;&#x8FD4;&#x56DE;false&#xFF0C;&#x8981;&#x5B9E;&#x73B0;lru&#x5F88;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x70B9;&#x5C31;&#x662F;&#x96C6;&#x5408;&#x6EE1;&#x65F6;&#x8981;&#x5C06;&#x6700;&#x4E45;&#x672A;&#x8BBF;&#x95EE;&#x7684;&#x5143;&#x7D20;&#x5220;&#x9664;&#xFF0C;&#x5728;linkedhashmap&#x4E2D;&#x8FD9;&#x4E2A;&#x5143;&#x7D20;&#x5C31;&#x662F;&#x5934;&#x6307;&#x9488;&#x6307;&#x5411;&#x7684;&#x5143;&#x7D20;&#x3002;&#x5B9E;&#x73B0;LRU&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;linkedhashmap&#x5E76;&#x91CD;&#x5199;removeEldestEntry&#x65B9;&#x6CD5;&#x6765;&#x8BBE;&#x7F6E;&#x7F13;&#x5B58;&#x5927;&#x5C0F;&#x3002;jdk&#x4E2D;&#x5B9E;&#x73B0;&#x4E86;LRUCache&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;</p>
+</li>
+</ul>
+<h3 id="4treemap&#x4E86;&#x89E3;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3001;&#x4E86;&#x89E3;&#x5176;key&#x5BF9;&#x8C61;&#x4E3A;&#x4EC0;&#x4E48;&#x5FC5;&#x987B;&#x8981;&#x5B9E;&#x73B0;compare&#x63A5;&#x53E3;&#x3001;&#x5982;&#x4F55;&#x7528;&#x5B83;&#x5B9E;&#x73B0;&#x4E00;&#x81F4;&#x6027;&#x54C8;&#x5E0C;">4.TreeMap&#x4E86;&#x89E3;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3001;&#x4E86;&#x89E3;&#x5176;key&#x5BF9;&#x8C61;&#x4E3A;&#x4EC0;&#x4E48;&#x5FC5;&#x987B;&#x8981;&#x5B9E;&#x73B0;Compare&#x63A5;&#x53E3;&#x3001;&#x5982;&#x4F55;&#x7528;&#x5B83;&#x5B9E;&#x73B0;&#x4E00;&#x81F4;&#x6027;&#x54C8;&#x5E0C;</h3>
 
                                 
                                 </section>
@@ -1061,7 +1527,7 @@ static int indexFor(int h, int length) {  //jdk1.7&#x7684;&#x6E90;&#x7801;&#xFF0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JAVA 集合","level":"1.5","depth":1,"next":{"title":"1.ArrayList与LinkedList的实现和区别","level":"1.5.1","depth":2,"anchor":"#1arraylist与linkedlist的实现和区别","path":"JAVA/collections.md","ref":"JAVA/collections.md#1arraylist与linkedlist的实现和区别","articles":[]},"previous":{"title":"事务隔离级别,索引,性能","level":"1.4","depth":1,"path":"DB/transaction.md","ref":"DB/transaction.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"JAVA/collections.md","mtime":"2021-02-18T13:57:01.554Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-18T13:16:35.065Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JAVA 集合","level":"1.5","depth":1,"next":{"title":"1.ArrayList与LinkedList的实现和区别","level":"1.5.1","depth":2,"anchor":"#1arraylist与linkedlist的实现和区别","path":"JAVA/collections.md","ref":"JAVA/collections.md#1arraylist与linkedlist的实现和区别","articles":[]},"previous":{"title":"事务隔离级别,索引,性能","level":"1.4","depth":1,"path":"DB/transaction.md","ref":"DB/transaction.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"JAVA/collections.md","mtime":"2021-02-19T03:08:54.090Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-19T03:07:59.710Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -10,6 +10,7 @@
     * [1.ArrayList与LinkedList的实现和区别](JAVA/collections.md#1arraylist与linkedlist的实现和区别)
     * [2.HashMap了解其数据结构、hash冲突如何解决（链表和红黑树）、扩容时机、扩容时避免rehash的优化](JAVA/collections.md#2hashmap了解其数据结构、hash冲突如何解决（链表和红黑树）、扩容时机、扩容时避免rehash的优化)
     * [3.LinkedHashMap了解基本原理、哪两种有序、如何用它实现LRU](JAVA/collections.md#3linkedhashmap了解基本原理、哪两种有序、如何用它实现lru)
+    * [4.TreeMap了解数据结构、了解其key对象为什么必须要实现Compare接口、如何用它实现一致性哈希](JAVA/collections.md#4treemap了解数据结构、了解其key对象为什么必须要实现compare接口、如何用它实现一致性哈希)
 
 * [JAVA 锁](JAVA/all_locks.md)
 * [JAVA 并发编程](JAVA/threads.md)
