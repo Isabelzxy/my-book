@@ -20,6 +20,8 @@
     * [4.ThreadLocal使用场景和内部实现](JAVA/threads.md#4threadlocal使用场景和内部实现)
     * [5.线程池的工作原理以及几个重要参数的设置](JAVA/threads.md#5线程池的工作原理以及几个重要参数的设置)
     * [6.如何排查死锁及避免](JAVA/threads.md#6如何排查死锁及避免)
+    * [7.ConcurrentHashMap高并发机制](JAVA/threads.md#7concurrenthashmap高并发机制)
+    * [8.CopyOnWriteArrayList并发容器](JAVA/threads.md#8copyonwritearraylist并发容器)
 
 * [JVM 分代GC](JAVA/jvm.md)
 

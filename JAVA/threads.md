@@ -2362,5 +2362,480 @@ VisualVM：jdk提供的一个非常强大的排查java程序问题的一个工�
 
 当线程获取锁超时了则放弃，这样就避免了出现死锁获取的情况。当使用synchronized关键词提供的内置锁时，只要线程没有获得锁，那么就会永远等待下去，**然而Lock接口提供了boolean tryLock(long time, TimeUnit unit) throws InterruptedException方法**，该方法可以按照固定时长等待锁，因此线程可以在获取锁超时以后，主动释放之前已经获得的所有的锁。通过这种方式，也可以很有效地避免死锁
 
+### 7.ConcurrentHashMap高并发机制
+
+#### 简介
+
+HashMap是Java程序员使用频率最高的用于映射(键值对)处理的数据类型。但HashMap不是线程安全的，即在多线程并发操作HashMap时可能会发生意向不到的结果。想在并发下操作Map,主要有以下方法：
+
+第一种：使用Hashtable线程安全类（现在已经被高效ConcurrentHashMap替代）
+第二种：使用Collections.synchronizedMap方法，对方法进行加同步锁；
+第三种：使用并发包中的ConcurrentHashMap类；
+
+第一种方法是通过对Hashtable中的方法添加synchronized同步锁来保证线程安全的，第二种是通过对对象加synchronized锁来保证线程安全，相当于给整个哈希表加了一把大锁，多线程访问时候，只要有一个线程访问或操作该对象，那其他线程只能阻塞等待需要的锁被释放，在竞争激烈的多线程场景中性能就会非常差。前两种方法在多线程操作时效率都比较低下，所以不建议采用。**ConcurrentHashMap是线程安全且高效的HashMap**，JDK7中ConcurrentHashMap采用锁分段技术，首先将数据分成一段段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程方法，这样我们就不用像前两种方法直接对整个HashMap加锁，采用锁分段技术来提升性能。
+
+JDK7中ConcurrentHashMap结构如下图所示：
+
+![concurrenthm_1](../_images/java_concurrenthm_1.JPG)
+
+其中Segment是一种可重入锁（ReentrantLock），在JDK7的ConcurrentHashMap中扮演锁的角色。Segment结构和HashMap类似，是一种数组和链表结构。
+
+JDK8中对HashMap做了改造，当冲突链表长度大于8时，会将链表转变成红黑树结构，**JDK8中ConcurrentHashMap类取消了Segment分段锁，采用CAS+sychronized来保证并发安全**，数据结构跟JDK8中的HashMap结构类似，都是数组加链表（当链表长度大于8时，链表结构转为红黑树）结构。**JDK8中的、ConcurrentHashMap synchronized只锁定当前链表或红黑二叉树的首节点，只要节点hash不冲突，就不会产生并发**，相比 JDK7中的ConcurrentHashMap效率又提升了N倍。JDK8中ConcurrentHashMap的结构如下所示：
+
+![concurrenthm_2](../_images/java_concurrenthm_2.png)
+
+#### JDK7中ConcurrentHashMap实现同步的方式
+
+Segment继承自ReentrantLock，所以我们可以很方便的对每一个Segment上锁。
+
+**读操作**：获取Key所在的Segment时，需要保证可见性，具体实现上可以使用volatile关键字，也可使用锁。但使用锁开销太大，而使用volatile时每次写操作都会让所有CPU内缓存无效，也有一定开销。ConcurrentHashMap使用如下方法保证可见性，取得最新的Segment。
+
+```
+Segment<K,V> s = (Segment<K,V>)UNSAFE.getObjectVolatile(segments, u)；
+```
+
+获取Segment中的HashEntry时也使用了类似方法：
+
+```
+HashEntry<K,V> e = (HashEntry<K,V>) UNSAFE.getObjectVolatile(tab, ((long)(((tab.length - 1) & h)) << TSHIFT) + TBASE)
+```
+
+**写操作**：并不要求同时获取所有Segment的锁，因为那样相当于锁住了整个Map。它会先获取该Key-Value对所在的Segment的锁，获取成功后就可以像操作一个普通的HashMap一样操作该Segment，并保证该Segment的安全性。同时由于其它Segment的锁并未被获取，因此理论上可支持concurrencyLevel（等于Segment的个数）个线程安全的并发读写。获取锁时，并不直接使用lock来获取，因为该方法获取锁失败时会挂起（参考可重入锁）。事实上，它使用了自旋锁，如果tryLock获取锁失败，说明锁被其它线程占用，此时通过循环再次以tryLock的方式申请锁。如果在循环过程中该Key所对应的链表头被修改，则重置retry次数。如果retry次数超过一定值，则使用lock方法申请锁。
+
+#### JDK8中ConcurrentHashMap实现同步的方式
+
+JDK8中ConcurrentHashMap保证线程安全主要有三个地方。
+
+- （1）使用volatile保证当Node中的值变化时对于其他线程是可见的，以此来保证读安全
+- （2）写安全（头结点不为null）：使用table数组的头结点作为synchronized的锁来保证写操作的安全。
+- （3）写安全（头结点为null）：使用CAS操作来保证数据能正确的写入。
+
+**使用volatile保证读安全**
+
+```
+    static class Node<K,V> implements Map.Entry<K,V> {
+        final int hash;
+        final K key;
+        volatile V val;
+        volatile Node<K,V> next;
+    }
+```
+
+可以看到，Node中的val和next都被volatile关键字修饰。也就是说，我们改动val的值或者next的值对于其他线程是可见的，因为volatile关键字，会在读指令前插入读屏障，可以让高速缓存中的数据失效，重新从主内存加载数据。ConcurrentHashMap提供类似tabAt来读取Table数组中的元素，这里是以volatile读的方式读取table数组中的元素，主要通过Unsafe这个类来实现的，保证其他线程改变了这个数组中的值的情况下，在当前线程get的时候能拿到。
+
+```
+    static final <K,V> Node<K,V> tabAt(Node<K,V>[] tab, int i) {
+        return (Node<K,V>)U.getObjectVolatile(tab, ((long)i << ASHIFT) + ABASE);
+    }
+```
+
+而与之对应的，是setTabAt,这里是以volatile写的方式往数组写入元素，这样能保证修改后能对其他线程可见。
+
+```
+    static final <K,V> void setTabAt(Node<K,V>[] tab, int i, Node<K,V> v) {
+        U.putObjectVolatile(tab, ((long)i << ASHIFT) + ABASE, v);
+    }   
+```
+
+**写安全（头结点为null）**
+
+当table数组的头结点为null时，使用for循环+CAS来保证线程安全，头结点为null时，可能多个线程并发写入头结点，所以需要保证线程安全。当有一个新的值需要put到ConcurrentHashMap中时，首先会遍历ConcurrentHashMap的table数组，然后根据key的hashCode来定位到需要将这个value放到数组的哪个位置。tabAt(tab, i = (n - 1) & hash))就是定位到这个数组的位置，**如果当前这个位置的Node为null，则通过CAS方式的方法写入**。所谓的CAS，即compareAndSwap，执行CAS操作的时候，将内存位置的值与预期原值比较，如果相匹配，那么处理器会自动将该位置值更新为新值，否则，处理器不做任何操作。这里就是调用casTabAt方法来实现的。
+
+```
+     static final <K,V> boolean casTabAt(Node<K,V>[] tab, int i,
+                                        Node<K,V> c, Node<K,V> v) {
+        return U.compareAndSwapObject(tab, ((long)i << ASHIFT) + ABASE, c, v);
+    }
+```
+
+casTabAt同样是通过调用Unsafe类来实现的，调用Unsafe的compareAndSwapObject来实现，其实如果仔细去追踪这条线路，会发现其实最终调用的是cmpxchg这个CPU指令来实现的，这是一个CPU的原子指令，能保证数据的一致性问题。
+Java原子类的自增操作，也是通过for循环+CAS操作的方式实现的
+
+```
+    // AtomicInteger 类的原子自增操作
+    public final int getAndIncrement() {
+        for (;;) {
+            //获取value
+            int current = get();
+            int next = current + 1;
+            //value值没有变，说明其他线程没有自增过,将value设置为next
+            if (compareAndSet(current, next))
+                return current;
+            //否则说明value值已经改变，回到循环开始处，重新获取value。
+        }
+    }
+```
+
+**写安全（头结点不为bull）**
+
+当头结点不为null时，对头结点使用sychronized加锁来保证线程安全：当头结点不为null时，则使用该头结点加锁，这样就能多线程去put hashCode相同的时候不会出现数据丢失的问题。synchronized是互斥锁，有且只有一个线程能够拿到这个锁，从而保证了put操作是线程安全的。
+
+写安全总结：**头结点为null 使用for循环+cas保证线程安全；头结点不为null 使用sychronized保证线程安全.**
+
+#### JDK7与JDK8主要区别
+
+- （1）更小的锁粒度
+
+JDK8中摒弃了Segment锁，直接将hash桶的头结点当做锁。旧版本的一个segment锁，保护了多个hash桶，而JDK8版本的一个锁只保护一个hash桶，由于锁的粒度变小了，写操作的并发性得到了极大的提升。 
+
+![concurrenthm_3](../_images/java_concurrenthm_3.png)
+
+- （2）更高效的扩容
+
+更多的扩容线程：扩容时，需要锁的保护。因此：旧版本最多可以同时扩容的线程数是segment锁的个数。而JDK8的版本，理论上最多可以同时扩容的线程数是：hash桶的个数。扩容期间，依然保证较高的并发度，旧版本的segment锁，锁定范围太大，导致扩容期间，写并发度，严重下降。而新版本的采用更加细粒度的hash桶级别锁，扩容期间，依然可以保证写操作的并发度。如下图所示：
+
+![concurrenthm_4](../_images/java_concurrenthm_4.png)
+
+#### ConcurrentHashMap JDK8的PUT操作
+
+- 1.计算出 hash。（hash值的计算是通过hashCode进行spread方法的再次计算，一定是一个正数，也是后面再次计算取模得到在table中位置的依据）
+
+- 2.判断是否需要进行初始化，也就是第一次put 的时候将容器进行初始化，**初始化调用的是 initTable 方法**。（这个方法里面利用到了上面的 sizeCtl 参数，通过**CAS** 操作来判断是不是有别的线程同时在做初始化，保证只有一个线程在做初始化的操作，没有加锁）
+
+- 3.**f 即为当前 key 定位出的 Node**，node 的位置就是通过括号里面的 tabAt 计算的，如果为空表示当前位置，也就是数组的这个位置是个空，可以写入数据。也是利用 CAS 尝试写入，失败则自旋保证成功，可以看到这里，因为定位到的那个 Node 是个空链表，所以就直接利用了 CAS 操作（也没有加锁）
+
+- 4.那如果不是空，就进行到下面的 else if，如果判断哈希值 == MOVED，代表数组正在扩容，那么就会进行 **helperTransfer 方法进行协助扩容**，因为没办法继续put了
+
+- 5.否则进入下一个 else if ，这里是jdk11有，但是8是没有的，这里用到了OnlyIfAbsent变量，实现的是而 putIfAbsent，也就是在放入数据时，如果存在重复的key，那么putIfAbsent不会放入值（并不像put 那样覆盖）。
+
+- 6.否则进入下一个 else，也就是不属于上面任何一个特殊情况的插入，需要遍历这里面的链表进行插入，可以看到利用了 **synchronized 加锁** 然后，遍历链表写入数据，那如果不是链表，是树节点，就走另一个分支去遍历插入。插入完成之后，就常规的将元素个数+1 并结束，那么+1的时候调用的是 addCount 方法，这个方法就涉及到可能会扩容，下面有详细讲解。
+
+#### ConcurrentHashMap JDK8的多线程扩容
+
+transfer 方法主要就是完成将扩容任务分配给多个线程去处理，根据了CPU核心数和集合 length 计算每个核一轮处理桶的个数。
+
+然后每个线程处理的最小单位只能是一个数组的位置，这个时候扩容之后，和HashMap 一样，其实只有原位置或者 原位置+数组长度 的位置，因为仍然有可能多个线程操作之间发生哈希冲突，就用到 synchronized。
+
+```
+/**
+* Moves and/or copies the nodes in each bin to new table. See
+* above for explanation.
+*
+* transferIndex 表示转移时的下标，初始为扩容前的 length。
+*
+* 我们假设长度是 32
+*/
+private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
+    int n = tab.length, stride;
+    // 将 length / 8 然后除以 CPU核心数。如果得到的结果小于 16，那么就使用 16。
+    // 这里的目的是让每个 CPU 处理的桶一样多，避免出现转移任务不均匀的现象，如果桶较少的话，默认一个 CPU（一个线程）处理 16 个桶
+    if ((stride = (NCPU > 1) ? (n >>> 3) / NCPU : n) < MIN_TRANSFER_STRIDE)
+        stride = MIN_TRANSFER_STRIDE; // subdivide range 细分范围 stridea：TODO
+    // 新的 table 尚未初始化
+    if (nextTab == null) {            // initiating
+        try {
+            // 扩容  2 倍
+            Node<K,V>[] nt = (Node<K,V>[])new Node<?,?>[n << 1];
+            // 更新
+            nextTab = nt;
+        } catch (Throwable ex) {      // try to cope with OOME
+            // 扩容失败， sizeCtl 使用 int 最大值。
+            sizeCtl = Integer.MAX_VALUE;
+            return;// 结束
+        }
+        // 更新成员变量
+        nextTable = nextTab;
+        // 更新转移下标，就是 老的 tab 的 length
+        transferIndex = n;
+    }
+    // 新 tab 的 length
+    int nextn = nextTab.length;
+    // 创建一个 fwd 节点，用于占位。当别的线程发现这个槽位中是 fwd 类型的节点，则跳过这个节点。
+    ForwardingNode<K,V> fwd = new ForwardingNode<K,V>(nextTab);
+    // 首次推进为 true，如果等于 true，说明需要再次推进一个下标（i--），反之，如果是 false，那么就不能推进下标，需要将当前的下标处理完毕才能继续推进
+    boolean advance = true;
+    // 完成状态，如果是 true，就结束此方法。
+    boolean finishing = false; // to ensure sweep before committing nextTab
+    // 死循环,i 表示下标，bound 表示当前线程可以处理的当前桶区间最小下标，死循环的作用是保证拷贝全部完成。
+    for (int i = 0, bound = 0;;) {
+        Node<K,V> f; int fh;
+        // 如果当前线程可以向后推进；这个循环就是控制 i 递减。同时，每个线程都会进入这里取得自己需要转移的桶的区间        //这个循环只是用来控制每个线程每轮最多copy的桶的个数，如果只有一个线程在扩容，也是可以完成的，只是分成多轮
+        while (advance) {
+            int nextIndex, nextBound;
+            // 对 i 减一，判断是否大于等于 bound （正常情况下，如果大于 bound 不成立，说明该线程上次领取的任务已经完成了。那么，需要在下面继续领取任务）
+            // 如果对 i 减一大于等于 bound（还需要继续做任务），或者完成了，修改推进状态为 false，不能推进了。任务成功后修改推进状态为 true。
+            // 通常，第一次进入循环，i-- 这个判断会无法通过，从而走下面的 nextIndex 赋值操作（获取最新的转移下标）。其余情况都是：如果可以推进，            //将 i 减一，然后修改成不可推进。如果 i 对应的桶处理成功了，改成可以推进。
+            if (--i >= bound || finishing)
+                advance = false;// 这里设置 false，是为了防止在没有成功处理一个桶的情况下却进行了推进
+                // 这里的目的是：1. 当一个线程进入时，会选取最新的转移下标。2. 当一个线程处理完自己的区间时，如果还有剩余区间的没有别的线程处理。再次获取区间。
+            else if ((nextIndex = transferIndex) <= 0) {
+                // 如果小于等于0，说明没有区间了 ，i 改成 -1，推进状态变成 false，不再推进，表示，扩容结束了，当前线程可以退出了
+                // 这个 -1 会在下面的 if 块里判断，从而进入完成状态判断
+                i = -1;
+                advance = false;// 这里设置 false，是为了防止在没有成功处理一个桶的情况下却进行了推进
+            }// CAS 修改 transferIndex，即 length - 区间值，留下剩余的区间值供后面的线程使用
+            else if (U.compareAndSwapInt
+                    (this, TRANSFERINDEX, nextIndex,
+                            nextBound = (nextIndex > stride ?
+                                    nextIndex - stride : 0))) {
+                bound = nextBound;// 这个值就是当前线程可以处理的最小当前区间最小下标
+                i = nextIndex - 1; // 初次对i 赋值，这个就是当前线程可以处理的当前区间的最大下标
+                advance = false; // 这里设置 false，是为了防止在没有成功处理一个桶的情况下却进行了推进，这样对导致漏掉某个桶。下面的 if (tabAt(tab, i) == f) 判断会出现这样的情况。
+            }
+        }
+        // 如果 i 小于0 （不在 tab 下标内，按照上面的判断，领取最后一段区间的线程扩容结束）
+        //  如果 i >= tab.length(不知道为什么这么判断)
+        //  如果 i + tab.length >= nextTable.length  （不知道为什么这么判断）
+        if (i < 0 || i >= n || i + n >= nextn) {
+            int sc;
+            if (finishing) { // 如果完成了扩容
+                nextTable = null;// 删除成员变量
+                table = nextTab;// 更新 table
+                sizeCtl = (n << 1) - (n >>> 1); // 更新阈值
+                return;// 结束方法。
+            }// 如果没完成             //说明1
+            if (U.compareAndSwapInt(this, SIZECTL, sc = sizeCtl, sc - 1)) {// 尝试将 sc -1. 表示这个线程结束帮助扩容了，将 sc 的低 16 位减一。
+                if ((sc - 2) != resizeStamp(n) << RESIZE_STAMP_SHIFT)// 如果 sc - 2 不等于标识符左移 16 位。如果他们相等了，说明没有线程在帮助他们扩容了。也就是说，扩容结束了。
+                    return;// 不相等，说明没结束，当前线程结束方法。
+                finishing = advance = true;// 如果相等，扩容结束了，更新 finising 变量
+                i = n; // 再次循环检查一下整张表
+            }
+        }
+        else if ((f = tabAt(tab, i)) == null) // 获取老 tab i 下标位置的变量，如果是 null，就使用 fwd 占位。
+            advance = casTabAt(tab, i, null, fwd);// 如果成功写入 fwd 占位，再次推进一个下标
+        else if ((fh = f.hash) == MOVED)// 如果不是 null 且 hash 值是 MOVED。
+            advance = true; // already processed // 说明别的线程已经处理过了，再次推进一个下标
+        else {// 到这里，说明这个位置有实际值了，且不是占位符。对这个节点上锁。为什么上锁，防止 putVal 的时候向链表插入数据
+            synchronized (f) {
+                // 判断 i 下标处的桶节点是否和 f 相同
+                if (tabAt(tab, i) == f) {
+                    Node<K,V> ln, hn;// low, height 高位桶，低位桶
+                    // 如果 f 的 hash 值大于 0 。TreeBin 的 hash 是 -2
+                    if (fh >= 0) {
+                        // 对老长度进行与运算（第一个操作数的的第n位于第二个操作数的第n位如果都是1，那么结果的第n为也为1，否则为0）
+                        // 由于 Map 的长度都是 2 的次方（000001000 这类的数字），那么取于 length 只有 2 种结果，一种是 0，一种是1
+                        //  如果是结果是0 ，Doug Lea 将其放在低位，反之放在高位，目的是将链表重新 hash，放到对应的位置上，让新的取于算法能够击中他。
+                        int runBit = fh & n;
+                        Node<K,V> lastRun = f; // 尾节点，且和头节点的 hash 值取于不相等
+                        // 遍历这个桶                        //说明2
+                        for (Node<K,V> p = f.next; p != null; p = p.next) {
+                            // 取于桶中每个节点的 hash 值
+                            int b = p.hash & n;
+                            // 如果节点的 hash 值和首节点的 hash 值取于结果不同
+                            if (b != runBit) {
+                                runBit = b; // 更新 runBit，用于下面判断 lastRun 该赋值给 ln 还是 hn。
+                                lastRun = p; // 这个 lastRun 保证后面的节点与自己的取于值相同，避免后面没有必要的循环
+                            }
+                        }
+                        if (runBit == 0) {// 如果最后更新的 runBit 是 0 ，设置低位节点
+                            ln = lastRun;
+                            hn = null;
+                        }
+                        else {
+                            hn = lastRun; // 如果最后更新的 runBit 是 1， 设置高位节点
+                            ln = null;
+                        }// 再次循环，生成两个链表，lastRun 作为停止条件，这样就是避免无谓的循环（lastRun 后面都是相同的取于结果）
+                        for (Node<K,V> p = f; p != lastRun; p = p.next) {
+                            int ph = p.hash; K pk = p.key; V pv = p.val;
+                            // 如果与运算结果是 0，那么就还在低位
+                            if ((ph & n) == 0) // 如果是0 ，那么创建低位节点
+                                ln = new Node<K,V>(ph, pk, pv, ln);
+                            else // 1 则创建高位
+                                hn = new Node<K,V>(ph, pk, pv, hn);
+                        }
+                        // 其实这里类似 hashMap
+                        // 设置低位链表放在新链表的 i
+                        setTabAt(nextTab, i, ln);
+                        // 设置高位链表，在原有长度上加 n
+                        setTabAt(nextTab, i + n, hn);
+                        // 将旧的链表设置成占位符
+                        setTabAt(tab, i, fwd);
+                        // 继续向后推进
+                        advance = true;
+                    }// 如果是红黑树
+                    else if (f instanceof TreeBin) {
+                        TreeBin<K,V> t = (TreeBin<K,V>)f;
+                        TreeNode<K,V> lo = null, loTail = null;
+                        TreeNode<K,V> hi = null, hiTail = null;
+                        int lc = 0, hc = 0;
+                        // 遍历
+                        for (Node<K,V> e = t.first; e != null; e = e.next) {
+                            int h = e.hash;
+                            TreeNode<K,V> p = new TreeNode<K,V>
+                                    (h, e.key, e.val, null, null);
+                            // 和链表相同的判断，与运算 == 0 的放在低位
+                            if ((h & n) == 0) {
+                                if ((p.prev = loTail) == null)
+                                    lo = p;
+                                else
+                                    loTail.next = p;
+                                loTail = p;
+                                ++lc;
+                            } // 不是 0 的放在高位
+                            else {
+                                if ((p.prev = hiTail) == null)
+                                    hi = p;
+                                else
+                                    hiTail.next = p;
+                                hiTail = p;
+                                ++hc;
+                            }
+                        }
+                        // 如果树的节点数小于等于 6，那么转成链表，反之，创建一个新的树
+                        ln = (lc <= UNTREEIFY_THRESHOLD) ? untreeify(lo) :
+                                (hc != 0) ? new TreeBin<K,V>(lo) : t;
+                        hn = (hc <= UNTREEIFY_THRESHOLD) ? untreeify(hi) :
+                                (lc != 0) ? new TreeBin<K,V>(hi) : t;
+                        // 低位树
+                        setTabAt(nextTab, i, ln);
+                        // 高位数
+                        setTabAt(nextTab, i + n, hn);
+                        // 旧的设置成占位符
+                        setTabAt(tab, i, fwd);
+                        // 继续向后推进
+                        advance = true;
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+流程如下：
+
+- 1.根据操作系统的 **CPU 核数和集合 length** 计算每个核一轮处理桶的个数，**最小是16**
+
+- 2.修改 transferIndex 标志位，**每个线程领取完任务**就减去多少，比如初始大小是transferIndex = table.length = 64，每个线程领取的桶个数是16，第一个线程领取完任务后transferIndex = 48，也就是说第二个线程这时进来是从第 48 个桶开始处理，再减去16，依次类推，这就是**多线程协作处理**的原理
+
+- 3.领取完任务之后就开始处理，如果桶为空就设置为 ForwardingNode ,如果不为空就**加锁拷贝**，只有这里用到了 **synchronized** 关键字来加锁，为了防止拷贝的过程有其他线程在put元素进来。拷贝完成之后也设置为 ForwardingNode节点。
+
+- 4.如果某个线程分配的桶处理完了之后，再去申请，发现 transferIndex = 0，这个时候就说明所有的桶都领取完了，但是别的线程领取任务之后有没有处理完并不知道，该线程会将 sizeCtl 的值减1，然后判断是不是所有线程都退出了，如果还有线程在处理，就退出
+
+- 5.直到最后一个线程处理完，发现 sizeCtl = rs<< RESIZE_STAMP_SHIFT 也就是标识符左移 16 位，才会将旧数组干掉，用新数组覆盖，并且会重新设置 sizeCtl 为新数组的扩容点。
+
+以上过程总的来说分成两个部分：
+
+- 分配任务：这部分其实很简单，就是把一个大的数组给切分，切分多个小份，然后每个线程处理其中每一小份，当然可能就只有1个或者几个线程在扩容，那就一轮一轮的处理，一轮处理一份
+- 处理任务：复制部分主要有两点，第一点就是加锁，第二点就是处理完之后置为ForwardingNode来占位标识这个位置被迁移过了。
+
+##### JDK8的协助扩容helpTransfer()方法
+
+如果说 put 的时候发现数组正在扩容，会执行 helpTransfer 方法，也就是这个线程来帮助进行扩容。
+
+### 8.CopyOnWriteArrayList并发容器
+
+#### 简介
+
+都清楚 ArrayList 并不是线程安全的，在读线程在读取 ArrayList 的时候如果有写线程在写数据的时候，基于 fast-fail 机制，会抛出ConcurrentModificationException异常，也就是说 ArrayList 并不是一个线程安全的容器，当然您可以用 Vector,或者使用 Collections 的静态方法将 ArrayList 包装成一个线程安全的类，但是这些方式都是采用 java 关键字 synchronzied 对方法进行修饰，利用独占式锁来保证线程安全的。但是，由于独占式锁在同一时刻只有一个线程能够获取到对象监视器，很显然这种方式效率并不是太高。
+
+有很多业务往往是读多写少的，比如系统配置的信息，除了在初始进行系统配置的时候需要写入数据，其他大部分时刻其他模块之后对系统信息只需要进行读取，又比如白名单，黑名单等配置，只需要读取名单配置然后检测当前用户是否在该配置范围以内。类似的还有很多业务场景，它们都是属于读多写少的场景。如果在这种情况用到上述的方法，使用 Vector,Collections 转换的这些方式是不合理的，因为尽管多个读线程从同一个数据容器中读取数据，但是读线程对数据容器的数据并不会发生发生修改。很自然而然的我们会联想到 ReenTrantReadWriteLock（关于读写锁可以看这篇文章），通过读写分离的思想，使得读读之间不会阻塞，无疑如果一个 list 能够做到被多个读线程读取的话，性能会大大提升不少。但是，如果仅仅是将 list 通过读写锁（ReentrantReadWriteLock）进行再一次封装的话，由于读写锁的特性，当写锁被写线程获取后，读写线程都会被阻塞。如果仅仅使用读写锁对 list 进行封装的话，这里仍然存在读线程在读数据的时候被阻塞的情况，如果想 list 的读效率更高的话，这里就是我们的突破口，如果我们保证读线程无论什么时候都不被阻塞，效率岂不是会更高？
+
+Doug Lea 大师就为我们提供 CopyOnWriteArrayList 容器可以保证线程安全，保证读读之间在任何时候都不会被阻塞，CopyOnWriteArrayList 也被广泛应用于很多业务场景之中.
+
+#### COW(Copy-On-Write)的设计思想
+
+回到上面所说的，如果简单的使用读写锁的话，在写锁被获取之后，读写线程被阻塞，只有当写锁被释放后读线程才有机会获取到锁从而读到最新的数据，站在**读线程的角度来看，即读线程任何时候都是获取到最新的数据，满足数据实时性**。既然我们说到要进行优化，必然有 trade-off,我们就可以**牺牲数据实时性满足数据的最终一致性即可**。而 CopyOnWriteArrayList 就是通过 Copy-On-Write(COW)，即写时复制的思想来通过延时更新的策略来实现数据的最终一致性，并且能够保证读线程间不阻塞。
+
+COW 通俗的理解是**当我们往一个容器添加元素的时候，不直接往当前容器添加，而是先将当前容器进行 Copy，复制出一个新的容器，然后新的容器里添加元素，添加完元素之后，再将原容器的引用指向新的容器**。对 CopyOnWrite 容器进行并发的读的时候，不需要加锁，因为当前容器不会添加任何元素。所以 CopyOnWrite 容器也是一种读写分离的思想，延时更新的策略是通过在写的时候针对的是不同的数据容器来实现的，放弃数据实时性达到数据的最终一致性。
+
+#### CopyOnWriteArrayList 的实现原理
+
+现在我们来通过看源码的方式来理解 CopyOnWriteArrayList，实际上 CopyOnWriteArrayList 内部维护的就是一个数组
+
+```
+/** The array, accessed only via getArray/setArray. */
+private transient volatile Object[] array;
+```
+
+并且该数组引用是被 volatile 修饰，注意这里仅仅是修饰的是数组引用，其中另有玄机，稍后揭晓。关于 volatile 很重要的一条性质是它能够够保证可见性。对 list 来说，我们自然而然最关心的就是读写的时候，分别为 get 和 add 方法的实现。
+
+##### get 方法实现原理
+
+```
+public E get(int index) {
+    return get(getArray(), index);
+}
+/**
+ * Gets the array.  Non-private so as to also be accessible
+ * from CopyOnWriteArraySet class.
+ */
+final Object[] getArray() {
+    return array;
+}
+private E get(Object[] a, int index) {
+    return (E) a[index];
+}
+```
+
+可以看出来 get 方法实现非常简单，几乎就是一个“单线程”程序，没有对多线程添加任何的线程安全控制，也没有加锁也没有 CAS 操作等等，原因是，所有的读线程只是会读取数据容器中的数据，并不会进行修改。
+
+##### add 方法实现原理
+
+```
+public boolean add(E e) {
+    final ReentrantLock lock = this.lock;
+	//1. 使用Lock,保证写线程在同一时刻只有一个
+    lock.lock();
+    try {
+		//2. 获取旧数组引用
+        Object[] elements = getArray();
+        int len = elements.length;
+		//3. 创建新的数组，并将旧数组的数据复制到新数组中
+        Object[] newElements = Arrays.copyOf(elements, len + 1);
+		//4. 往新数组中添加新的数据
+		newElements[len] = e;
+		//5. 将旧数组引用指向新的数组
+        setArray(newElements);
+        return true;
+    } finally {
+        lock.unlock();
+    }
+}
+```
+
+add 方法的逻辑也比较容易理解，请看上面的注释。需要注意这么几点：
+
+- 1.采用 ReentrantLock，保证同一时刻只有一个写线程正在进行数组的复制，否则的话内存中会有多份被复制的数据；
+- 2.前面说过数组引用是 volatile 修饰的，因此将旧的数组引用指向新的数组，根据 volatile 的 happens-before 规则，写线程对数组引用的修改对读线程是可见的。
+- 3.由于在写数据的时候，是在新的数组中插入数据的，从而保证读写实在两个不同的数据容器中进行操作。
+
+#### 总结
+
+**CopyOnWriteArrayList利用ReentrantLock + volatile + 数组拷贝实现了线程安全的ArrayList。**
+
+我们知道 COW 和读写锁都是通过读写分离的思想实现的，但两者还是有些不同，可以进行比较：
+
+- 相同点：1. 两者都是通过读写分离的思想实现；2.读线程间是互不阻塞的
+
+- 不同点：对读线程而言，为了实现数据实时性，在写锁被获取后，读线程会等待或者当读锁被获取后，写线程会等待，从而解决“脏读”等问题。也就是说如果使用读写锁依然会出现读线程阻塞等待的情况。而 COW 则完全放开了牺牲数据实时性而保证数据最终一致性，即读线程对数据的更新是延时感知的，因此读线程不会存在等待的情况。
+
+为什么需要复制呢？ 如果将 array 数组设定为 volitile 的， 对 volatile 变量写 happens-before 读，读线程不是能够感知到 volatile 变量的变化。
+原因是，这里 volatile 的修饰的仅仅只是数组引用，数组中的元素的修改是不能保证可见性的。因此 COW 采用的是新旧两个数据容器，通过第 5 行代码将数组引用指向新的数组。
+
+这也是为什么 concurrentHashMap 只具有弱一致性的原因.
+
+##### COW 的缺点
+
+CopyOnWrite 容器有很多优点，但是同时也存在两个问题，即内存占用问题和数据一致性问题。所以在开发的时候需要注意一下。
+
+- 内存占用问题：因为 CopyOnWrite 的写时复制机制，所以在进行写操作的时候，内存里会同时驻扎两个对 象的内存，旧的对象和新写入的对象（注意:在复制的时候只是复制容器里的引用，只是在写的时候会创建新对 象添加到新容器里，而旧容器的对象还在使用，所以有两份对象内存）。如果这些对象占用的内存比较大，比 如说 200M 左右，那么再写入 100M 数据进去，内存就会占用 300M，那么这个时候很有可能造成频繁的 minor GC 和 major GC。
+
+- 数据一致性问题：CopyOnWrite 容器只能保证数据的最终一致性，不能保证数据的实时一致性。所以如果你希望写入的的数据，马上能读到，请不要使用 CopyOnWrite 容器。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
