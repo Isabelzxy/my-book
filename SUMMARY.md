@@ -42,5 +42,8 @@
     * [11.Redis为什么用跳表而不用平衡树](Redis/redis.md#11redis为什么用跳表而不用平衡树)
 
 * [MySQL](MySQL/mysql.md)
+* [Dubbo](Dubbo/dubbo.md)
+* [K8S](K8S/k8s.md)
+
 * [Spring Framework]()
 * [Spring Boot]()
