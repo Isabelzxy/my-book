@@ -40,8 +40,15 @@
     * [9.如何解决缓存穿透和缓存雪崩](Redis/redis.md#9如何解决缓存穿透和缓存雪崩)
     * [10.如何用redis实现分布式锁](Redis/redis.md#10如何用redis实现分布式锁)
     * [11.Redis为什么用跳表而不用平衡树](Redis/redis.md#11redis为什么用跳表而不用平衡树)
+    * [12.Redis有哪些优缺点](Redis/redis.md#12redis有哪些优缺点)
+    * [13.Redis线程模型](Redis/redis.md#13redis线程模型)
 
 * [MySQL](MySQL/mysql.md)
+    * [1.mysql的行锁、表锁、间隙锁、意向锁分别是做什么的](MySQL/mysql.md#1mysql的行锁、表锁、间隙锁、意向锁分别是做什么的)
+    * [2.Mysql联合索引最左匹配原则](MySQL/mysql.md#2mysql联合索引最左匹配原则)
+    * [3.mysql的慢查询优化方式](MySQL/mysql.md#3mysql的慢查询优化方式)
+    * [4.MySQL的索引结构为什么使用B+树](MySQL/mysql.md#4mysql的索引结构为什么使用B+树)
+
 * [Dubbo](Dubbo/dubbo.md)
 * [K8S](K8S/k8s.md)
 

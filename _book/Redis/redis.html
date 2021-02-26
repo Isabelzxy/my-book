@@ -548,6 +548,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.11.12" data-path="redis.html">
+            
+                <a href="redis.html#12redis有哪些优缺点">
+            
+                    
+                    12.Redis有哪些优缺点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.13" data-path="redis.html">
+            
+                <a href="redis.html#13redis线程模型">
+            
+                    
+                    13.Redis线程模型
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -563,6 +589,64 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#1mysql的行锁、表锁、间隙锁、意向锁分别是做什么的">
+            
+                    
+                    1.mysql的行锁、表锁、间隙锁、意向锁分别是做什么的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#2mysql联合索引最左匹配原则">
+            
+                    
+                    2.Mysql联合索引最左匹配原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#3mysql的慢查询优化方式">
+            
+                    
+                    3.mysql的慢查询优化方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#4mysql的索引结构为什么使用B+树">
+            
+                    
+                    4.MySQL的索引结构为什么使用B+树
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -1625,6 +1709,29 @@ public class TestController {
 </ul>
 <p>Reference:
 <a href="https://juejin.cn/post/6844903446475177998" target="_blank">https://juejin.cn/post/6844903446475177998</a></p>
+<h3 id="12redis&#x6709;&#x54EA;&#x4E9B;&#x4F18;&#x7F3A;&#x70B9;">12.Redis&#x6709;&#x54EA;&#x4E9B;&#x4F18;&#x7F3A;&#x70B9;</h3>
+<h4 id="&#x4F18;&#x70B9;">&#x4F18;&#x70B9;</h4>
+<ul>
+<li>&#x8BFB;&#x5199;&#x6027;&#x80FD;&#x4F18;&#x5F02;&#xFF0C; Redis&#x80FD;&#x8BFB;&#x7684;&#x901F;&#x5EA6;&#x662F;110000&#x6B21;/s&#xFF0C;&#x5199;&#x7684;&#x901F;&#x5EA6;&#x662F;81000&#x6B21;/s&#x3002;</li>
+<li>&#x652F;&#x6301;&#x6570;&#x636E;&#x6301;&#x4E45;&#x5316;&#xFF0C;&#x652F;&#x6301;AOF&#x548C;RDB&#x4E24;&#x79CD;&#x6301;&#x4E45;&#x5316;&#x65B9;&#x5F0F;&#x3002;</li>
+<li>&#x652F;&#x6301;&#x4E8B;&#x52A1;&#xFF0C;Redis&#x7684;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x539F;&#x5B50;&#x6027;&#x7684;&#xFF0C;&#x540C;&#x65F6;Redis&#x8FD8;&#x652F;&#x6301;&#x5BF9;&#x51E0;&#x4E2A;&#x64CD;&#x4F5C;&#x5408;&#x5E76;&#x540E;&#x7684;&#x539F;&#x5B50;&#x6027;&#x6267;&#x884C;&#x3002;</li>
+<li>&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E30;&#x5BCC;&#xFF0C;&#x9664;&#x4E86;&#x652F;&#x6301;string&#x7C7B;&#x578B;&#x7684;value&#x5916;&#x8FD8;&#x652F;&#x6301;hash&#x3001;set&#x3001;zset&#x3001;list&#x7B49;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;</li>
+<li>&#x652F;&#x6301;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#xFF0C;&#x4E3B;&#x673A;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x6570;&#x636E;&#x540C;&#x6B65;&#x5230;&#x4ECE;&#x673A;&#xFF0C;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x3002;</li>
+</ul>
+<h4 id="&#x7F3A;&#x70B9;">&#x7F3A;&#x70B9;</h4>
+<ul>
+<li>&#x6570;&#x636E;&#x5E93;&#x5BB9;&#x91CF;&#x53D7;&#x5230;&#x7269;&#x7406;&#x5185;&#x5B58;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x4E0D;&#x80FD;&#x7528;&#x4F5C;&#x6D77;&#x91CF;&#x6570;&#x636E;&#x7684;&#x9AD8;&#x6027;&#x80FD;&#x8BFB;&#x5199;&#xFF0C;&#x56E0;&#x6B64;Redis&#x9002;&#x5408;&#x7684;&#x573A;&#x666F;&#x4E3B;&#x8981;&#x5C40;&#x9650;&#x5728;&#x8F83;&#x5C0F;&#x6570;&#x636E;&#x91CF;&#x7684;&#x9AD8;&#x6027;&#x80FD;&#x64CD;&#x4F5C;&#x548C;&#x8FD0;&#x7B97;&#x4E0A;&#x3002;</li>
+<li>Redis &#x4E0D;&#x5177;&#x5907;&#x81EA;&#x52A8;&#x5BB9;&#x9519;&#x548C;&#x6062;&#x590D;&#x529F;&#x80FD;&#xFF0C;&#x4E3B;&#x673A;&#x4ECE;&#x673A;&#x7684;&#x5B95;&#x673A;&#x90FD;&#x4F1A;&#x5BFC;&#x81F4;&#x524D;&#x7AEF;&#x90E8;&#x5206;&#x8BFB;&#x5199;&#x8BF7;&#x6C42;&#x5931;&#x8D25;&#xFF0C;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x673A;&#x5668;&#x91CD;&#x542F;&#x6216;&#x8005;&#x624B;&#x52A8;&#x5207;&#x6362;&#x524D;&#x7AEF;&#x7684;IP&#x624D;&#x80FD;&#x6062;&#x590D;&#x3002;</li>
+<li>&#x4E3B;&#x673A;&#x5B95;&#x673A;&#xFF0C;&#x5B95;&#x673A;&#x524D;&#x6709;&#x90E8;&#x5206;&#x6570;&#x636E;&#x672A;&#x80FD;&#x53CA;&#x65F6;&#x540C;&#x6B65;&#x5230;&#x4ECE;&#x673A;&#xFF0C;&#x5207;&#x6362;IP&#x540E;&#x8FD8;&#x4F1A;&#x5F15;&#x5165;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x964D;&#x4F4E;&#x4E86;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x7528;&#x6027;&#x3002;</li>
+<li>Redis &#x8F83;&#x96BE;&#x652F;&#x6301;&#x5728;&#x7EBF;&#x6269;&#x5BB9;&#xFF0C;&#x5728;&#x96C6;&#x7FA4;&#x5BB9;&#x91CF;&#x8FBE;&#x5230;&#x4E0A;&#x9650;&#x65F6;&#x5728;&#x7EBF;&#x6269;&#x5BB9;&#x4F1A;&#x53D8;&#x5F97;&#x5F88;&#x590D;&#x6742;&#x3002;&#x4E3A;&#x907F;&#x514D;&#x8FD9;&#x4E00;&#x95EE;&#x9898;&#xFF0C;&#x8FD0;&#x7EF4;&#x4EBA;&#x5458;&#x5728;&#x7CFB;&#x7EDF;&#x4E0A;&#x7EBF;&#x65F6;&#x5FC5;&#x987B;&#x786E;&#x4FDD;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x7A7A;&#x95F4;&#xFF0C;&#x8FD9;&#x5BF9;&#x8D44;&#x6E90;&#x9020;&#x6210;&#x4E86;&#x5F88;&#x5927;&#x7684;&#x6D6A;&#x8D39;&#x3002;</li>
+</ul>
+<h3 id="13redis&#x7EBF;&#x7A0B;&#x6A21;&#x578B;">13.Redis&#x7EBF;&#x7A0B;&#x6A21;&#x578B;</h3>
+<p>Redis&#x57FA;&#x4E8E;Reactor&#x6A21;&#x5F0F;&#x5F00;&#x53D1;&#x4E86;&#x7F51;&#x7EDC;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x8FD9;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x88AB;&#x79F0;&#x4E3A;&#x6587;&#x4EF6;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#xFF08;file event handler&#xFF09;&#x3002;&#x5B83;&#x7684;&#x7EC4;&#x6210;&#x7ED3;&#x6784;&#x4E3A;4&#x90E8;&#x5206;&#xFF1A;&#x591A;&#x4E2A;&#x5957;&#x63A5;&#x5B57;&#x3001;IO&#x591A;&#x8DEF;&#x590D;&#x7528;&#x7A0B;&#x5E8F;&#x3001;&#x6587;&#x4EF6;&#x4E8B;&#x4EF6;&#x5206;&#x6D3E;&#x5668;&#x3001;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x3002;&#x56E0;&#x4E3A;&#x6587;&#x4EF6;&#x4E8B;&#x4EF6;&#x5206;&#x6D3E;&#x5668;&#x961F;&#x5217;&#x7684;&#x6D88;&#x8D39;&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x6240;&#x4EE5;Redis&#x624D;&#x53EB;&#x5355;&#x7EBF;&#x7A0B;&#x6A21;&#x578B;&#x3002;</p>
+<ul>
+<li>&#x6587;&#x4EF6;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x4F7F;&#x7528; I/O &#x591A;&#x8DEF;&#x590D;&#x7528;&#xFF08;multiplexing&#xFF09;&#x7A0B;&#x5E8F;&#x6765;&#x540C;&#x65F6;&#x76D1;&#x542C;&#x591A;&#x4E2A;&#x5957;&#x63A5;&#x5B57;&#xFF0C; &#x5E76;&#x6839;&#x636E;&#x5957;&#x63A5;&#x5B57;&#x76EE;&#x524D;&#x6267;&#x884C;&#x7684;&#x4EFB;&#x52A1;&#x6765;&#x4E3A;&#x5957;&#x63A5;&#x5B57;&#x5173;&#x8054;&#x4E0D;&#x540C;&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x3002;</li>
+<li>&#x5F53;&#x88AB;&#x76D1;&#x542C;&#x7684;&#x5957;&#x63A5;&#x5B57;&#x51C6;&#x5907;&#x597D;&#x6267;&#x884C;&#x8FDE;&#x63A5;&#x5E94;&#x7B54;&#xFF08;accept&#xFF09;&#x3001;&#x8BFB;&#x53D6;&#xFF08;read&#xFF09;&#x3001;&#x5199;&#x5165;&#xFF08;write&#xFF09;&#x3001;&#x5173;&#x95ED;&#xFF08;close&#xFF09;&#x7B49;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C; &#x4E0E;&#x64CD;&#x4F5C;&#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x4EF6;&#x4E8B;&#x4EF6;&#x5C31;&#x4F1A;&#x4EA7;&#x751F;&#xFF0C; &#x8FD9;&#x65F6;&#x6587;&#x4EF6;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x5C31;&#x4F1A;&#x8C03;&#x7528;&#x5957;&#x63A5;&#x5B57;&#x4E4B;&#x524D;&#x5173;&#x8054;&#x597D;&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x6765;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x4E8B;&#x4EF6;&#x3002;</li>
+</ul>
+<p>&#x867D;&#x7136;&#x6587;&#x4EF6;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x4EE5;&#x5355;&#x7EBF;&#x7A0B;&#x65B9;&#x5F0F;&#x8FD0;&#x884C;&#xFF0C; &#x4F46;&#x901A;&#x8FC7;&#x4F7F;&#x7528; I/O &#x591A;&#x8DEF;&#x590D;&#x7528;&#x7A0B;&#x5E8F;&#x6765;&#x76D1;&#x542C;&#x591A;&#x4E2A;&#x5957;&#x63A5;&#x5B57;&#xFF0C; &#x6587;&#x4EF6;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x65E2;&#x5B9E;&#x73B0;&#x4E86;&#x9AD8;&#x6027;&#x80FD;&#x7684;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x6A21;&#x578B;&#xFF0C; &#x53C8;&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x5730;&#x4E0E; redis &#x670D;&#x52A1;&#x5668;&#x4E2D;&#x5176;&#x4ED6;&#x540C;&#x6837;&#x4EE5;&#x5355;&#x7EBF;&#x7A0B;&#x65B9;&#x5F0F;&#x8FD0;&#x884C;&#x7684;&#x6A21;&#x5757;&#x8FDB;&#x884C;&#x5BF9;&#x63A5;&#xFF0C; &#x8FD9;&#x4FDD;&#x6301;&#x4E86; Redis &#x5185;&#x90E8;&#x5355;&#x7EBF;&#x7A0B;&#x8BBE;&#x8BA1;&#x7684;&#x7B80;&#x5355;&#x6027;&#x3002;</p>
 <p>&#x3000;&#x3000;</p>
 
                                 
@@ -1669,7 +1776,7 @@ public class TestController {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Redis","level":"1.11","depth":1,"next":{"title":"1.Redis为什么是单线程、及高并发快的3大原因详解","level":"1.11.1","depth":2,"anchor":"#1redis为什么是单线程及高并发快的3大原因详解","path":"Redis/redis.md","ref":"Redis/redis.md#1redis为什么是单线程及高并发快的3大原因详解","articles":[]},"previous":{"title":"Kafka 架构原理","level":"1.10","depth":1,"path":"Kafka/architecture.md","ref":"Kafka/architecture.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Redis/redis.md","mtime":"2021-02-24T14:37:24.605Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-24T14:38:07.188Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Redis","level":"1.11","depth":1,"next":{"title":"1.Redis为什么是单线程、及高并发快的3大原因详解","level":"1.11.1","depth":2,"anchor":"#1redis为什么是单线程及高并发快的3大原因详解","path":"Redis/redis.md","ref":"Redis/redis.md#1redis为什么是单线程及高并发快的3大原因详解","articles":[]},"previous":{"title":"Kafka 架构原理","level":"1.10","depth":1,"path":"Kafka/architecture.md","ref":"Kafka/architecture.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Redis/redis.md","mtime":"2021-02-26T09:02:26.269Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-26T09:05:01.762Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

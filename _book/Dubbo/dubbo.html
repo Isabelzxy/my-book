@@ -548,6 +548,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.11.12" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#12redis有哪些优缺点">
+            
+                    
+                    12.Redis有哪些优缺点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.13" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#13redis线程模型">
+            
+                    
+                    13.Redis线程模型
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -563,6 +589,64 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#1mysql的行锁、表锁、间隙锁、意向锁分别是做什么的">
+            
+                    
+                    1.mysql的行锁、表锁、间隙锁、意向锁分别是做什么的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#2mysql联合索引最左匹配原则">
+            
+                    
+                    2.Mysql联合索引最左匹配原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#3mysql的慢查询优化方式">
+            
+                    
+                    3.mysql的慢查询优化方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#4mysql的索引结构为什么使用B+树">
+            
+                    
+                    4.MySQL的索引结构为什么使用B+树
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -664,7 +748,174 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="dubbo">Dubbo</h2>
-<p>&#x5F85;&#x6574;&#x7406;</p>
+<h3 id="1&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528;dubbo">1.&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x7528;Dubbo</h3>
+<p>&#x968F;&#x7740;&#x670D;&#x52A1;&#x5316;&#x7684;&#x8FDB;&#x4E00;&#x6B65;&#x53D1;&#x5C55;&#xFF0C;&#x670D;&#x52A1;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#xFF0C;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#x7684;&#x8C03;&#x7528;&#x548C;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x4E5F;&#x8D8A;&#x6765;&#x8D8A;&#x590D;&#x6742;&#xFF0C;&#x8BDE;&#x751F;&#x4E86;&#x9762;&#x5411;&#x670D;&#x52A1;&#x7684;&#x67B6;&#x6784;&#x4F53;&#x7CFB;(SOA)&#xFF0C;&#x4E5F;&#x56E0;&#x6B64;&#x884D;&#x751F;&#x51FA;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x76F8;&#x5E94;&#x7684;&#x6280;&#x672F;&#xFF0C;&#x5982;&#x5BF9;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x3001;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x3001;&#x8FDE;&#x63A5;&#x5904;&#x7406;&#x3001;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x3001;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x5F0F;&#x3001;&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x3001;&#x670D;&#x52A1;&#x8DEF;&#x7531;&#x3001;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x7B49;&#x884C;&#x4E3A;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#x7684;&#x670D;&#x52A1;&#x6846;&#x67B6;&#x3002;&#x5C31;&#x8FD9;&#x6837;&#x4E3A;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x7684;&#x670D;&#x52A1;&#x6CBB;&#x7406;&#x6846;&#x67B6;&#x5C31;&#x51FA;&#x73B0;&#x4E86;&#xFF0C;Dubbo &#x4E5F;&#x5C31;&#x8FD9;&#x6837;&#x4EA7;&#x751F;&#x4E86;</p>
+<h3 id="2dubbo&#x662F;&#x4EC0;&#x4E48;">2.Dubbo&#x662F;&#x4EC0;&#x4E48;</h3>
+<p>Dubbo &#x662F;&#x4E00;&#x6B3E;&#x9AD8;&#x6027;&#x80FD;&#x3001;&#x8F7B;&#x91CF;&#x7EA7;&#x7684;&#x5F00;&#x6E90; RPC &#x6846;&#x67B6;&#xFF0C;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x81EA;&#x52A8;&#x6CE8;&#x518C;&#x3001;&#x81EA;&#x52A8;&#x53D1;&#x73B0;&#x7B49;&#x9AD8;&#x6548;&#x670D;&#x52A1;&#x6CBB;&#x7406;&#x65B9;&#x6848;&#xFF0C; &#x53EF;&#x4EE5;&#x548C; Spring &#x6846;&#x67B6;&#x65E0;&#x7F1D;&#x96C6;&#x6210;&#x3002;</p>
+<h3 id="3dubbo&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x6709;&#x54EA;&#x4E9B;">3.Dubbo&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x6709;&#x54EA;&#x4E9B;</h3>
+<ul>
+<li>&#x900F;&#x660E;&#x5316;&#x7684;&#x8FDC;&#x7A0B;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#xFF1A;&#x5C31;&#x50CF;&#x8C03;&#x7528;&#x672C;&#x5730;&#x65B9;&#x6CD5;&#x4E00;&#x6837;&#x8C03;&#x7528;&#x8FDC;&#x7A0B;&#x65B9;&#x6CD5;&#xFF0C;&#x53EA;&#x9700;&#x7B80;&#x5355;&#x914D;&#x7F6E;&#xFF0C;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;API&#x4FB5;&#x5165;&#x3002;</li>
+<li>&#x8F6F;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x53CA;&#x5BB9;&#x9519;&#x673A;&#x5236;&#xFF1A;&#x53EF;&#x5728;&#x5185;&#x7F51;&#x66FF;&#x4EE3; F5 &#x7B49;&#x786C;&#x4EF6;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x5668;&#xFF0C;&#x964D;&#x4F4E;&#x6210;&#x672C;&#xFF0C;&#x51CF;&#x5C11;&#x5355;&#x70B9;&#x3002;</li>
+<li>&#x670D;&#x52A1;&#x81EA;&#x52A8;&#x6CE8;&#x518C;&#x4E0E;&#x53D1;&#x73B0;&#xFF1A;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x5199;&#x6B7B;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;&#x5730;&#x5740;&#xFF0C;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x57FA;&#x4E8E;&#x63A5;&#x53E3;&#x540D;&#x67E5;&#x8BE2;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x7684;IP&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x4E14;&#x80FD;&#x591F;&#x5E73;&#x6ED1;&#x6DFB;&#x52A0;&#x6216;&#x5220;&#x9664;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x3002;</li>
+</ul>
+<h3 id="4dubbo&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x6709;&#x54EA;&#x4E9B;">4.Dubbo&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x6709;&#x54EA;&#x4E9B;</h3>
+<ul>
+<li>Remoting&#xFF1A;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x6846;&#x67B6;&#xFF0C;&#x63D0;&#x4F9B;&#x5BF9;&#x591A;&#x79CD;NIO&#x6846;&#x67B6;&#x62BD;&#x8C61;&#x5C01;&#x88C5;&#xFF0C;&#x5305;&#x62EC;&#x201C;&#x540C;&#x6B65;&#x8F6C;&#x5F02;&#x6B65;&#x201D;&#x548C;&#x201C;&#x8BF7;&#x6C42;-&#x54CD;&#x5E94;&#x201D;&#x6A21;&#x5F0F;&#x7684;&#x4FE1;&#x606F;&#x4EA4;&#x6362;&#x65B9;&#x5F0F;&#x3002;</li>
+<li>Cluster&#xFF1A;&#x670D;&#x52A1;&#x6846;&#x67B6;&#xFF0C;&#x63D0;&#x4F9B;&#x57FA;&#x4E8E;&#x63A5;&#x53E3;&#x65B9;&#x6CD5;&#x7684;&#x900F;&#x660E;&#x8FDC;&#x7A0B;&#x8FC7;&#x7A0B;&#x8C03;&#x7528;&#xFF0C;&#x5305;&#x62EC;&#x591A;&#x534F;&#x8BAE;&#x652F;&#x6301;&#xFF0C;&#x4EE5;&#x53CA;&#x8F6F;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#xFF0C;&#x5931;&#x8D25;&#x5BB9;&#x9519;&#xFF0C;&#x5730;&#x5740;&#x8DEF;&#x7531;&#xFF0C;&#x52A8;&#x6001;&#x914D;&#x7F6E;&#x7B49;&#x96C6;&#x7FA4;&#x652F;&#x6301;&#x3002;</li>
+<li>Registry&#xFF1A;&#x670D;&#x52A1;&#x6CE8;&#x518C;&#xFF0C;&#x57FA;&#x4E8E;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x76EE;&#x5F55;&#x670D;&#x52A1;&#xFF0C;&#x4F7F;&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x65B9;&#x80FD;&#x52A8;&#x6001;&#x7684;&#x67E5;&#x627E;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;&#xFF0C;&#x4F7F;&#x5730;&#x5740;&#x900F;&#x660E;&#xFF0C;&#x4F7F;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;&#x53EF;&#x4EE5;&#x5E73;&#x6ED1;&#x589E;&#x52A0;&#x6216;&#x51CF;&#x5C11;&#x673A;&#x5668;&#x3002;</li>
+</ul>
+<h3 id="5dubbo&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x6709;&#x54EA;&#x4E9B;">5.Dubbo&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x6709;&#x54EA;&#x4E9B;</h3>
+<p><img src="../_images/dubbo_1.png" alt="dubbo_1"></p>
+<ul>
+<li>Provider&#xFF1A;&#x66B4;&#x9732;&#x670D;&#x52A1;&#x7684;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;</li>
+<li>Consumer&#xFF1A;&#x8C03;&#x7528;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x65B9;</li>
+<li>Registry&#xFF1A;&#x670D;&#x52A1;&#x6CE8;&#x518C;&#x4E0E;&#x53D1;&#x73B0;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</li>
+<li>Monitor&#xFF1A;&#x76D1;&#x63A7;&#x4E2D;&#x5FC3;&#x548C;&#x8BBF;&#x95EE;&#x8C03;&#x7528;&#x7EDF;&#x8BA1;</li>
+<li>Container&#xFF1A;&#x670D;&#x52A1;&#x8FD0;&#x884C;&#x5BB9;&#x5668;</li>
+</ul>
+<h3 id="6dubbo&#x670D;&#x52A1;&#x5668;&#x6CE8;&#x518C;&#x4E0E;&#x53D1;&#x73B0;&#x7684;&#x6D41;&#x7A0B;">6.Dubbo&#x670D;&#x52A1;&#x5668;&#x6CE8;&#x518C;&#x4E0E;&#x53D1;&#x73B0;&#x7684;&#x6D41;&#x7A0B;</h3>
+<ul>
+<li>&#x670D;&#x52A1;&#x5BB9;&#x5668;Container&#x8D1F;&#x8D23;&#x542F;&#x52A8;&#xFF0C;&#x52A0;&#x8F7D;&#xFF0C;&#x8FD0;&#x884C;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x3002;</li>
+<li>&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;Provider&#x5728;&#x542F;&#x52A8;&#x65F6;&#xFF0C;&#x5411;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x6CE8;&#x518C;&#x81EA;&#x5DF1;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x3002;</li>
+<li>&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;Consumer&#x5728;&#x542F;&#x52A8;&#x65F6;&#xFF0C;&#x5411;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x8BA2;&#x9605;&#x81EA;&#x5DF1;&#x6240;&#x9700;&#x7684;&#x670D;&#x52A1;&#x3002;</li>
+<li>&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;Registry&#x8FD4;&#x56DE;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x5730;&#x5740;&#x5217;&#x8868;&#x7ED9;&#x6D88;&#x8D39;&#x8005;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x53D8;&#x66F4;&#xFF0C;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x5C06;&#x57FA;&#x4E8E;&#x957F;&#x8FDE;&#x63A5;&#x63A8;&#x9001;&#x53D8;&#x66F4;&#x6570;&#x636E;&#x7ED9;&#x6D88;&#x8D39;&#x8005;&#x3002;</li>
+<li>&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;Consumer&#xFF0C;&#x4ECE;&#x63D0;&#x4F9B;&#x8005;&#x5730;&#x5740;&#x5217;&#x8868;&#x4E2D;&#xFF0C;&#x57FA;&#x4E8E;&#x8F6F;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B97;&#x6CD5;&#xFF0C;&#x9009;&#x4E00;&#x53F0;&#x63D0;&#x4F9B;&#x8005;&#x8FDB;&#x884C;&#x8C03;&#x7528;&#xFF0C;&#x5982;&#x679C;&#x8C03;&#x7528;&#x5931;&#x8D25;&#xFF0C;&#x518D;&#x9009;&#x53E6;&#x4E00;&#x53F0;&#x8C03;&#x7528;&#x3002;</li>
+<li>&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;Consumer&#x548C;&#x63D0;&#x4F9B;&#x8005;Provider&#xFF0C;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7D2F;&#x8BA1;&#x8C03;&#x7528;&#x6B21;&#x6570;&#x548C;&#x8C03;&#x7528;&#x65F6;&#x95F4;&#xFF0C;&#x5B9A;&#x65F6;&#x6BCF;&#x5206;&#x949F;&#x53D1;&#x9001;&#x4E00;&#x6B21;&#x7EDF;&#x8BA1;&#x6570;&#x636E;&#x5230;&#x76D1;&#x63A7;&#x4E2D;&#x5FC3;Monitor&#x3002;</li>
+</ul>
+<h3 id="7dubbo&#x7684;&#x6574;&#x4F53;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x6709;&#x54EA;&#x4E9B;&#x5206;&#x5C42;">7.Dubbo&#x7684;&#x6574;&#x4F53;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x6709;&#x54EA;&#x4E9B;&#x5206;&#x5C42;</h3>
+<p><img src="../_images/dubbo_2.png" alt="dubbo_2"></p>
+<ul>
+<li>&#x63A5;&#x53E3;&#x670D;&#x52A1;&#x5C42;&#xFF08;Service&#xFF09;&#xFF1A;&#x8BE5;&#x5C42;&#x4E0E;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x76F8;&#x5173;&#xFF0C;&#x6839;&#x636E; provider &#x548C; consumer &#x7684;&#x4E1A;&#x52A1;&#x8BBE;&#x8BA1;&#x5BF9;&#x5E94;&#x7684;&#x63A5;&#x53E3;&#x548C;&#x5B9E;&#x73B0;</li>
+<li>&#x914D;&#x7F6E;&#x5C42;&#xFF08;Config&#xFF09;&#xFF1A;&#x5BF9;&#x5916;&#x914D;&#x7F6E;&#x63A5;&#x53E3;&#xFF0C;&#x4EE5; ServiceConfig &#x548C; ReferenceConfig &#x4E3A;&#x4E2D;&#x5FC3;</li>
+<li>&#x670D;&#x52A1;&#x4EE3;&#x7406;&#x5C42;&#xFF08;Proxy&#xFF09;&#xFF1A;&#x670D;&#x52A1;&#x63A5;&#x53E3;&#x900F;&#x660E;&#x4EE3;&#x7406;&#xFF0C;&#x751F;&#x6210;&#x670D;&#x52A1;&#x7684;&#x5BA2;&#x6237;&#x7AEF; Stub &#x548C; &#x670D;&#x52A1;&#x7AEF;&#x7684; Skeleton&#xFF0C;&#x4EE5; ServiceProxy &#x4E3A;&#x4E2D;&#x5FC3;&#xFF0C;&#x6269;&#x5C55;&#x63A5;&#x53E3;&#x4E3A; ProxyFactory</li>
+<li>&#x670D;&#x52A1;&#x6CE8;&#x518C;&#x5C42;&#xFF08;Registry&#xFF09;&#xFF1A;&#x5C01;&#x88C5;&#x670D;&#x52A1;&#x5730;&#x5740;&#x7684;&#x6CE8;&#x518C;&#x548C;&#x53D1;&#x73B0;&#xFF0C;&#x4EE5;&#x670D;&#x52A1; URL &#x4E3A;&#x4E2D;&#x5FC3;&#xFF0C;&#x6269;&#x5C55;&#x63A5;&#x53E3;&#x4E3A; RegistryFactory&#x3001;Registry&#x3001;RegistryService</li>
+<li>&#x8DEF;&#x7531;&#x5C42;&#xFF08;Cluster&#xFF09;&#xFF1A;&#x5C01;&#x88C5;&#x591A;&#x4E2A;&#x63D0;&#x4F9B;&#x8005;&#x7684;&#x8DEF;&#x7531;&#x548C;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#xFF0C;&#x5E76;&#x6865;&#x63A5;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#xFF0C;&#x4EE5;Invoker &#x4E3A;&#x4E2D;&#x5FC3;&#xFF0C;&#x6269;&#x5C55;&#x63A5;&#x53E3;&#x4E3A; Cluster&#x3001;Directory&#x3001;Router &#x548C; LoadBlancce</li>
+<li>&#x76D1;&#x63A7;&#x5C42;&#xFF08;Monitor&#xFF09;&#xFF1A;RPC &#x8C03;&#x7528;&#x6B21;&#x6570;&#x548C;&#x8C03;&#x7528;&#x65F6;&#x95F4;&#x76D1;&#x63A7;&#xFF0C;&#x4EE5; Statistics &#x4E3A;&#x4E2D;&#x5FC3;&#xFF0C;&#x6269;&#x5C55;&#x63A5;&#x53E3;&#x4E3A; MonitorFactory&#x3001;Monitor &#x548C; MonitorService</li>
+<li>&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x5C42;&#xFF08;Protocal&#xFF09;&#xFF1A;&#x5C01;&#x88C5; RPC &#x8C03;&#x7528;&#xFF0C;&#x4EE5; Invocation &#x548C; Result &#x4E3A;&#x4E2D;&#x5FC3;&#xFF0C;&#x6269;&#x5C55;&#x63A5;&#x53E3;&#x4E3A; Protocal&#x3001;Invoker &#x548C; Exporter</li>
+<li>&#x4FE1;&#x606F;&#x4EA4;&#x6362;&#x5C42;&#xFF08;Exchange&#xFF09;&#xFF1A;&#x5C01;&#x88C5;&#x8BF7;&#x6C42;&#x54CD;&#x5E94;&#x6A21;&#x5F0F;&#xFF0C;&#x540C;&#x6B65;&#x8F6C;&#x5F02;&#x6B65;&#x3002;&#x4EE5; Request &#x548C;Response &#x4E3A;&#x4E2D;&#x5FC3;&#xFF0C;&#x6269;&#x5C55;&#x63A5;&#x53E3;&#x4E3A; Exchanger&#x3001;ExchangeChannel&#x3001;ExchangeClient &#x548C; ExchangeServer</li>
+<li>&#x7F51;&#x7EDC; &#x4F20;&#x8F93; &#x5C42;&#xFF08;Transport&#xFF09;&#xFF1A;&#x62BD;&#x8C61; mina &#x548C; netty &#x4E3A;&#x7EDF;&#x4E00;&#x63A5;&#x53E3;&#xFF0C;&#x4EE5; Message &#x4E3A;&#x4E2D;&#x5FC3;&#xFF0C;&#x6269;&#x5C55;&#x63A5;&#x53E3;&#x4E3A; Channel&#x3001;Transporter&#x3001;Client&#x3001;Server &#x548C; Codec</li>
+<li>&#x6570;&#x636E;&#x5E8F;&#x5217;&#x5316;&#x5C42;&#xFF08;Serialize&#xFF09;&#xFF1A;&#x53EF;&#x590D;&#x7528;&#x7684;&#x4E00;&#x4E9B;&#x5DE5;&#x5177;&#xFF0C;&#x6269;&#x5C55;&#x63A5;&#x53E3;&#x4E3A; Serialization&#x3001;ObjectInput&#x3001;ObjectOutput &#x548C; ThreadPool</li>
+</ul>
+<h3 id="8dubbomonitor&#x5B9E;&#x73B0;&#x539F;&#x7406;">8.DubboMonitor&#x5B9E;&#x73B0;&#x539F;&#x7406;</h3>
+<p>Consumer &#x7AEF;&#x5728;&#x53D1;&#x8D77;&#x8C03;&#x7528;&#x4E4B;&#x524D;&#x4F1A;&#x5148;&#x8D70; filter &#x94FE;&#xFF1B;provider &#x7AEF;&#x5728;&#x63A5;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x65F6;&#x4E5F;&#x662F;&#x5148;&#x8D70; filter &#x94FE;&#xFF0C;&#x7136;&#x540E;&#x624D;&#x8FDB;&#x884C;&#x771F;&#x6B63;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5904;&#x7406;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5728; consumer &#x548C; provider &#x7684; filter &#x94FE;&#x4E2D;&#x90FD;&#x4F1A;&#x6709; Monitorfilter&#x3002;</p>
+<ul>
+<li><p>1.MonitorFilter &#x5411; DubboMonitor &#x53D1;&#x9001;&#x6570;&#x636E;</p>
+</li>
+<li><p>2.DubboMonitor &#x5C06;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x805A;&#x5408;&#x540E;&#xFF08;&#x9ED8;&#x8BA4;&#x805A;&#x5408; 1min &#x4E2D;&#x7684;&#x7EDF;&#x8BA1;&#x6570;&#x636E;&#xFF09;&#x6682;&#x5B58;&#x5230;ConcurrentMap<statistics, atomicreference=""> statisticsMap&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x542B;&#x6709; 3 &#x4E2A;&#x7EBF;&#x7A0B;&#xFF08;&#x7EBF;&#x7A0B;&#x540D;&#x5B57;&#xFF1A;DubboMonitorSendTimer&#xFF09;&#x7684;&#x7EBF;&#x7A0B;&#x6C60;&#x6BCF;&#x9694; 1min &#x949F;&#xFF0C;&#x8C03;&#x7528; SimpleMonitorService &#x904D;&#x5386;&#x53D1;&#x9001; statisticsMap &#x4E2D;&#x7684;&#x7EDF;&#x8BA1;&#x6570;&#x636E;&#xFF0C;&#x6BCF;&#x53D1;&#x9001;&#x5B8C;&#x6BD5;&#x4E00;&#x4E2A;&#xFF0C;&#x5C31;&#x91CD;&#x7F6E;&#x5F53;&#x524D;&#x7684; Statistics &#x7684; AtomicReference</statistics,></p>
+</li>
+<li><p>3.SimpleMonitorService &#x5C06;&#x8FD9;&#x4E9B;&#x805A;&#x5408;&#x6570;&#x636E;&#x585E;&#x5165; BlockingQueue queue &#x4E2D;&#xFF08;&#x961F;&#x5217;&#x5927;&#x5199;&#x4E3A; 100000&#xFF09;</p>
+</li>
+<li><p>4.SimpleMonitorService &#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#xFF08;&#x7EBF;&#x7A0B;&#x540D;&#x4E3A;&#xFF1A;DubboMonitorAsyncWriteLogThread&#xFF09;&#x5C06; queue &#x4E2D;&#x7684;&#x6570;&#x636E;&#x5199;&#x5165;&#x6587;&#x4EF6;&#xFF08;&#x8BE5;&#x7EBF;&#x7A0B;&#x4EE5;&#x6B7B;&#x5FAA;&#x73AF;&#x7684;&#x5F62;&#x5F0F;&#x6765;&#x5199;&#xFF09;</p>
+</li>
+<li><p>5.SimpleMonitorService &#x8FD8;&#x4F1A;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x542B;&#x6709; 1 &#x4E2A;&#x7EBF;&#x7A0B;&#xFF08;&#x7EBF;&#x7A0B;&#x540D;&#x5B57;&#xFF1A;DubboMonitorTimer&#xFF09;&#x7684;&#x7EBF;&#x7A0B;&#x6C60;&#x6BCF;&#x9694; 5min &#x949F;&#xFF0C;&#x5C06;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x7EDF;&#x8BA1;&#x6570;&#x636E;&#x753B;&#x6210;&#x56FE;&#x8868;</p>
+</li>
+</ul>
+<h3 id="9dubbo&#x548C;springcloud&#x6709;&#x4EC0;&#x4E48;&#x54EA;&#x4E9B;&#x533A;&#x522B;">9.Dubbo&#x548C;SpringCloud&#x6709;&#x4EC0;&#x4E48;&#x54EA;&#x4E9B;&#x533A;&#x522B;</h3>
+<ul>
+<li><p>Dubbo &#x5E95;&#x5C42;&#x662F;&#x4F7F;&#x7528; Netty &#x8FD9;&#x6837;&#x7684; NIO &#x6846;&#x67B6;&#xFF0C;&#x662F;&#x57FA;&#x4E8E; TCP &#x534F;&#x8BAE;&#x4F20;&#x8F93;&#x7684;&#xFF0C;&#x914D;&#x5408;&#x4EE5; Hession &#x5E8F;&#x5217;&#x5316;&#x5B8C;&#x6210; RPC &#x901A;&#x4FE1;&#x3002;</p>
+</li>
+<li><p>Spring Cloud &#x662F;&#x57FA;&#x4E8E; Http &#x534F;&#x8BAE; Rest &#x63A5;&#x53E3;&#x8C03;&#x7528;&#x8FDC;&#x7A0B;&#x8FC7;&#x7A0B;&#x7684;&#x901A;&#x4FE1;&#xFF0C;&#x76F8;&#x5BF9;&#x6765;&#x8BF4; Http &#x8BF7;&#x6C42;&#x4F1A;&#x6709;&#x66F4;&#x5927;&#x7684;&#x62A5;&#x6587;&#xFF0C;&#x5360;&#x7684;&#x5E26;&#x5BBD;&#x4E5F;&#x4F1A;&#x66F4;&#x591A;&#x3002;&#x4F46;&#x662F; REST &#x76F8;&#x6BD4; RPC &#x66F4;&#x4E3A;&#x7075;&#x6D3B;&#xFF0C;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x65B9;&#x548C;&#x8C03;&#x7528;&#x65B9;&#x7684;&#x4F9D;&#x8D56;&#x53EA;&#x4F9D;&#x9760;&#x4E00;&#x7EB8;&#x5951;&#x7EA6;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x4EE3;&#x7801;&#x7EA7;&#x522B;&#x7684;&#x5F3A;&#x4F9D;&#x8D56;&#xFF0C;&#x8FD9;&#x5728;&#x5F3A;&#x8C03;&#x5FEB;&#x901F;&#x6F14;&#x5316;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x663E;&#x5F97;&#x66F4;&#x4E3A;&#x5408;&#x9002;&#xFF0C;&#x81F3;&#x4E8E;&#x6CE8;&#x91CD;&#x901A;&#x4FE1;&#x901F;&#x5EA6;&#x8FD8;&#x662F;&#x65B9;&#x4FBF;&#x7075;&#x6D3B;&#x6027;&#xFF0C;&#x5177;&#x4F53;&#x60C5;&#x51B5;&#x5177;&#x4F53;&#x8003;&#x8651;&#x3002;</p>
+</li>
+</ul>
+<h3 id="10dubbo&#x6709;&#x54EA;&#x4E9B;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;">10.Dubbo&#x6709;&#x54EA;&#x4E9B;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</h3>
+<ul>
+<li>Multicast &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#xFF1A;Multicast &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x4E0D;&#x9700;&#x8981;&#x4EFB;&#x4F55;&#x4E2D;&#x5FC3;&#x8282;&#x70B9;&#xFF0C;&#x53EA;&#x8981;&#x5E7F;&#x64AD;&#x5730;&#x5740;&#xFF0C;&#x5C31;&#x80FD;&#x8FDB;&#x884C;&#x670D;&#x52A1;&#x6CE8;&#x518C;&#x548C;&#x53D1;&#x73B0;,&#x57FA;&#x4E8E;&#x7F51;&#x7EDC;&#x4E2D;&#x7EC4;&#x64AD;&#x4F20;&#x8F93;&#x5B9E;&#x73B0;&#x3002;</li>
+<li>Zookeeper &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#xFF1A;&#x57FA;&#x4E8E;&#x5206;&#x5E03;&#x5F0F;&#x534F;&#x8C03;&#x7CFB;&#x7EDF; Zookeeper &#x5B9E;&#x73B0;&#xFF0C;&#x91C7;&#x7528; Zookeeper &#x7684; watch &#x673A;&#x5236;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x3002;</li>
+<li>Redis &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#xFF1A;&#x57FA;&#x4E8E; Redis &#x5B9E;&#x73B0;&#xFF0C;&#x91C7;&#x7528; key/map &#x5B58;&#x50A8;&#xFF0C;key &#x5B58;&#x50A8;&#x670D;&#x52A1;&#x540D;&#x548C;&#x7C7B;&#x578B;&#xFF0C;map &#x4E2D; key &#x5B58;&#x50A8;&#x670D;&#x52A1; url&#xFF0C;value &#x670D;&#x52A1;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3002;&#x57FA;&#x4E8E; Redis &#x7684;&#x53D1;&#x5E03;/&#x8BA2;&#x9605;&#x6A21;&#x5F0F;&#x901A;&#x77E5;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x3002;</li>
+<li>Simple &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x3002;</li>
+</ul>
+<p>&#x63A8;&#x8350;&#x4F7F;&#x7528; Zookeeper &#x4F5C;&#x4E3A;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</p>
+<h4 id="dubbo-&#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x96C6;&#x7FA4;&#x6302;&#x6389;&#xFF0C;&#x53D1;&#x5E03;&#x8005;&#x548C;&#x8BA2;&#x9605;&#x8005;&#x4E4B;&#x95F4;&#x8FD8;&#x80FD;&#x901A;&#x4FE1;&#x4E48;&#xFF1F;">Dubbo &#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x96C6;&#x7FA4;&#x6302;&#x6389;&#xFF0C;&#x53D1;&#x5E03;&#x8005;&#x548C;&#x8BA2;&#x9605;&#x8005;&#x4E4B;&#x95F4;&#x8FD8;&#x80FD;&#x901A;&#x4FE1;&#x4E48;&#xFF1F;</h4>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8BAF;&#x3002;&#x542F;&#x52A8; Dubbo &#x65F6;&#xFF0C;&#x6D88;&#x8D39;&#x8005;&#x4F1A;&#x4ECE; Zookeeper &#x62C9;&#x53D6;&#x6CE8;&#x518C;&#x7684;&#x751F;&#x4EA7;&#x8005;&#x7684;&#x5730;&#x5740;&#x63A5;&#x53E3;&#x7B49;&#x6570;&#x636E;&#xFF0C;&#x7F13;&#x5B58;&#x5728;&#x672C;&#x5730;&#x3002;&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x6309;&#x7167;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x7684;&#x5730;&#x5740;&#x8FDB;&#x884C;&#x8C03;&#x7528;&#x3002;</p>
+<h3 id="11dubbo&#x96C6;&#x7FA4;&#x63D0;&#x4F9B;&#x4E86;&#x54EA;&#x4E9B;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;">11.Dubbo&#x96C6;&#x7FA4;&#x63D0;&#x4F9B;&#x4E86;&#x54EA;&#x4E9B;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;</h3>
+<ul>
+<li><p>Random LoadBalance: &#x968F;&#x673A;&#x9009;&#x53D6;&#x63D0;&#x4F9B;&#x8005;&#x7B56;&#x7565;&#xFF0C;&#x6709;&#x5229;&#x4E8E;&#x52A8;&#x6001;&#x8C03;&#x6574;&#x63D0;&#x4F9B;&#x8005;&#x6743;&#x91CD;&#x3002;&#x622A;&#x9762;&#x78B0;&#x649E;&#x7387;&#x9AD8;&#xFF0C;&#x8C03;&#x7528;&#x6B21;&#x6570;&#x8D8A;&#x591A;&#xFF0C;&#x5206;&#x5E03;&#x8D8A;&#x5747;&#x5300;&#x3002;</p>
+</li>
+<li><p>RoundRobin LoadBalance: &#x8F6E;&#x5FAA;&#x9009;&#x53D6;&#x63D0;&#x4F9B;&#x8005;&#x7B56;&#x7565;&#xFF0C;&#x5E73;&#x5747;&#x5206;&#x5E03;&#xFF0C;&#x4F46;&#x662F;&#x5B58;&#x5728;&#x8BF7;&#x6C42;&#x7D2F;&#x79EF;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+</li>
+<li><p>LeastActive LoadBalance: &#x6700;&#x5C11;&#x6D3B;&#x8DC3;&#x8C03;&#x7528;&#x7B56;&#x7565;&#xFF0C;&#x89E3;&#x51B3;&#x6162;&#x63D0;&#x4F9B;&#x8005;&#x63A5;&#x6536;&#x66F4;&#x5C11;&#x7684;&#x8BF7;&#x6C42;&#x3002;</p>
+</li>
+<li><p>ConstantHash LoadBalance: &#x4E00;&#x81F4;&#x6027; Hash &#x7B56;&#x7565;&#xFF0C;&#x4F7F;&#x76F8;&#x540C;&#x53C2;&#x6570;&#x8BF7;&#x6C42;&#x603B;&#x662F;&#x53D1;&#x5230;&#x540C;&#x4E00;&#x63D0;&#x4F9B;&#x8005;&#xFF0C;&#x4E00;&#x53F0;&#x673A;&#x5668;&#x5B95;&#x673A;&#xFF0C;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x865A;&#x62DF;&#x8282;&#x70B9;&#xFF0C;&#x5206;&#x644A;&#x81F3;&#x5176;&#x4ED6;&#x63D0;&#x4F9B;&#x8005;&#xFF0C;&#x907F;&#x514D;&#x5F15;&#x8D77;&#x63D0;&#x4F9B;&#x8005;&#x7684;&#x5267;&#x70C8;&#x53D8;&#x52A8;&#x3002;</p>
+</li>
+</ul>
+<h3 id="12dubbo&#x7684;&#x96C6;&#x7FA4;&#x5BB9;&#x9519;&#x65B9;&#x6848;&#x6709;&#x54EA;&#x4E9B;">12.Dubbo&#x7684;&#x96C6;&#x7FA4;&#x5BB9;&#x9519;&#x65B9;&#x6848;&#x6709;&#x54EA;&#x4E9B;</h3>
+<ul>
+<li>Failover Cluster&#xFF1A;&#x5931;&#x8D25;&#x81EA;&#x52A8;&#x5207;&#x6362;&#xFF0C;&#x5F53;&#x51FA;&#x73B0;&#x5931;&#x8D25;&#xFF0C;&#x91CD;&#x8BD5;&#x5176;&#x5B83;&#x670D;&#x52A1;&#x5668;&#x3002;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x8BFB;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;&#x91CD;&#x8BD5;&#x4F1A;&#x5E26;&#x6765;&#x66F4;&#x957F;&#x5EF6;&#x8FDF;&#x3002;</li>
+<li>Failfast Cluster&#xFF1A;&#x5FEB;&#x901F;&#x5931;&#x8D25;&#xFF0C;&#x53EA;&#x53D1;&#x8D77;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#xFF0C;&#x5931;&#x8D25;&#x7ACB;&#x5373;&#x62A5;&#x9519;&#x3002;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x975E;&#x5E42;&#x7B49;&#x6027;&#x7684;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x65B0;&#x589E;&#x8BB0;&#x5F55;&#x3002;</li>
+<li>Failsafe Cluster&#xFF1A;&#x5931;&#x8D25;&#x5B89;&#x5168;&#xFF0C;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x5FFD;&#x7565;&#x3002;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x5199;&#x5165;&#x5BA1;&#x8BA1;&#x65E5;&#x5FD7;&#x7B49;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>Failback Cluster&#xFF1A;&#x5931;&#x8D25;&#x81EA;&#x52A8;&#x6062;&#x590D;&#xFF0C;&#x540E;&#x53F0;&#x8BB0;&#x5F55;&#x5931;&#x8D25;&#x8BF7;&#x6C42;&#xFF0C;&#x5B9A;&#x65F6;&#x91CD;&#x53D1;&#x3002;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x6D88;&#x606F;&#x901A;&#x77E5;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>Forking Cluster&#xFF1A;&#x5E76;&#x884C;&#x8C03;&#x7528;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x53EA;&#x8981;&#x4E00;&#x4E2A;&#x6210;&#x529F;&#x5373;&#x8FD4;&#x56DE;&#x3002;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x5B9E;&#x65F6;&#x6027;&#x8981;&#x6C42;&#x8F83;&#x9AD8;&#x7684;&#x8BFB;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;&#x9700;&#x8981;&#x6D6A;&#x8D39;&#x66F4;&#x591A;&#x670D;&#x52A1;&#x8D44;&#x6E90;&#x3002;&#x53EF;&#x901A;&#x8FC7; forks=&#x201D;2&#x2033; &#x6765;&#x8BBE;&#x7F6E;&#x6700;&#x5927;&#x5E76;&#x884C;&#x6570;&#x3002;</li>
+<li>Broadcast Cluster&#xFF1A;&#x5E7F;&#x64AD;&#x8C03;&#x7528;&#x6240;&#x6709;&#x63D0;&#x4F9B;&#x8005;&#xFF0C;&#x9010;&#x4E2A;&#x8C03;&#x7528;&#xFF0C;&#x4EFB;&#x610F;&#x4E00;&#x53F0;&#x62A5;&#x9519;&#x5219;&#x62A5;&#x9519; &#x3002;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x901A;&#x77E5;&#x6240;&#x6709;&#x63D0;&#x4F9B;&#x8005;&#x66F4;&#x65B0;&#x7F13;&#x5B58;&#x6216;&#x65E5;&#x5FD7;&#x7B49;&#x672C;&#x5730;&#x8D44;&#x6E90;&#x4FE1;&#x606F;&#x3002;</li>
+</ul>
+<p>&#x9ED8;&#x8BA4;&#x7684;&#x5BB9;&#x9519;&#x65B9;&#x6848;&#x662F; Failover Cluster&#x3002;</p>
+<h3 id="13&#x9ED8;&#x8BA4;&#x7684;&#x5BB9;&#x9519;&#x65B9;&#x6848;&#x662F;failovercluster">13.&#x9ED8;&#x8BA4;&#x7684;&#x5BB9;&#x9519;&#x65B9;&#x6848;&#x662F;FailoverCluster</h3>
+<p>Spring &#x5BB9;&#x5668;&#x5728;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x8BFB;&#x53D6;&#x5230; Spring &#x9ED8;&#x8BA4;&#x7684;&#x4E00;&#x4E9B; schema &#x4EE5;&#x53CA; Dubbo &#x81EA;&#x5B9A;&#x4E49;&#x7684; schema&#xFF0C;&#x6BCF;&#x4E2A; schema &#x90FD;&#x4F1A;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x81EA;&#x5DF1;&#x7684; NamespaceHandler&#xFF0C;NamespaceHandler &#x91CC;&#x9762;&#x901A;&#x8FC7; BeanDefinitionParser &#x6765;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x5E76;&#x8F6C;&#x5316;&#x4E3A;&#x9700;&#x8981;&#x52A0;&#x8F7D;&#x7684; bean &#x5BF9;&#x8C61;&#xFF01;</p>
+<h3 id="14&#x8BF4;&#x8BF4;&#x6838;&#x5FC3;&#x7684;&#x914D;&#x7F6E;&#x6709;&#x54EA;&#x4E9B;">14.&#x8BF4;&#x8BF4;&#x6838;&#x5FC3;&#x7684;&#x914D;&#x7F6E;&#x6709;&#x54EA;&#x4E9B;</h3>
+<p><dubbo:service>
+&#x670D;&#x52A1;&#x914D;&#x7F6E;
+&#x7528;&#x4E8E;&#x66B4;&#x9732;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x5B9A;&#x4E49;&#x670D;&#x52A1;&#x7684;&#x5143;&#x4FE1;&#x606F;&#xFF0C;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x7528;&#x591A;&#x4E2A;&#x534F;&#x8BAE;&#x66B4;&#x9732;&#xFF0C;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x4E5F;&#x53EF;&#x4EE5;&#x6CE8;&#x518C;&#x5230;&#x591A;&#x4E2A;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</dubbo:service></p>
+<p><dubbo:reference>
+&#x5F15;&#x7528;&#x914D;&#x7F6E;
+&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x4EE3;&#x7406;&#xFF0C;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x53EF;&#x4EE5;&#x6307;&#x5411;&#x591A;&#x4E2A;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</dubbo:reference></p>
+<p><dubbo:protocol>
+&#x534F;&#x8BAE;&#x914D;&#x7F6E;
+&#x7528;&#x4E8E;&#x914D;&#x7F6E;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x7684;&#x534F;&#x8BAE;&#x4FE1;&#x606F;&#xFF0C;&#x534F;&#x8BAE;&#x7531;&#x63D0;&#x4F9B;&#x65B9;&#x6307;&#x5B9A;&#xFF0C;&#x6D88;&#x8D39;&#x65B9;&#x88AB;&#x52A8;&#x63A5;&#x53D7;</dubbo:protocol></p>
+<p><dubbo:application>
+&#x5E94;&#x7528;&#x914D;&#x7F6E;
+&#x7528;&#x4E8E;&#x914D;&#x7F6E;&#x5F53;&#x524D;&#x5E94;&#x7528;&#x4FE1;&#x606F;&#xFF0C;&#x4E0D;&#x7BA1;&#x8BE5;&#x5E94;&#x7528;&#x662F;&#x63D0;&#x4F9B;&#x8005;&#x8FD8;&#x662F;&#x6D88;&#x8D39;&#x8005;</dubbo:application></p>
+<p><dubbo:module>
+&#x6A21;&#x5757;&#x914D;&#x7F6E;
+&#x7528;&#x4E8E;&#x914D;&#x7F6E;&#x5F53;&#x524D;&#x6A21;&#x5757;&#x4FE1;&#x606F;&#xFF0C;&#x53EF;&#x9009;</dubbo:module></p>
+<p><dubbo:registry>
+&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x914D;&#x7F6E;
+&#x7528;&#x4E8E;&#x914D;&#x7F6E;&#x8FDE;&#x63A5;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x76F8;&#x5173;&#x4FE1;&#x606F;</dubbo:registry></p>
+<p><dubbo:monitor>
+&#x76D1;&#x63A7;&#x4E2D;&#x5FC3;&#x914D;&#x7F6E;
+&#x7528;&#x4E8E;&#x914D;&#x7F6E;&#x8FDE;&#x63A5;&#x76D1;&#x63A7;&#x4E2D;&#x5FC3;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x53EF;&#x9009;</dubbo:monitor></p>
+<p><dubbo:provider>
+&#x63D0;&#x4F9B;&#x65B9;&#x914D;&#x7F6E;
+&#x5F53; ProtocolConfig &#x548C; ServiceConfig &#x67D0;&#x5C5E;&#x6027;&#x6CA1;&#x6709;&#x914D;&#x7F6E;&#x65F6;&#xFF0C;&#x91C7;&#x7528;&#x6B64;&#x7F3A;&#x7701;&#x503C;&#xFF0C;&#x53EF;&#x9009;</dubbo:provider></p>
+<p><dubbo:consumer>
+&#x6D88;&#x8D39;&#x65B9;&#x914D;&#x7F6E;
+&#x5F53; ReferenceConfig &#x67D0;&#x5C5E;&#x6027;&#x6CA1;&#x6709;&#x914D;&#x7F6E;&#x65F6;&#xFF0C;&#x91C7;&#x7528;&#x6B64;&#x7F3A;&#x7701;&#x503C;&#xFF0C;&#x53EF;&#x9009;</dubbo:consumer></p>
+<p><dubbo:method>
+&#x65B9;&#x6CD5;&#x914D;&#x7F6E;
+&#x7528;&#x4E8E; ServiceConfig &#x548C; ReferenceConfig &#x6307;&#x5B9A;&#x65B9;&#x6CD5;&#x7EA7;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;</dubbo:method></p>
+<p><dubbo:argument>
+&#x53C2;&#x6570;&#x914D;&#x7F6E;
+&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x914D;&#x7F6E;</dubbo:argument></p>
+<p>&#x5982;&#x679C;&#x662F;SpringBoot&#x9879;&#x76EE;&#x5C31;&#x53EA;&#x9700;&#x8981;&#x6CE8;&#x89E3;&#xFF0C;&#x6216;&#x8005;&#x5F00;Application&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<h3 id="15dubbo&#x8D85;&#x65F6;&#x8BBE;&#x7F6E;&#x6709;&#x54EA;&#x4E9B;&#x65B9;&#x5F0F;">15.Dubbo&#x8D85;&#x65F6;&#x8BBE;&#x7F6E;&#x6709;&#x54EA;&#x4E9B;&#x65B9;&#x5F0F;</h3>
+<p>Dubbo &#x8D85;&#x65F6;&#x8BBE;&#x7F6E;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li>&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x7AEF;&#x8BBE;&#x7F6E;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x5728;Dubbo&#x7684;&#x7528;&#x6237;&#x6587;&#x6863;&#x4E2D;&#xFF0C;&#x63A8;&#x8350;&#x5982;&#x679C;&#x80FD;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x591A;&#x914D;&#x7F6E;&#x5C31;&#x5C3D;&#x91CF;&#x591A;&#x914D;&#x7F6E;&#xFF0C;&#x56E0;&#x4E3A;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x6BD4;&#x6D88;&#x8D39;&#x8005;&#x66F4;&#x6E05;&#x695A;&#x81EA;&#x5DF1;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x7279;&#x6027;&#x3002;</li>
+<li>&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;&#x7AEF;&#x8BBE;&#x7F6E;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x6D88;&#x8D39;&#x8005;&#x7AEF;&#x8BBE;&#x7F6E;&#x4E86;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x4EE5;&#x6D88;&#x8D39;&#x8005;&#x7AEF;&#x4E3A;&#x4E3B;&#xFF0C;&#x5373;&#x4F18;&#x5148;&#x7EA7;&#x66F4;&#x9AD8;&#x3002;&#x56E0;&#x4E3A;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x65B9;&#x8BBE;&#x7F6E;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x63A7;&#x5236;&#x6027;&#x66F4;&#x7075;&#x6D3B;&#x3002;&#x5982;&#x679C;&#x6D88;&#x8D39;&#x65B9;&#x8D85;&#x65F6;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x7EBF;&#x7A0B;&#x4E0D;&#x4F1A;&#x5B9A;&#x5236;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x8B66;&#x544A;&#x3002;</li>
+</ul>
+<h3 id="16&#x670D;&#x52A1;&#x8C03;&#x7528;&#x8D85;&#x65F6;&#x4F1A;&#x600E;&#x4E48;&#x6837;">16.&#x670D;&#x52A1;&#x8C03;&#x7528;&#x8D85;&#x65F6;&#x4F1A;&#x600E;&#x4E48;&#x6837;</h3>
+<p>dubbo &#x5728;&#x8C03;&#x7528;&#x670D;&#x52A1;&#x4E0D;&#x6210;&#x529F;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x4F1A;&#x91CD;&#x8BD5;&#x4E24;&#x6B21;&#x3002;</p>
+<h3 id="17dubbo&#x4F7F;&#x7528;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#x901A;&#x4FE1;&#x6846;&#x67B6;">17.Dubbo&#x4F7F;&#x7528;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#x901A;&#x4FE1;&#x6846;&#x67B6;</h3>
+<p>&#x9ED8;&#x8BA4;&#x4F7F;&#x7528; Netty &#x4F5C;&#x4E3A;&#x901A;&#x8BAF;&#x6846;&#x67B6;&#x3002;</p>
+<h3 id="18dubbo&#x652F;&#x6301;&#x54EA;&#x4E9B;&#x534F;&#x8BAE;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x4F18;&#x7F3A;&#x70B9;&#x6709;&#x54EA;&#x4E9B;">18.Dubbo&#x652F;&#x6301;&#x54EA;&#x4E9B;&#x534F;&#x8BAE;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x4F18;&#x7F3A;&#x70B9;&#x6709;&#x54EA;&#x4E9B;</h3>
+<ul>
+<li><p>Dubbo&#xFF1A; &#x5355;&#x4E00;&#x957F;&#x8FDE;&#x63A5;&#x548C; NIO &#x5F02;&#x6B65;&#x901A;&#x8BAF;&#xFF0C;&#x9002;&#x5408;&#x5927;&#x5E76;&#x53D1;&#x5C0F;&#x6570;&#x636E;&#x91CF;&#x7684;&#x670D;&#x52A1;&#x8C03;&#x7528;&#xFF0C;&#x4EE5;&#x53CA;&#x6D88;&#x8D39;&#x8005;&#x8FDC;&#x5927;&#x4E8E;&#x63D0;&#x4F9B;&#x8005;&#x3002;&#x4F20;&#x8F93;&#x534F;&#x8BAE; TCP&#xFF0C;&#x5F02;&#x6B65; Hessian &#x5E8F;&#x5217;&#x5316;&#x3002;Dubbo&#x63A8;&#x8350;&#x4F7F;&#x7528;dubbo&#x534F;&#x8BAE;&#x3002;</p>
+</li>
+<li><p>RMI&#xFF1A; &#x91C7;&#x7528; JDK &#x6807;&#x51C6;&#x7684; RMI &#x534F;&#x8BAE;&#x5B9E;&#x73B0;&#xFF0C;&#x4F20;&#x8F93;&#x53C2;&#x6570;&#x548C;&#x8FD4;&#x56DE;&#x53C2;&#x6570;&#x5BF9;&#x8C61;&#x9700;&#x8981;&#x5B9E;&#x73B0; Serializable &#x63A5;&#x53E3;&#xFF0C;&#x4F7F;&#x7528; Java &#x6807;&#x51C6;&#x5E8F;&#x5217;&#x5316;&#x673A;&#x5236;&#xFF0C;&#x4F7F;&#x7528;&#x963B;&#x585E;&#x5F0F;&#x77ED;&#x8FDE;&#x63A5;&#xFF0C;&#x4F20;&#x8F93;&#x6570;&#x636E;&#x5305;&#x5927;&#x5C0F;&#x6DF7;&#x5408;&#xFF0C;&#x6D88;&#x8D39;&#x8005;&#x548C;&#x63D0;&#x4F9B;&#x8005;&#x4E2A;&#x6570;&#x5DEE;&#x4E0D;&#x591A;&#xFF0C;&#x53EF;&#x4F20;&#x6587;&#x4EF6;&#xFF0C;&#x4F20;&#x8F93;&#x534F;&#x8BAE; TCP&#x3002; &#x591A;&#x4E2A;&#x77ED;&#x8FDE;&#x63A5; TCP &#x534F;&#x8BAE;&#x4F20;&#x8F93;&#xFF0C;&#x540C;&#x6B65;&#x4F20;&#x8F93;&#xFF0C;&#x9002;&#x7528;&#x5E38;&#x89C4;&#x7684;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x8C03;&#x7528;&#x548C; RMI &#x4E92;&#x64CD;&#x4F5C;&#x3002;&#x5728;&#x4F9D;&#x8D56;&#x4F4E;&#x7248;&#x672C;&#x7684; Common-Collections &#x5305;&#xFF0C;Java &#x5E8F;&#x5217;&#x5316;&#x5B58;&#x5728;&#x5B89;&#x5168;&#x6F0F;&#x6D1E;&#x3002;</p>
+</li>
+<li><p>WebService&#xFF1A;&#x57FA;&#x4E8E; WebService &#x7684;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x534F;&#x8BAE;&#xFF0C;&#x96C6;&#x6210; CXF &#x5B9E;&#x73B0;&#xFF0C;&#x63D0;&#x4F9B;&#x548C;&#x539F;&#x751F; WebService &#x7684;&#x4E92;&#x64CD;&#x4F5C;&#x3002;&#x591A;&#x4E2A;&#x77ED;&#x8FDE;&#x63A5;&#xFF0C;&#x57FA;&#x4E8E; HTTP &#x4F20;&#x8F93;&#xFF0C;&#x540C;&#x6B65;&#x4F20;&#x8F93;&#xFF0C;&#x9002;&#x7528;&#x7CFB;&#x7EDF;&#x96C6;&#x6210;&#x548C;&#x8DE8;&#x8BED;&#x8A00;&#x8C03;&#x7528;&#x3002;</p>
+</li>
+<li><p>HTTP&#xFF1A; &#x57FA;&#x4E8E; Http &#x8868;&#x5355;&#x63D0;&#x4EA4;&#x7684;&#x8FDC;&#x7A0B;&#x8C03;&#x7528;&#x534F;&#x8BAE;&#xFF0C;&#x4F7F;&#x7528; Spring &#x7684; HttpInvoke &#x5B9E;&#x73B0;&#x3002;&#x591A;&#x4E2A;&#x77ED;&#x8FDE;&#x63A5;&#xFF0C;&#x4F20;&#x8F93;&#x534F;&#x8BAE; HTTP&#xFF0C;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x5927;&#x5C0F;&#x6DF7;&#x5408;&#xFF0C;&#x63D0;&#x4F9B;&#x8005;&#x4E2A;&#x6570;&#x591A;&#x4E8E;&#x6D88;&#x8D39;&#x8005;&#xFF0C;&#x9700;&#x8981;&#x7ED9;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x548C;&#x6D4F;&#x89C8;&#x5668; JS &#x8C03;&#x7528;&#x3002;</p>
+</li>
+<li><p>Hessian&#xFF1A;&#x96C6;&#x6210; Hessian &#x670D;&#x52A1;&#xFF0C;&#x57FA;&#x4E8E; HTTP &#x901A;&#x8BAF;&#xFF0C;&#x91C7;&#x7528; Servlet &#x66B4;&#x9732;&#x670D;&#x52A1;&#xFF0C;Dubbo &#x5185;&#x5D4C; Jetty &#x4F5C;&#x4E3A;&#x670D;&#x52A1;&#x5668;&#x65F6;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF0C;&#x63D0;&#x4F9B;&#x4E0E; Hession &#x670D;&#x52A1;&#x4E92;&#x64CD;&#x4F5C;&#x3002;&#x591A;&#x4E2A;&#x77ED;&#x8FDE;&#x63A5;&#xFF0C;&#x540C;&#x6B65; HTTP &#x4F20;&#x8F93;&#xFF0C;Hessian &#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x8F83;&#x5927;&#xFF0C;&#x63D0;&#x4F9B;&#x8005;&#x5927;&#x4E8E;&#x6D88;&#x8D39;&#x8005;&#xFF0C;&#x63D0;&#x4F9B;&#x8005;&#x538B;&#x529B;&#x8F83;&#x5927;&#xFF0C;&#x53EF;&#x4F20;&#x6587;&#x4EF6;&#x3002;</p>
+</li>
+<li><p>Memcache&#xFF1A;&#x57FA;&#x4E8E; Memcache&#x5B9E;&#x73B0;&#x7684; RPC &#x534F;&#x8BAE;&#x3002;</p>
+</li>
+<li><p>Redis&#xFF1A;&#x57FA;&#x4E8E; Redis &#x5B9E;&#x73B0;&#x7684;RPC&#x534F;&#x8BAE;&#x3002;</p>
+</li>
+</ul>
+<h3 id="19dubbo&#x652F;&#x6301;&#x54EA;&#x4E9B;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x5F0F;">19.Dubbo&#x652F;&#x6301;&#x54EA;&#x4E9B;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x5F0F;</h3>
+<p>&#x9ED8;&#x8BA4;&#x4F7F;&#x7528; Hessian &#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x8FD8;&#x6709; Duddo&#x3001;FastJson&#x3001;Java &#x81EA;&#x5E26;&#x5E8F;&#x5217;&#x5316;&#x3002;
+\</p>
+<h3 id="reference">Reference:</h3>
 <p><a href="https://juejin.cn/post/6844904127076499463" target="_blank">https://juejin.cn/post/6844904127076499463</a></p>
 
                                 
@@ -693,7 +944,7 @@
 
             
                 
-                <a href="../MySQL/mysql.html" class="navigation navigation-prev " aria-label="Previous page: MySQL">
+                <a href="../MySQL/mysql.html#4mysql的索引结构为什么使用B+树" class="navigation navigation-prev " aria-label="Previous page: 4.MySQL的索引结构为什么使用B+树">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -709,7 +960,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Dubbo","level":"1.13","depth":1,"next":{"title":"K8S","level":"1.14","depth":1,"path":"K8S/k8s.md","ref":"K8S/k8s.md","articles":[]},"previous":{"title":"MySQL","level":"1.12","depth":1,"path":"MySQL/mysql.md","ref":"MySQL/mysql.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Dubbo/dubbo.md","mtime":"2021-02-24T14:37:24.589Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-24T14:38:07.188Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Dubbo","level":"1.13","depth":1,"next":{"title":"K8S","level":"1.14","depth":1,"path":"K8S/k8s.md","ref":"K8S/k8s.md","articles":[]},"previous":{"title":"4.MySQL的索引结构为什么使用B+树","level":"1.12.4","depth":2,"anchor":"#4mysql的索引结构为什么使用B+树","path":"MySQL/mysql.md","ref":"MySQL/mysql.md#4mysql的索引结构为什么使用B+树","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Dubbo/dubbo.md","mtime":"2021-02-26T10:09:26.184Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-26T09:05:01.762Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
