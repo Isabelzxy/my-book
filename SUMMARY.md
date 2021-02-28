@@ -27,6 +27,7 @@
 
 * [Kafka 常见问题](Kafka/common_problems.md)
 * [Kafka 架构原理](Kafka/architecture.md)
+* [Kafka](Kafka/kafka.md)
 
 * [Redis](Redis/redis.md)
     * [1.Redis为什么是单线程、及高并发快的3大原因详解](Redis/redis.md#1redis为什么是单线程及高并发快的3大原因详解)
@@ -42,6 +43,7 @@
     * [11.Redis为什么用跳表而不用平衡树](Redis/redis.md#11redis为什么用跳表而不用平衡树)
     * [12.Redis有哪些优缺点](Redis/redis.md#12redis有哪些优缺点)
     * [13.Redis线程模型](Redis/redis.md#13redis线程模型)
+    * [14.Bigkey、Hotkey问题](Redis/redis.md#14bigkey、hotkey问题)
 
 * [MySQL](MySQL/mysql.md)
     * [1.mysql的行锁、表锁、间隙锁、意向锁分别是做什么的](MySQL/mysql.md#1mysql的行锁、表锁、间隙锁、意向锁分别是做什么的)
