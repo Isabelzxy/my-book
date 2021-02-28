@@ -2,7 +2,7 @@
 
 本文章所说的 GC 实现没有特殊说明的话，默认指的是 HotSpot 的。
 
-### JVM基础回顾
+### 1.JVM基础回顾
 
 ① 新生代（Young Generation）：大多数对象在新生代中被创建，其中很多对象的生命周期很短。每次新生代的垃圾回收（又称Minor GC）后只有少量对象存活，所以选用复制算法，只需要少量的复制成本就可以完成回收。
 
@@ -12,7 +12,7 @@
 
 ③ 永久代（Perm Generation）：主要存放元数据，例如Class、Method的元信息，与垃圾回收要回收的Java对象关系不大。相对于新生代和年老代来说，该区域的划分对垃圾回收影响比较小。
 
-#### 常见垃圾回收器
+### 2.常见垃圾回收器
 
 不同的垃圾回收器，适用于不同的场景。常用的垃圾回收器：
 
@@ -21,7 +21,7 @@
 - 吞吐量优先（Parallel Scavenge）回收器，侧重于吞吐量的控制。
 - 并发标记清除（CMS，Concurrent Mark Sweep）回收器是一种以获取最短回收停顿时间为目标的回收器，该回收器是基于“标记-清除”算法实现的。
 
-### young gc、old gc、full gc、mixed gc
+### 3.young gc、old gc、full gc、mixed gc
 其实 GC 分为两大类，分别是 Partial GC 和 Full GC。
 **Partial GC 即部分收集**，分为 young gc、old gc、mixed gc。
 
@@ -32,20 +32,24 @@
 **Full GC(Major GC) 即整堆回收**，指的是收取整个堆，包括年轻代、老年代，如果有永久代的话还包括永久代。
 
 #### young gc 触发条件是什么？
+
 大致上可以认为在年轻代的 eden 快要被占满的时候会触发 young gc。
 为什么要说大致上呢？因为有一些收集器的回收实现是在 full gc 前会让先执行以下 young gc。
 比如 Parallel Scavenge，不过有参数可以调整让其不进行 young gc。
 可能还有别的实现也有这种操作，不过正常情况下就当做 eden 区快满了即可。
+
 **eden 快满的触发因素有两个，一个是为对象分配内存不够，一个是为 TLAB 分配内存不够。**
 
 #### full gc 触发条件有哪些？
+
 - 在要进行 young gc 的时候，根据之前统计数据发现年轻代平均晋升大小比现在老年代剩余空间要大，那就会触发 full gc。
 - 有永久代的话如果永久代满了也会触发 full gc。
 - 老年代空间不足，大对象直接在老年代申请分配，如果此时老年代空间不足则会触发 full gc。
 - 担保失败即 promotion failure，新生代的 to 区放不下从 eden 和 from 拷贝过来对象，或者新生代对象 gc 年龄到达阈值需要晋升这两种情况，老年代如果放不下的话都会触发 full gc。
 - 执行 System.gc()、jmap -dump 等命令会触发 full gc。
 
-### 知道 TLAB 吗？
+### 4.知道TLAB吗
+
 一般而言生成对象需要向堆中的新生代申请内存空间，而堆又是全局共享的，像新生代内存又是规整的，是通过一个指针来划分的。
 
 ![jvm_tlab](../_images/jvm_tlab.png)
@@ -84,7 +88,8 @@ TLAB 的思想其实很简单，就是划一块区域给一个线程，这样每
 
 所以总的来说 TLAB 是为了避免对象分配时的竞争而设计的。
 
-### 那 PLAB 知道吗？
+### 5.知道PLAB吗
+
 可以看到和 TLAB 很像，PLAB 即 Promotion Local Allocation Buffers。
 
 用在年轻代对象晋升到老年代时。
@@ -99,7 +104,8 @@ TLAB 的思想其实很简单，就是划一块区域给一个线程，这样每
 
 这和 TLAB 的思想相似。
 
-### 产生 concurrent mode failure 真正的原因
+### 6.产生 concurrent mode failure 真正的原因
+
 ```
 《深入理解Java虚拟机》：由于CMS收集器无法处理“浮动垃圾”（FloatingGarbage），有可能出现“Con-current Mode Failure”失败进而导致另一次完全“Stop The World”的Full GC的产生。
 ```
@@ -120,7 +126,7 @@ foreground 其实就是 Full gc。
 
 也有可能是发起 cms gc 设置的堆的阈值太高。
 
-### 新生代的 GC 如何避免全堆扫描？
+### 7.新生代的 GC 如何避免全堆扫描
 
 在常见的分代 GC 中就是利用记忆集来实现的，记录可能存在的老年代中有新生代的引用的对象地址，来避免全堆扫描。
 
@@ -134,7 +140,7 @@ cms 中需要记录老年代指向年轻代的引用，但是写屏障的实现�
 
 这样做是减少写屏障带来的消耗，毕竟引用的赋值非常的频繁。
 
-### 简单说下 G1 回收流程
+### 8.简单说下 G1 回收流程
 
 G1 从大局上看分为两大阶段，分别是并发标记和对象拷贝。
 
@@ -151,7 +157,7 @@ G1 从大局上看分为两大阶段，分别是并发标记和对象拷贝。
 
 G1 的瓶颈在于对象拷贝阶段，需要花较多的瓶颈来转移对象。
 
-### 简单说下 cms 回收流程
+### 9.简单说下 cms 回收流程
 
 其实从之前问题的 CollectorState 枚举可以得知几个流程了。
 
@@ -165,7 +171,7 @@ G1 的瓶颈在于对象拷贝阶段，需要花较多的瓶颈来转移对象�
 
 cms 的瓶颈就在于重新标记阶段，需要较长花费时间来进行重新扫描。
 
-### GC 调优的两大目标是啥？
+### 10.GC 调优的两大目标是啥
 
 分别是**最短暂停时间(延迟)** 和 **吞吐量**。
 
@@ -186,7 +192,7 @@ cms 的瓶颈就在于重新标记阶段，需要较长花费时间来进行重�
 
 所以调优时候需要明确应用的目标。
 
-### GC 如何调优
+### 11.GC 如何调优
 
 这个问题在面试中很容易问到，抓住核心回答。
 
@@ -273,3 +279,206 @@ https://tech.meituan.com/2017/12/29/jvm-optimize.html
 https://juejin.cn/post/6894435290350845959
 https://tech.meituan.com/2020/11/12/java-9-cms-gc.html 
 https://tech.meituan.com/2017/12/29/jvm-optimize.html
+
+### 12.G1垃圾回收器 vs CMS 垃圾回收器
+
+#### CMS
+
+CMS（Concurrent Mark and Sweep）是以牺牲吞吐量为代价来获得最短停顿时间的垃圾回收器，主要适用于对响应时间的侧重性大于吞吐量的场景。仅针对老年代（Tenured Generation）的回收。
+
+为求达到该目标主要是因为以下两个原因：
+
+- 没有采取compact操作，而是简单的mark and sweep，同时维护了一个free list来管理内存空间，所以也产生了大量的内存碎片。
+- mark and sweep分为多个阶段，其中大部分的阶段的GC线程是和用户线程并发执行，默认的GC线程数为物理CPU核心数的1/4。
+
+因为是并发地进行清理，所以必须预留部分堆空间给正在运行的应用程序，默认情况下在老年代使用了68%及以上的内存的时候就开始CMS。
+
+##### 过程
+
+- 初始标记（initial mark）**Stop The World**
+
+![jvm_cms_1](../_images/java_jvm_cms_1.png)
+
+本阶段需要stop the world，一是标记老年代中所有的GC Roots所指的**直接对象**；二是标记被年轻代中存活对象引用的**直接对象**。因为仅标记少量节点，所以很快就能完成。
+
+- 并发标记（concurrent mark）
+
+![jvm_cms_2](../_images/java_jvm_cms_2.png)
+
+在初始标记的基础上继续往下遍历其他的对象引用并进行标记，，该过程会和用户线程并发地执行，不会发生停顿。这个阶段会从initial mark阶段中所标记的节点往下检索，标记出所有老年代中存活的对象。注意此时会有部分对象的引用被改变，如上图中的current obj原本所引用的节点已经失去了关联。
+
+- 并发预清理（concurrent preclean）
+
+![jvm_cms_3](../_images/java_jvm_cms_3.png)
+
+前一个阶段在并行运行的时候，一些对象的引用已经发生了变化，当这些引用发生变化的时候，JVM会标记堆的这个区域为Dirty Card，这就是 Card Marking。
+
+![jvm_cms_4](../_images/java_jvm_cms_4.png)
+
+在本阶段，那些能够从dirty card对象到达的对象也会被标记，这个标记做完之后，dirty card标记就会被清除了，如上图所示。
+
+总的来说，本阶段会并发地更新并发标记阶段的引用变化和查找在并发标记阶段新进入老年代的对象，如刚晋升的对象和直接被分配在老年代的对象。通过重新扫描，以减少下一阶段的工作。
+
+- 可中止的并发预清理（concurrent abortable preclean）
+
+这个阶段尝试着去承担STW的Final Remark阶段足够多的工作。这个阶段持续的时间依赖好多的因素，由于这个阶段是重复的做相同的事情直到发生aboart的条件之一（比如：重复的次数、多少量的工作、持续的时间等等）才会停止。
+
+- 重新标记 / 最终标记（final remark）**Stop The World**
+
+本阶段需要stop the world，通常来说此次暂时都会比较长，因为并发预清理是并发执行的，对象的引用可能会发生进一步的改变，需要确保在清理之前保持一个正确的对象引用视图，那么就需要stop the world来处理复杂的情况。
+
+- 并发清理（concurrent sweep）
+
+![jvm_cms_5](../_images/java_jvm_cms_5.png)
+
+使用标记-清除法回收老年代的垃圾对象，与用户线程并发执行。
+
+- 并发标记重置（concurrent reset）
+
+清空现场，为下一次GC做准备。
+
+##### GC参数
+
+-XX:+UseConcMarkSweepGC - 启用CMS，同时-XX:+UseParNewGC会被自动打开。
+
+-XX:CMSInitiatingOccupancyFraction - 设置第一次启动CMS的阈值，默认是68%。
+
+-XX:+UseCMSInitiatingOccupancyOnly - 只是用设定的回收阈值，如果不指定，JVM仅在第一次使用设定值，后续则自动调整。
+
+-XX:+CMSPermGenSweepingEnabled - 回收perm区。
+
+-XX:+CMSClassUnloadingEnabled - 相对于并行收集器，CMS收集器默认不会对永久代进行垃圾回收（在1.7中是默认关闭，但是在1.8中是默认打开的）。如果希望对永久代进行垃圾回收，则可以打开此标志，同时打开-XX:+CMSPermGenSweepingEnabled。
+
+-XX:+CMSConcurrentMTEnabled - 并发的CMS阶段将会启动多个GC线程和其他线程并发工作，默认为true。
+
+-XX:+UseCMSCompactAtFullCollection - 在full GC的时候进行整理(mark sweep compact)，默认为true。
+
+-XX:+CMSFullGCsBeforeCompaction - 在上一次CMS并发GC执行过后，到底还要再执行多少次**full GC**（注意不是CMS GC）才会做压缩，默认是0。如果增大这个参数，会使full GC更少做压缩，但也就更容易使CMS的老年代受碎片化问题的困扰。 本来这个参数就是用来配置降低full GC压缩的频率，以期减少某些full GC的暂停时间。CMS回退到full GC时用的算法是mark-sweep-compact，但compaction是可选的，不做的话碎片化会严重些但这次full GC的暂停时间会短些，这是个取舍。
+
+-XX:+CMSParallelRemarkEnabled - 并行remark，以减少remark的等待时间。默认为true。
+
+-XX:+CMSScavengeBeforeRemark - 强制remark之前开始一次minor GC，可以减少remark的等待时间，因为老生代的对象有的会依赖于新生代的对象，当增加了这个命令时会在remark之前执行一次minor GC的操作，从而可以减少老生代到新生代的可到达对象数。默认为false。
+
+#### Garbage First - G1垃圾收集器
+
+G1收集器（或者垃圾优先收集器）的设计初衷是为了尽量缩短处理超大堆时产生的停顿。在回收的时候将对象从一个小堆区复制到另一个小堆区，这意味着G1在回收垃圾的时候同时完成了堆的部分内存压缩，相对于CMS的优势而言就是内存碎片的产生率大大降低。
+
+![jvm_g1_1](../_images/java_jvm_g1_1.png)
+
+heap被划分为一系列大小相等的“小堆区”，也称为region。每个小堆区（region）的大小为1~32MB，整个堆大致要划分出2048个小堆区。
+
+与上一代的垃圾收集器一样在逻辑上被划分Eden、Survivor和老年代，但是各种角色的region个数都不是固定的。**上图**的绿色代表Eden小堆区、黄色为Survivor小堆区、蓝色则为老年代小堆区、而灰色则会未被使用的区域。
+
+##### young GC
+
+young GC主要是对Eden区进行GC，它在Eden空间耗尽时会被触发。在这种情况下，Eden空间存活的对象会被**撤离**（代表复制或者移动）到另外一个或是多个Survivor小堆区，如果Survivor空间不够，Eden空间的部分数据会直接晋升到年老代空间。Survivor区的数据移动到新的Survivor区中，也有部分数据晋升到老年代空间中。最终Eden空间的数据为空，GC停止工作，应用线程继续执行。
+
+NOTE：注意上面一段话中有一个用词— 撤离。英语原意为evacuate，为从一个区域复制或移动到其他区域的意思。如果有阅读国内其他关于G1的文章，可以留意到有些博主将其翻译为”疏散“或者”转移“（转移就不是evacuate的本意了），因为译法的不同所以这里特地拿出来说明一下，为免阅读其他文章会对不同译法而感到蒙圈。
+
+![jvm_g1_2](../_images/java_jvm_g1_2.png)
+
+本阶段如同老一代的垃圾收集器一般，会有Stop The World暂停。同时计算出Eden的大小和Survivor的大小，为下一次young GC做准备。Accounting信息会被保存用于计算大小。如目标暂停时间的东西会被纳入考虑范围当中。这种方法使得resize小堆区更加容易，使小堆区可以根据需要变得更大或者更小。
+
+最后，存活的对象会被撤离至Survivor小堆区和老年代小堆区，如下图所示。
+
+![jvm_g1_3](../_images/java_jvm_g1_3.png)
+
+最近被晋升至老年代的对象用深蓝色表示，Survivor小堆区用绿色表示。
+
+简而言之，G1的young GC规范如下：
+
+- 堆从一个单一的内存空间被划分为众多的小堆区（region）。
+- 新生代的内存由一系列不连续的小堆区所组成。这使得在需要的时候更加容易进行resize。
+- young GC是一个STW事件，所有应用程序线程都会被暂停。
+- young GC会使用多线程并行执行。
+- 存活的对象将会复制到新的Survivor小堆区或者老年代小堆区。
+
+##### mixed GC
+
+###### 并发标记阶段 - Concurrent Marking Phase
+
+- 1.初始标记阶段 - Initial Marking Phase（STW）
+
+存活对象的初始标记是捎带在新生代垃圾收集里面，在GC日志里被记录为GC pause (young)(inital-mark)。
+
+注：我知道上面说的不太像是人话，英文原意为Initial marking of live object is piggybacked on a young generation garbage collection. 可以理解为本阶段与新生代的垃圾回收是密切相关的，另外在本阶段会对GC Roots进行标记。
+
+![jvm_g1_4](../_images/java_jvm_g1_4.png)
+
+- 2.并发标记阶段 - Concurrent Marking Phase
+
+本阶段会与应用程序并发地查找存活的对象，如果找到了空的小堆区（下图中标记为红叉的），他们会在”重新标记阶段“被马上清除。还有决定了活跃度的”accounting“信息也是在本阶段计算的。
+
+![jvm_g1_5](../_images/java_jvm_g1_5.png)
+
+- 3.重新标记阶段 - Remark Phase（STW）
+
+对于G1，它短暂地停止应用线程，停止并发更新日志的写入，处理其中的少量信息，并标记所有在并发标记开始时未被标记的存活对象。这一阶段也执行某些额外的清理，如引用处理（参见 Evacuation Pause log）或者类卸载（class unloading）。空的小堆区被清除和回收，并且现在会计算所有小堆区的活跃度。
+
+![jvm_g1_6](../_images/java_jvm_g1_6.png)
+
+- 4.复制/清除阶段 - Copying/Cleanup Phase（部分STW）
+
+![jvm_g1_7](../_images/java_jvm_g1_7.png)
+
+    *  清除阶段
+       
+        - 执行存活对象的accounting和完全释放空的小堆区（STW）；
+        - 擦除RSets（RSets全称为Remembered Sets，作用是跟踪从外部指向本小堆区的所有引用。主要是记录老年代到新生代之间的引用的一个集合，至于新生代之间的引用-记录会在每次GC时被扫描，所以不用记录新生代到新生代之间的引用）（STW）
+        - 重置空的小堆区并将他们归还给free list，也就是空闲表。（Concurrent）
+    
+    * 复制阶段
+
+        - 本阶段有STW停顿去撤离存活对象到新的未被使用的区域。在新生代小堆区完成时会被记录为 [GC pause (young)]，如果在新生代和老年代的小堆区一起执行时会被记录为[GC Pause (mixed)]
+
+    本阶段有STW停顿去撤离存活对象到新的未被使用的区域。在新生代小堆区完成时会被记录为 [GC pause (young)]，如果在新生代和老年代的小堆区一起执行时会被记录为[GC Pause (mixed)]
+
+![jvm_g1_8](../_images/java_jvm_g1_8.png)
+
+- 5.复制/清除阶段后 - After Copying/Cleanup Phase
+
+![jvm_g1_9](../_images/java_jvm_g1_9.png)
+
+如下图所示，所选择的小堆区都被回收和整理为深蓝色的小堆区和深绿色的小堆区。
+
+![jvm_g1_10](../_images/java_jvm_g1_10.png)
+
+总结一下G1收集器对老年代的收集
+
+    * 并发标记阶段
+        - 在应用程序运行时并发地计算活跃度信息
+        - 活跃度信息甄别出哪个小堆区是在撤离暂停时最适合回收的
+    * 重新标记阶段
+        - 使用Snapshot-at-the-Beginning (SATB) 算法，这个算法比CMS所使用的要快得多
+        - 回收空的小堆区
+    * 复制/清除阶段
+        - 新生代和老年代同时被回收
+        - 老年代的小堆区会根据活跃度而进行部分的选定
+
+##### GC参数
+
+-XX:+UseG1GC 启用G1垃圾收集器
+
+-XX:MaxGCPauseMillis=n 指定期望的最大停顿时间，有大概率保证在该范围内，但并非一定能实现。
+
+-XX:G1HeapRegionSize=n 设置的 G1 区域的大小。值是 2 的幂，范围是 1 MB 到 32 MB 之间。目标是根据最小的 Java 堆大小划分出约 2048 个区域。
+
+-XX:ParallelGCThreads=n 设置 STW 工作线程数的值。将 n 的值设置为逻辑处理器的数量。n 的值与逻辑处理器的数量相同，最多为 8。如果逻辑处理器不止八个，则将 n 的值设置为逻辑处理器数的 5/8 左右。这适用于大多数情况，除非是较大的 SPARC 系统，其中 n 的值可以是逻辑处理器数的 5/16 左右。
+
+-XX:ConcGCThreads=n 设置并行标记的线程数。将 n 设置为并行垃圾回收线程数 (ParallelGCThreads) 的 1/4 左右。
+
+-XX:InitiatingHeapOccupancyPercent=45 设置触发标记周期的 Java 堆占用率阈值。默认占用率是整个 Java 堆的 45%。
+
+-XX:G1ReservePercent=n 设置堆内存保留为假天花板的总量，以降低提升失败的可能性，默认值是 10。
+
+NOTE：避免使用 -Xmn 选项或 -XX:NewRatio 等其他相关选项显式设置年轻代大小。固定年轻代的大小会覆盖暂停时间目标。
+
+#### 总结
+
+如果是使用旧的老年代收集器，在面临超大堆的时候会显得力不从心，通常一次full GC就会暂停3s以上。CMS的出现真的是救星，如今G1也在蓬勃发展，并据说将会在JDK9中成为默认的垃圾收集器。我们在上面对老年代收集进行测试时，的确发现了G1收集器相对于CMS是有优势的（当然这可能跟我使用的JDK版本有关，如果使用更旧的JDK，例如1.7的话可能会发现G1不如CMS，这不奇怪）。但是如果我们并不是运行超大堆的Java程序，或者线上的CMS收集器已经运行得很好，我们就不必再迁移到G1了。
+
+
+
+
+    
+
