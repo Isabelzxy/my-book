@@ -120,7 +120,7 @@ MVCC会给每行元组加一些辅助字段，记录创建版本号和删除版�
         将当前事务的版本号保存至行的删除版本号
 
 ## 索引
-### 聚簇索引与非聚簇索引（也叫二级索引）
+### 聚簇索引与非聚簇索引
 
 B+Tree结构都可以用在MyISAM和InnoDB上。mysql中，不同的存储引擎对索引的实现方式不同，大致说下MyISAM和InnoDB两种存储引擎。
  
@@ -169,6 +169,16 @@ explain执行计划包含的信息
 
 其中最重要的字段为：id、type、key、rows、Extra
 
+我们只需要关注结果中的几列：
+
+|列名	|备注|
+|---|---|
+|type (重要)|	本次查询表联接类型，从这里可以看到本次查询大概的效率|
+|key|	最终选择的索引，如果没有索引的话，本次查询效率通常很差|
+|key_len|	本次查询用于结果过滤的索引实际长度，参见另一篇分享（FAQ系列-解读EXPLAIN执行计划中的key_len）|
+|rows（重要）|	预计需要扫描的记录数，预计需要扫描的记录数越小越好|
+|Extra（重要）|	额外附加信息，主要确认是否出现 **Using filesort、Using temporary**这两种情况|
+
 #### select_type
 
 查询的类型，主要是用于区分普通查询、联合查询、子查询等复杂的查询
@@ -187,6 +197,23 @@ explain执行计划包含的信息
 **system > const > eq_ref > ref**> fulltext > ref_or_null > index_merge > unique_subquery > index_subquery > **range > index > ALL**
 
 一般来说，**好的sql查询至少达到range级别，最好能达到ref**
+
+首先看下 type 有几种结果，分别表示什么意思：
+
+|类型|	备注|
+|---|---|
+|ALL|	执行full table scan，这是最差的一种方式|
+|index|	执行full index scan，并且可以通过索引完成结果扫描并且直接从索引中取的想要的结果数据，也就是可以避免回表，比ALL略好，因为索引文件通常比全部数据要来的小|
+|range|	利用索引进行范围查询，比index略好|
+|index_subquery|	子查询中可以用到索引|
+|unique_subquery|	子查询中可以用到唯一索引，效率比 index_subquery 更高些|
+|index_merge|	可以利用index merge特性用到多个索引，提高查询效率|
+|ref_or_null|	表连接类型是ref，但进行扫描的索引列中可能包含NULL值|
+|fulltext|	全文检索|
+|ref|	基于索引的等值查询，或者表间等值连接|
+|eq_ref|	表连接时基于主键或非NULL的唯一索引完成扫描，比ref略好|
+|const|	基于主键或唯一索引唯一值查询，最多返回一条结果，比eq_ref略好|
+|system|	查询对象表只有一行数据，这是最好的情况|
 
 #### possible_keys
 
@@ -212,6 +239,18 @@ explain执行计划包含的信息
 #### Extra
 
 不适合在其他字段中显示，但是十分重要的额外信息
+
+再来看下Extra列中需要注意出现的几种情况：
+
+|关键字|	备注|
+|---|---|
+|Using filesort	|将用外部排序而不是按照索引顺序排列结果，数据较少时从内存排序，否则需要在磁盘完成排序，代价非常高，需要添加合适的索引|
+|Using temporary|	需要创建一个临时表来存储结果，这通常发生在对没有索引的列进行GROUP BY时，或者ORDER BY里的列不都在索引里，需要添加合适的索引|
+|Using index|	表示MySQL使用覆盖索引避免全表扫描，不需要再到表中进行二次查找数据，这是比较好的结果之一。注意不要和type中的index类型混淆|
+|Using where|	通常是进行了全表引扫描后再用WHERE子句完成结果过滤，需要添加合适的索引|
+|Impossible WHERE	|对Where子句判断的结果总是false而不能选择任何数据，例如where 1=0，无需过多关注|
+|Select tables optimized away|	使用某些聚合函数来访问存在索引的某个字段时，优化器会通过索引直接一次定位到所需要的数据行完成整个查询，例如MIN()\MAX()，这种也是比较好的结果之一|
+
 
 
 <br/><br/>

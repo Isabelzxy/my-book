@@ -5,6 +5,12 @@
 * [SQL优化](DB/sql.md)
 * [数据库设计](DB/db_design.md)
 * [事务隔离级别,索引,性能](DB/transaction.md)
+    * [事务的四种隔离级别](DB/transaction.md#事务的四种隔离级别)
+    * [数据库锁](DB/transaction.md#数据库锁)
+    * [InnoDB 如何解决幻读](DB/transaction.md#innodb-如何解决幻读)
+    * [聚簇索引与非聚簇索引](DB/transaction.md#聚簇索引与非聚簇索引)
+    * [MySQL分页offset过大性能问题与优化](DB/transaction.md#mysql分页offset过大性能问题与优化)
+    * [利用EXPLAIN分析sql语句的性能](DB/transaction.md#利用explain分析sql语句的性能)
 
 * [JAVA 集合](JAVA/collections.md)
     * [1.ArrayList与LinkedList的实现和区别](JAVA/collections.md#1arraylist与linkedlist的实现和区别)
@@ -13,6 +19,14 @@
     * [4.TreeMap了解数据结构、了解其key对象为什么必须要实现Compare接口、如何用它实现一致性哈希](JAVA/collections.md#4treemap了解数据结构、了解其key对象为什么必须要实现compare接口、如何用它实现一致性哈希)
 
 * [JAVA 锁](JAVA/all_locks.md)
+    * [1.乐观锁 VS 悲观锁](JAVA/all_locks.md#1乐观锁-vs-悲观锁)
+    * [2.自旋锁 VS 适应性自旋锁](JAVA/all_locks.md#2自旋锁-vs-适应性自旋锁)
+    * [3.无锁 VS 偏向锁 VS 轻量级锁 VS 重量级锁](JAVA/all_locks.md#3无锁-vs-偏向锁-vs-轻量级锁-vs-重量级锁)
+    * [4.公平锁 VS 非公平锁](JAVA/all_locks.md#4公平锁-vs-非公平锁)
+    * [5.可重入锁 VS 非可重入锁](JAVA/all_locks.md#5可重入锁-vs-非可重入锁)
+    * [6.独享锁 VS 共享锁](JAVA/all_locks.md#6独享锁-vs-共享锁)
+    * [7.Synchronized 与 ReentrantLock 的区别](JAVA/all_locks.md#7synchronized-与-reentrantlock-的区别)
+
 * [JAVA 并发编程](JAVA/threads.md)
     * [1.了解LinkedBlockingQueue、ArrayBlockingQueue、DelayQueue、SynchronousQueue](JAVA/threads.md#1了解linkedblockingqueue、arrayblockingqueue、delayqueue、synchronousqueue)
     * [2.了解AtomicInteger实现原理、CAS适用场景、如何实现乐观锁](JAVA/threads.md#2了解atomicinteger实现原理、cas适用场景、如何实现乐观锁)
@@ -61,7 +75,7 @@
     * [1.mysql的行锁、表锁、间隙锁、意向锁分别是做什么的](MySQL/mysql.md#1mysql的行锁、表锁、间隙锁、意向锁分别是做什么的)
     * [2.Mysql联合索引最左匹配原则](MySQL/mysql.md#2mysql联合索引最左匹配原则)
     * [3.mysql的慢查询优化方式](MySQL/mysql.md#3mysql的慢查询优化方式)
-    * [4.MySQL的索引结构为什么使用B+树](MySQL/mysql.md#4mysql的索引结构为什么使用B+树)
+    * [4.MySQL的索引结构为什么使用B+树](MySQL/mysql.md#4mysql的索引结构为什么使用b加树)
 
 * [Dubbo](Dubbo/dubbo.md)
     * [1.为什么要用Dubbo](Dubbo/dubbo.md#1为什么要用dubbo)
