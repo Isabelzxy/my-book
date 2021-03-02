@@ -256,7 +256,11 @@ explain执行计划包含的信息
 <br/><br/>
 #### References
 #### MYSQL 中的锁 及 索引结构
-Refer to https://www.aneasystone.com/archives/2017/11/solving-dead-locks-two.html
+Refer to 
+
+https://www.aneasystone.com/archives/2017/11/solving-dead-locks-two.html
+
+https://juejin.cn/post/6855129007336521741
 
 #### Explain
 https://blog.csdn.net/wuseyukui/article/details/71512793

@@ -1014,6 +1014,84 @@
             
         </li>
     
+        <li class="chapter " data-level="1.13.5" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#5yyisam-和-innodb-的区别有哪些">
+            
+                    
+                    5.MyISAM 和 InnoDB 的区别有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.6" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#6mysql数据库系列之数据库设计原则">
+            
+                    
+                    6.MySQL数据库系列之数据库设计原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.7" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#7mysql三大日志-binlog、redo-log和undo-log">
+            
+                    
+                    7.mysql三大日志-binlog、redo log和undo log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.8" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#8mysql数据库大表添加字段的方法">
+            
+                    
+                    8.MySql数据库大表添加字段的方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.9" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#9如何实现-mysql-的读写分离">
+            
+                    
+                    9.如何实现 MySQL 的读写分离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.10" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#10mysql数据库之分库分表方案">
+            
+                    
+                    10.MySQL数据库之分库分表方案
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1361,7 +1439,10 @@
 <h3 id="1jvm&#x57FA;&#x7840;&#x56DE;&#x987E;">1.JVM&#x57FA;&#x7840;&#x56DE;&#x987E;</h3>
 <p>&#x2460; &#x65B0;&#x751F;&#x4EE3;&#xFF08;Young Generation&#xFF09;&#xFF1A;&#x5927;&#x591A;&#x6570;&#x5BF9;&#x8C61;&#x5728;&#x65B0;&#x751F;&#x4EE3;&#x4E2D;&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x5176;&#x4E2D;&#x5F88;&#x591A;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5F88;&#x77ED;&#x3002;&#x6BCF;&#x6B21;&#x65B0;&#x751F;&#x4EE3;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#xFF08;&#x53C8;&#x79F0;Minor GC&#xFF09;&#x540E;&#x53EA;&#x6709;&#x5C11;&#x91CF;&#x5BF9;&#x8C61;&#x5B58;&#x6D3B;&#xFF0C;&#x6240;&#x4EE5;&#x9009;&#x7528;&#x590D;&#x5236;&#x7B97;&#x6CD5;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5C11;&#x91CF;&#x7684;&#x590D;&#x5236;&#x6210;&#x672C;&#x5C31;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x56DE;&#x6536;&#x3002;</p>
 <p>&#x65B0;&#x751F;&#x4EE3;&#x5185;&#x53C8;&#x5206;&#x4E09;&#x4E2A;&#x533A;&#xFF1A;&#x4E00;&#x4E2A;Eden&#x533A;&#xFF0C;&#x4E24;&#x4E2A;Survivor&#x533A;&#xFF08;&#x4E00;&#x822C;&#x800C;&#x8A00;&#xFF09;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x5BF9;&#x8C61;&#x5728;Eden&#x533A;&#x4E2D;&#x751F;&#x6210;&#x3002;&#x5F53;Eden&#x533A;&#x6EE1;&#x65F6;&#xFF0C;&#x8FD8;&#x5B58;&#x6D3B;&#x7684;&#x5BF9;&#x8C61;&#x5C06;&#x88AB;&#x590D;&#x5236;&#x5230;&#x4E24;&#x4E2A;Survivor&#x533A;&#xFF08;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#xFF09;&#x3002;&#x5F53;&#x8FD9;&#x4E2A;Survivor&#x533A;&#x6EE1;&#x65F6;&#xFF0C;&#x6B64;&#x533A;&#x7684;&#x5B58;&#x6D3B;&#x4E14;&#x4E0D;&#x6EE1;&#x8DB3;&#x201C;&#x664B;&#x5347;&#x201D;&#x6761;&#x4EF6;&#x7684;&#x5BF9;&#x8C61;&#x5C06;&#x88AB;&#x590D;&#x5236;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;Survivor&#x533A;&#x3002;&#x5BF9;&#x8C61;&#x6BCF;&#x7ECF;&#x5386;&#x4E00;&#x6B21;Minor GC&#xFF0C;&#x5E74;&#x9F84;&#x52A0;1&#xFF0C;&#x8FBE;&#x5230;&#x201C;&#x664B;&#x5347;&#x5E74;&#x9F84;&#x9608;&#x503C;&#x201D;&#x540E;&#xFF0C;&#x88AB;&#x653E;&#x5230;&#x8001;&#x5E74;&#x4EE3;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E5F;&#x79F0;&#x4E3A;&#x201C;&#x664B;&#x5347;&#x201D;&#x3002;&#x663E;&#x7136;&#xFF0C;&#x201C;&#x664B;&#x5347;&#x5E74;&#x9F84;&#x9608;&#x503C;&#x201D;&#x7684;&#x5927;&#x5C0F;&#x76F4;&#x63A5;&#x5F71;&#x54CD;&#x7740;&#x5BF9;&#x8C61;&#x5728;&#x65B0;&#x751F;&#x4EE3;&#x4E2D;&#x7684;&#x505C;&#x7559;&#x65F6;&#x95F4;&#xFF0C;&#x5728;Serial&#x548C;ParNew GC&#x4E24;&#x79CD;&#x56DE;&#x6536;&#x5668;&#x4E2D;&#xFF0C;&#x201C;&#x664B;&#x5347;&#x5E74;&#x9F84;&#x9608;&#x503C;&#x201D;&#x901A;&#x8FC7;&#x53C2;&#x6570;MaxTenuringThreshold&#x8BBE;&#x5B9A;&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;15&#x3002;</p>
+<p>1:1:8</p>
+<p>1/3</p>
 <p>&#x2461; &#x8001;&#x5E74;&#x4EE3;&#xFF08;Old Generation&#xFF09;&#xFF1A;&#x5728;&#x65B0;&#x751F;&#x4EE3;&#x4E2D;&#x7ECF;&#x5386;&#x4E86;N&#x6B21;&#x5783;&#x573E;&#x56DE;&#x6536;&#x540E;&#x4ECD;&#x7136;&#x5B58;&#x6D3B;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5C31;&#x4F1A;&#x88AB;&#x653E;&#x5230;&#x5E74;&#x8001;&#x4EE3;&#xFF0C;&#x8BE5;&#x533A;&#x57DF;&#x4E2D;&#x5BF9;&#x8C61;&#x5B58;&#x6D3B;&#x7387;&#x9AD8;&#x3002;&#x8001;&#x5E74;&#x4EE3;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#xFF08;&#x53C8;&#x79F0;Major GC&#xFF09;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x201C;&#x6807;&#x8BB0;-&#x6E05;&#x7406;&#x201D;&#x6216;&#x201C;&#x6807;&#x8BB0;-&#x6574;&#x7406;&#x201D;&#x7B97;&#x6CD5;&#x3002;&#x6574;&#x5806;&#x5305;&#x62EC;&#x65B0;&#x751F;&#x4EE3;&#x548C;&#x8001;&#x5E74;&#x4EE3;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x79F0;&#x4E3A;Full GC&#xFF08;HotSpot VM&#x91CC;&#xFF0C;&#x9664;&#x4E86;CMS&#x4E4B;&#x5916;&#xFF0C;&#x5176;&#x5B83;&#x80FD;&#x6536;&#x96C6;&#x8001;&#x5E74;&#x4EE3;&#x7684;GC&#x90FD;&#x4F1A;&#x540C;&#x65F6;&#x6536;&#x96C6;&#x6574;&#x4E2A;GC&#x5806;&#xFF0C;&#x5305;&#x62EC;&#x65B0;&#x751F;&#x4EE3;&#xFF09;&#x3002;</p>
+<p>2/3</p>
 <p>&#x2462; &#x6C38;&#x4E45;&#x4EE3;&#xFF08;Perm Generation&#xFF09;&#xFF1A;&#x4E3B;&#x8981;&#x5B58;&#x653E;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x4F8B;&#x5982;Class&#x3001;Method&#x7684;&#x5143;&#x4FE1;&#x606F;&#xFF0C;&#x4E0E;&#x5783;&#x573E;&#x56DE;&#x6536;&#x8981;&#x56DE;&#x6536;&#x7684;Java&#x5BF9;&#x8C61;&#x5173;&#x7CFB;&#x4E0D;&#x5927;&#x3002;&#x76F8;&#x5BF9;&#x4E8E;&#x65B0;&#x751F;&#x4EE3;&#x548C;&#x5E74;&#x8001;&#x4EE3;&#x6765;&#x8BF4;&#xFF0C;&#x8BE5;&#x533A;&#x57DF;&#x7684;&#x5212;&#x5206;&#x5BF9;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5F71;&#x54CD;&#x6BD4;&#x8F83;&#x5C0F;&#x3002;</p>
 <h3 id="2&#x5E38;&#x89C1;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;">2.&#x5E38;&#x89C1;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;</h3>
 <p>&#x4E0D;&#x540C;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x573A;&#x666F;&#x3002;&#x5E38;&#x7528;&#x7684;&#x5783;&#x573E;&#x56DE;&#x6536;&#x5668;&#xFF1A;</p>
@@ -1692,6 +1773,76 @@
 <p>NOTE&#xFF1A;&#x907F;&#x514D;&#x4F7F;&#x7528; -Xmn &#x9009;&#x9879;&#x6216; -XX:NewRatio &#x7B49;&#x5176;&#x4ED6;&#x76F8;&#x5173;&#x9009;&#x9879;&#x663E;&#x5F0F;&#x8BBE;&#x7F6E;&#x5E74;&#x8F7B;&#x4EE3;&#x5927;&#x5C0F;&#x3002;&#x56FA;&#x5B9A;&#x5E74;&#x8F7B;&#x4EE3;&#x7684;&#x5927;&#x5C0F;&#x4F1A;&#x8986;&#x76D6;&#x6682;&#x505C;&#x65F6;&#x95F4;&#x76EE;&#x6807;&#x3002;</p>
 <h4 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h4>
 <p>&#x5982;&#x679C;&#x662F;&#x4F7F;&#x7528;&#x65E7;&#x7684;&#x8001;&#x5E74;&#x4EE3;&#x6536;&#x96C6;&#x5668;&#xFF0C;&#x5728;&#x9762;&#x4E34;&#x8D85;&#x5927;&#x5806;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x663E;&#x5F97;&#x529B;&#x4E0D;&#x4ECE;&#x5FC3;&#xFF0C;&#x901A;&#x5E38;&#x4E00;&#x6B21;full GC&#x5C31;&#x4F1A;&#x6682;&#x505C;3s&#x4EE5;&#x4E0A;&#x3002;CMS&#x7684;&#x51FA;&#x73B0;&#x771F;&#x7684;&#x662F;&#x6551;&#x661F;&#xFF0C;&#x5982;&#x4ECA;G1&#x4E5F;&#x5728;&#x84EC;&#x52C3;&#x53D1;&#x5C55;&#xFF0C;&#x5E76;&#x636E;&#x8BF4;&#x5C06;&#x4F1A;&#x5728;JDK9&#x4E2D;&#x6210;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x3002;&#x6211;&#x4EEC;&#x5728;&#x4E0A;&#x9762;&#x5BF9;&#x8001;&#x5E74;&#x4EE3;&#x6536;&#x96C6;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#x65F6;&#xFF0C;&#x7684;&#x786E;&#x53D1;&#x73B0;&#x4E86;G1&#x6536;&#x96C6;&#x5668;&#x76F8;&#x5BF9;&#x4E8E;CMS&#x662F;&#x6709;&#x4F18;&#x52BF;&#x7684;&#xFF08;&#x5F53;&#x7136;&#x8FD9;&#x53EF;&#x80FD;&#x8DDF;&#x6211;&#x4F7F;&#x7528;&#x7684;JDK&#x7248;&#x672C;&#x6709;&#x5173;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x66F4;&#x65E7;&#x7684;JDK&#xFF0C;&#x4F8B;&#x5982;1.7&#x7684;&#x8BDD;&#x53EF;&#x80FD;&#x4F1A;&#x53D1;&#x73B0;G1&#x4E0D;&#x5982;CMS&#xFF0C;&#x8FD9;&#x4E0D;&#x5947;&#x602A;&#xFF09;&#x3002;&#x4F46;&#x662F;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x662F;&#x8FD0;&#x884C;&#x8D85;&#x5927;&#x5806;&#x7684;Java&#x7A0B;&#x5E8F;&#xFF0C;&#x6216;&#x8005;&#x7EBF;&#x4E0A;&#x7684;CMS&#x6536;&#x96C6;&#x5668;&#x5DF2;&#x7ECF;&#x8FD0;&#x884C;&#x5F97;&#x5F88;&#x597D;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x5FC5;&#x518D;&#x8FC1;&#x79FB;&#x5230;G1&#x4E86;&#x3002;</p>
+<h3 id="13&#x54EA;&#x4E9B;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;gc-roots">13.&#x54EA;&#x4E9B;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;GC Roots</h3>
+<h4 id="gc-root&#x4F5C;&#x7528;">GC Root&#x4F5C;&#x7528;</h4>
+<p>GC Root&#x662F;&#x5F88;&#x7279;&#x6B8A;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5728;GC&#x8FDB;&#x884C;&#x5783;&#x573E;&#x56DE;&#x6536;&#x4E4B;&#x524D;&#xFF0C;&#x8981;&#x5224;&#x65AD;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x88AB;&#x56DE;&#x6536;&#x3002;&#x8FD9;&#x91CC;&#x5224;&#x65AD;&#x7684;&#x6807;&#x51C6;&#x9700;&#x8981;&#x6709;&#x4F9D;&#x636E;&#x3002;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5982;&#x4F55;&#x786E;&#x5B9A;&#x662F;&#x4E0D;&#x662F;&#x88AB;&#x5F15;&#x7528;&#xFF0C;&#x6216;&#x8005;&#x88AB;&#x4F7F;&#x7528;&#x3002;</p>
+<p><img src="../_images/java_jvm_gcroot_1.png" alt="jvm_gcroot_1"></p>
+<p>&#x5728;Java&#x4E2D;&#xFF0C;&#x6709;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x7684;&#x5BF9;&#x8C61;&#x79F0;&#x4E3A;GC&#x5783;&#x573E;&#x56DE;&#x6536;&#x6839;&#xFF08;GC Root&#xFF09;&#x3002; &#x5B83;&#x4EEC;&#x5145;&#x5F53;&#x5783;&#x573E;&#x6536;&#x96C6;&#x6807;&#x8BB0;&#x673A;&#x5236;&#x7684;&#x6839;&#x5BF9;&#x8C61;&#xFF08;GC Root Object&#xFF09;&#x3002;
+GC Root Object&#x53EF;&#x4EE5;&#x4ECE;Java&#x5806;&#x7684;&#x5916;&#x90E8;&#x8BBF;&#x95EE;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0D;&#x53D7;GC&#x7684;&#x81EA;&#x52A8;&#x56DE;&#x6536;&#x7BA1;&#x5236;&#x3002;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x6709;&#x514D;&#x6B7B;&#x91D1;&#x724C;&#x7684;Java&#x5BF9;&#x8C61;&#x3002;GC&#x8FD9;&#x5957;&#x6CD5;&#x5F8B;&#x4F53;&#x7CFB;&#x7EA6;&#x675F;&#x4E0D;&#x4E86;&#x5B83;&#x4EEC;&#x3002;</p>
+<h4 id="gc-roots&#x7C7B;&#x578B;">GC Roots&#x7C7B;&#x578B;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System Class &#x7C7B;&#x578B;</td>
+<td>&#x7531;&#x5F15;&#x5BFC;&#x7A0B;&#x5E8F;/&#x7CFB;&#x7EDF;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x52A0;&#x8F7D;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x4F8B;&#x5982;&#xFF0C;rt.jar&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;&#xFF08;&#x5982;java.util&#x3002;*&#xFF09;&#x3002;</td>
+</tr>
+<tr>
+<td>JNI Local &#x7C7B;&#x578B;</td>
+<td>&#x672C;&#x673A;&#x539F;&#x751F;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x4F8B;&#x5982;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684;JNI&#x4EE3;&#x7801;&#x6216;JVM&#x5185;&#x90E8;&#x4EE3;&#x7801;&#x3002;</td>
+</tr>
+<tr>
+<td>JNI Global &#x7C7B;&#x578B;</td>
+<td>&#x672C;&#x673A;&#x539F;&#x751F;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x4F8B;&#x5982;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684;JNI&#x4EE3;&#x7801;&#x6216;JVM&#x5185;&#x90E8;&#x4EE3;&#x7801;&#x3002;</td>
+</tr>
+<tr>
+<td>Thread Block &#x7C7B;&#x578B;</td>
+<td>&#x4ECE;&#x5F53;&#x524D;&#x6D3B;&#x52A8;&#x7684;&#x7EBF;&#x7A0B;&#x5757;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x3002;</td>
+</tr>
+<tr>
+<td>Thread &#x7C7B;&#x578B;</td>
+<td>&#x5DF2;&#x7ECF;&#x542F;&#x52A8;&#x8FD0;&#x884C;&#x7684;&#x7EBF;&#x7A0B; thread.</td>
+</tr>
+<tr>
+<td>Busy Monitor &#x7C7B;&#x578B;</td>
+<td>&#x5FD9;&#x788C;&#x7684;&#x76D1;&#x89C6;&#x5668;&#x4EE3;&#x7801;&#xFF0C;&#x8C03;&#x7528;&#x4E86;wait&#xFF08;&#xFF09;&#x6216;notify&#xFF08;&#xFF09;&#x6216;&#x5DF2;&#x540C;&#x6B65;&#x7684;&#x6240;&#x6709;&#x4EE3;&#x7801;&#x3002;</td>
+</tr>
+<tr>
+<td>Java Local &#x7C7B;&#x578B;</td>
+<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x6216;&#x4ECD;&#x5728;&#x7EBF;&#x7A0B;&#x5806;&#x6808;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x5C40;&#x90E8;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x3002;</td>
+</tr>
+<tr>
+<td>Native Stack &#x7C7B;&#x578B;</td>
+<td>&#x672C;&#x673A;&#x539F;&#x751F;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x8F93;&#x5165;&#x6216;&#x8F93;&#x51FA;&#x53C2;&#x6570;&#xFF0C;&#x4F8B;&#x5982;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684;JNI&#x4EE3;&#x7801;&#x6216;JVM&#x5185;&#x90E8;&#x4EE3;&#x7801;&#x3002;</td>
+</tr>
+<tr>
+<td>Finalizable &#x7C7B;&#x578B;</td>
+<td>&#x53EF;&#x7EC8;&#x7ED3;&#x5BF9;&#x8C61;&#xFF0C;&#x961F;&#x5217;&#x4E2D;&#x7B49;&#x5F85;&#x5176;&#x7EC8;&#x7ED3;&#x5668;&#x8FD0;&#x884C;&#x7684;&#x5BF9;&#x8C61;.</td>
+</tr>
+<tr>
+<td>Unfinalized &#x7C7B;&#x578B;</td>
+<td>&#x672A;&#x7EC8;&#x7ED3;&#x5BF9;&#x8C61;&#xFF0C;&#x5177;&#x6709;finalize&#x65B9;&#x6CD5;&#x4F46;&#x5C1A;&#x672A;&#x5B8C;&#x6210;&#x4E14;&#x5C1A;&#x672A;&#x5728;&#x7EC8;&#x7ED3;&#x5668;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;.</td>
+</tr>
+<tr>
+<td>Unreachable &#x7C7B;&#x578B;</td>
+<td>&#x4E0D;&#x53EF;&#x8FBE;&#x5BF9;&#x8C61;&#xFF0C;&#x65E0;&#x6CD5;&#x4ECE;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x6839;&#x8BBF;&#x95EE;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;MAT&#x4F7F;&#x7528;.</td>
+</tr>
+<tr>
+<td>Java Stack Frame &#x7C7B;&#x578B;</td>
+<td>Java&#x6808;&#x6846;&#x67B6;&#xFF0C;&#x6301;&#x6709;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x3002;&#x89E3;&#x6790;Dump&#x65F6;&#x4F7F;&#x7528;.</td>
+</tr>
+<tr>
+<td>Unknown &#x7C7B;&#x578B;</td>
+<td>&#x6839;&#x7C7B;&#x578B;&#x672A;&#x77E5;&#x5BF9;&#x8C61;&#x3002;MAT&#x5206;&#x6790;Dump&#x6587;&#x4EF6;&#x65F6;&#x7684;&#x7279;&#x6B8A;&#x7C7B;&#x578B;&#xFF0C;&#x5F52;&#x7C7B;&#x4E0D;&#x53EF;&#x77E5;&#x7C7B;&#x578B;.</td>
+</tr>
+</tbody>
+</table>
+<p>&#x50CF;&#x7CFB;&#x7EDF;&#x7C7B;&#x578B;&#x3001;JNI&#x4EE3;&#x7801;&#x3001;&#x8FD0;&#x884C;&#x7684;&#x7EBF;&#x7A0B;&#x3001;&#x540C;&#x6B65;&#x533A;&#x7684;&#x5BF9;&#x8C61;&#x7B49;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x597D;&#x7406;&#x89E3;&#x7684;&#xFF0C;&#x57FA;&#x672C;&#x662F;&#x4E0D;&#x53D7;&#x7BA1;&#x63A7;&#x3002;Finalizable&#x3001;Unfinalized&#x548C;Unreachable&#x90FD;&#x662F;GC&#x56DE;&#x6536;&#x4E2D;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5269;&#x4E0B;&#x7684;Unknown&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;MAT&#x5206;&#x6790;&#x8FC7;&#x7A0B;&#x4E2D;&#x5176;&#x4ED6;&#x4E0D;&#x53EF;&#x77E5;&#x5BF9;&#x8C61;&#x51C6;&#x5907;&#x7684;Root&#x7C7B;&#x578B;&#x3002;</p>
 
                                 
                                 </section>
@@ -1735,7 +1886,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JVM 分代GC","level":"1.8","depth":1,"next":{"title":"1.JVM基础回顾","level":"1.8.1","depth":2,"anchor":"#1jvm基础回顾","path":"JAVA/jvm.md","ref":"JAVA/jvm.md#1jvm基础回顾","articles":[]},"previous":{"title":"8.CopyOnWriteArrayList并发容器","level":"1.7.8","depth":2,"anchor":"#8copyonwritearraylist并发容器","path":"JAVA/threads.md","ref":"JAVA/threads.md#8copyonwritearraylist并发容器","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"JAVA/jvm.md","mtime":"2021-02-28T05:14:04.076Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-28T06:28:00.907Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JVM 分代GC","level":"1.8","depth":1,"next":{"title":"1.JVM基础回顾","level":"1.8.1","depth":2,"anchor":"#1jvm基础回顾","path":"JAVA/jvm.md","ref":"JAVA/jvm.md#1jvm基础回顾","articles":[]},"previous":{"title":"8.CopyOnWriteArrayList并发容器","level":"1.7.8","depth":2,"anchor":"#8copyonwritearraylist并发容器","path":"JAVA/threads.md","ref":"JAVA/threads.md#8copyonwritearraylist并发容器","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"JAVA/jvm.md","mtime":"2021-03-02T08:04:20.402Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-02T07:44:47.109Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -76,6 +76,12 @@
     * [2.Mysql联合索引最左匹配原则](MySQL/mysql.md#2mysql联合索引最左匹配原则)
     * [3.mysql的慢查询优化方式](MySQL/mysql.md#3mysql的慢查询优化方式)
     * [4.MySQL的索引结构为什么使用B+树](MySQL/mysql.md#4mysql的索引结构为什么使用b加树)
+    * [5.MyISAM 和 InnoDB 的区别有哪些](MySQL/mysql.md#5yyisam-和-innodb-的区别有哪些)
+    * [6.MySQL数据库系列之数据库设计原则](MySQL/mysql.md#6mysql数据库系列之数据库设计原则)
+    * [7.mysql三大日志-binlog、redo log和undo log](MySQL/mysql.md#7mysql三大日志-binlog、redo-log和undo-log)
+    * [8.MySql数据库大表添加字段的方法](MySQL/mysql.md#8mysql数据库大表添加字段的方法)
+    * [9.如何实现 MySQL 的读写分离](MySQL/mysql.md#9如何实现-mysql-的读写分离)
+    * [10.MySQL数据库之分库分表方案](MySQL/mysql.md#10mysql数据库之分库分表方案)
 
 * [Dubbo](Dubbo/dubbo.md)
     * [1.为什么要用Dubbo](Dubbo/dubbo.md#1为什么要用dubbo)
