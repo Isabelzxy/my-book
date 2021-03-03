@@ -37,7 +37,7 @@
     * [7.ConcurrentHashMap高并发机制](JAVA/threads.md#7concurrenthashmap高并发机制)
     * [8.CopyOnWriteArrayList并发容器](JAVA/threads.md#8copyonwritearraylist并发容器)
 
-* [JVM 分代GC](JAVA/jvm.md)
+* [JVM](JAVA/jvm.md)
     * [1.JVM基础回顾](JAVA/jvm.md#1jvm基础回顾)
     * [2.常见垃圾回收器](JAVA/jvm.md#2常见垃圾回收器)
     * [3.young gc、old gc、full gc、mixed gc](JAVA/jvm.md#3young-gc、old-gc、full-gc、mixed-gc)
@@ -50,6 +50,7 @@
     * [10.GC 调优的两大目标是啥](JAVA/jvm.md#10gc-调优的两大目标是啥)
     * [11.GC 如何调优](JAVA/jvm.md#11gc-如何调优)
     * [12.G1垃圾回收器 vs CMS 垃圾回收器](JAVA/jvm.md#12g1垃圾回收器-vs-cms-垃圾回收器)
+    * [13.哪些对象可以作为GC Roots](JAVA/jvm.md#13哪些对象可以作为gc-roots)
 
 * [Kafka 常见问题](Kafka/common_problems.md)
 * [Kafka 架构原理](Kafka/architecture.md)
