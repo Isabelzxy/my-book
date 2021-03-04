@@ -136,7 +136,35 @@ kafka 中的每个 partition 中的消息在写入时都是有序的，而且单
 同一个group中的worker，只有一个worker能拿到这个数据。<br/>
 换句话说，对于同一个topic，每个group都可以拿到同样的所有数据，但是数据进入group后只能被其中的一个worker消费。group内的worker可以使用多线程或多进程来实现，也可以将进程分散在多台机器上，worker的数量通常不超过partition的数量，且二者最好保持整数倍关系，因为Kafka在设计时假定了一个partition只能被一个worker消费（同一group内）。
 
-### 11.Kafka中的消息丢失、重复消费、乱序问题
+### 11.ZooKeeper在Kafka中的作用是什么
+
+Apache Kafka是一个使用Zookeeper构建的分布式系统。虽然，Zookeeper的主要作用是在集群中的不同节点之间建立协调。但是，如果任何节点失败，我们还使用Zookeeper从先前提交的偏移量中恢复，因为它做周期性提交偏移量工作。
+
+- 管理 broker 与 consumer 的动态加入与离开。（Producer 不需要管理，随便一台计算机都可以作为Producer 向 Kakfa Broker 发消息）
+- 触发负载均衡，当 broker 或 consumer 加入或离开时会触发负载均衡算法，使得一个 consumer group 内的多个 consumer 的消费负载平衡。（因为一个 comsumer 消费一个或多个partition，一个 partition 只能被一个 consumer 消费）
+- 维护消费关系及每个 partition 的消费信息。
+
+### 12.重要参数有哪些
+
+acks
+- acks = 0 : 不接收发送结果
+- acks = all 或者 -1: 表示发送消息时，不仅要写入本地日志，还要等待所有副本写入成功。
+- acks = 1: 写入本地日志即可，是上述二者的折衷方案，也是默认值。
+
+retries
+- 默认为 0，即不重试，立即失败。
+- 一个大于 0 的值，表示重试次数。
+
+buffer.memory
+- 指定 producer 端用于缓存消息的缓冲区的大小，默认 32M；
+- 适当提升该参数值，可以增加一定的吞吐量。
+
+batch.size
+- producer 会将发送分区的多条数据封装在一个 batch 中进行发送，这里的参数指的就是 batch 的大小。
+- 该参数值过小的话，会降低吞吐量，过大的话，会带来较大的内存压力。
+- 默认为 16K，建议合理增加该值。
+
+### 13.Kafka中的消息丢失、重复消费、乱序问题
 
 #### 消息发送
 
@@ -185,35 +213,55 @@ enable.auto.commit=false 关闭自动提交位移，在消息被完整处理之�
 
 参数配置 max.in.flight.requests.per.connection = 1 ，但同时会限制 producer 未响应请求的数量，即造成在 broker 响应之前，producer 无法再向该 broker 发送数据。
 
-### 12.ZooKeeper在Kafka中的作用是什么
+### 14.Kafka消息积压问题及处理策略
 
-Apache Kafka是一个使用Zookeeper构建的分布式系统。虽然，Zookeeper的主要作用是在集群中的不同节点之间建立协调。但是，如果任何节点失败，我们还使用Zookeeper从先前提交的偏移量中恢复，因为它做周期性提交偏移量工作。
+通常情况下，企业中会采取轮询或者随机的方式，通过Kafka的producer向Kafka集群生产数据，来尽可能保证Kafk分区之间的数据是均匀分布的。
 
-- 管理 broker 与 consumer 的动态加入与离开。（Producer 不需要管理，随便一台计算机都可以作为Producer 向 Kakfa Broker 发消息）
-- 触发负载均衡，当 broker 或 consumer 加入或离开时会触发负载均衡算法，使得一个 consumer group 内的多个 consumer 的消费负载平衡。（因为一个 comsumer 消费一个或多个partition，一个 partition 只能被一个 consumer 消费）
-- 维护消费关系及每个 partition 的消费信息。
+在分区数据均匀分布的前提下，如果我们针对要处理的topic数据量等因素，设计出合理的Kafka分区数量。对于一些实时任务，比如Spark Streaming/Structured-Streaming、Flink和Kafka集成的应用，消费端不存在长时间"挂掉"的情况即数据一直在持续被消费，那么一般不会产生Kafka数据积压的情况。
 
-### 13.重要参数有哪些
+但是这些都是有前提的，当一些意外或者不合理的分区数设置情况的发生，积压问题就不可避免。
 
-acks
-- acks = 0 : 不接收发送结果
-- acks = all 或者 -1: 表示发送消息时，不仅要写入本地日志，还要等待所有副本写入成功。
-- acks = 1: 写入本地日志即可，是上述二者的折衷方案，也是默认值。
+#### Kafka消息积压的典型场景
 
-retries
-- 默认为 0，即不重试，立即失败。
-- 一个大于 0 的值，表示重试次数。
+##### 1.实时/消费任务挂掉
 
-buffer.memory
-- 指定 producer 端用于缓存消息的缓冲区的大小，默认 32M；
-- 适当提升该参数值，可以增加一定的吞吐量。
+比如，我们写的实时应用因为某种原因挂掉了，并且这个任务没有被监控程序监控发现通知相关负责人，负责人又没有写自动拉起任务的脚本进行重启。
 
-batch.size
-- producer 会将发送分区的多条数据封装在一个 batch 中进行发送，这里的参数指的就是 batch 的大小。
-- 该参数值过小的话，会降低吞吐量，过大的话，会带来较大的内存压力。
-- 默认为 16K，建议合理增加该值。
+那么在我们重新启动这个实时应用进行消费之前，这段时间的消息就会被滞后处理，如果数据量很大，可就不是简单重启应用直接消费就能解决的。
 
-### 14.controller 的职责有哪些
+##### 2.Kafka分区数设置的不合理（太少）和消费者"消费能力"不足
+
+Kafka单分区生产消息的速度qps通常很高，如果消费者因为某些原因（比如受业务逻辑复杂度影响，消费时间会有所不同），就会出现消费滞后的情况。
+
+此外，Kafka分区数是Kafka并行度调优的最小单元，如果Kafka分区数设置的太少，会影响Kafka consumer消费的吞吐量。
+
+##### 3.Kafka消息的key不均匀，导致分区间数据不均衡
+
+在使用Kafka producer消息时，可以为消息指定key，但是要求key要均匀，否则会出现Kafka分区间数据不均衡。
+
+#### 针对上述的情况，有什么好的办法处理数据积压呢？
+
+一般情况下，针对性的解决办法有以下几种：
+
+##### 1.实时/消费任务挂掉导致的消费滞后
+
+- a.任务重新启动后直接消费最新的消息，对于"滞后"的历史数据采用离线程序进行"补漏"。
+
+此外，建议将任务纳入监控体系，当任务出现问题时，及时通知相关负责人处理。当然任务重启脚本也是要有的，还要求实时框架异常处理能力要强，避免数据不规范导致的不能重新拉起任务。
+    
+- b.任务启动从上次提交offset处开始消费处理
+
+如果积压的数据量很大，需要增加任务的处理能力，比如增加资源，让任务能尽可能的快速消费处理，并赶上消费最新的消息
+
+##### 2.Kafka分区少了
+
+如果数据量很大，合理的增加Kafka分区数是关键。如果利用的是Spark流和Kafka direct approach方式，也可以对KafkaRDD进行repartition重分区，增加并行度处理。
+
+##### 3.由于Kafka消息key设置的不合理，导致分区数据不均衡
+
+可以在Kafka producer处，给key加随机后缀，使其均衡。
+
+### 15.controller 的职责有哪些
 
 在 kafka 集群中，某个 broker 会被选举承担特殊的角色，即控制器（controller），用于管理和协调 kafka 集群，具体职责如下：
 
@@ -227,7 +275,7 @@ batch.size
 - 受控关闭
 - controller leader 选举
 
-### 15.broker、leader、controller挂掉会怎样
+### 16.broker、leader、controller挂掉会怎样
 
 #### broker 挂了会怎样？（broker failover）
 
@@ -250,7 +298,7 @@ kafka 集群启动后，所有的 broker 都会被 controller 监控，一旦有
 - 由于每个 broker 都会在 zookeeper 的 "/controller" 节点注册 watcher，当 controller 宕机时 zookeeper 中的临时节点消失
 - 所有存活的 broker 收到 fire 的通知，每个 broker 都尝试创建新的 controller path，只有一个竞选成功并当选为 controller。
 
-# 16.Page Cache 带来的好处
+# 17.Page Cache 带来的好处
 
 Linux 总会把系统中还没被应用使用的内存挪来给 Page Cache，在命令行输入free，或者 cat /proc/meminfo ，“Cached”的部分就是 Page Cache。
 
