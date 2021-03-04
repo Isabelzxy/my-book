@@ -124,20 +124,7 @@
                 <a href="db_design.html">
             
                     
-                    数据库设计
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="transaction.html">
-            
-                <a href="transaction.html">
-            
-                    
-                    事务隔离级别,索引,性能
+                    数据库表数据原则
             
                 </a>
             
@@ -146,12 +133,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.1" data-path="db_design.html">
             
-                <a href="transaction.html#事务的四种隔离级别">
+                <a href="db_design.html#1-库名">
             
                     
-                    事务的四种隔离级别
+                    1. 库名
             
                 </a>
             
@@ -159,12 +146,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.2" data-path="db_design.html">
             
-                <a href="transaction.html#数据库锁">
+                <a href="db_design.html#2-表结构">
             
                     
-                    数据库锁
+                    2. 表结构
             
                 </a>
             
@@ -172,12 +159,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.3" data-path="db_design.html">
             
-                <a href="transaction.html#innodb-如何解决幻读">
+                <a href="db_design.html#3-列数据类型优化">
             
                     
-                    InnoDB 如何解决幻读
+                    3. 列数据类型优化
             
                 </a>
             
@@ -185,12 +172,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.4" data-path="db_design.html">
             
-                <a href="transaction.html#聚簇索引与非聚簇索引">
+                <a href="db_design.html#4-索引设计">
             
                     
-                    聚簇索引与非聚簇索引
+                    4. 索引设计
             
                 </a>
             
@@ -198,12 +185,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.5" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.5" data-path="db_design.html">
             
-                <a href="transaction.html#mysql分页offset过大性能问题与优化">
+                <a href="db_design.html#5-分库分表、分区表">
             
                     
-                    MySQL分页offset过大性能问题与优化
+                    5. 分库分表、分区表
             
                 </a>
             
@@ -211,12 +198,70 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.6" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.6" data-path="db_design.html">
             
-                <a href="transaction.html#利用explain分析sql语句的性能">
+                <a href="db_design.html#6-字符集">
             
                     
-                    利用EXPLAIN分析sql语句的性能
+                    6. 字符集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="db_design.html">
+            
+                <a href="db_design.html#补充:mysql中数据库设计原则">
+            
+                    
+                    补充:MySQL中数据库设计原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../JAVA/basic.html">
+            
+                <a href="../JAVA/basic.html">
+            
+                    
+                    JAVA 基础问题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../JAVA/basic.html">
+            
+                <a href="../JAVA/basic.html#1object类中方法详解">
+            
+                    
+                    1.Object类中方法详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../JAVA/basic.html">
+            
+                <a href="../JAVA/basic.html#2hashmap的长度为什么设置为2的n次方">
+            
+                    
+                    2.HashMap的长度为什么设置为2的n次方
             
                 </a>
             
@@ -721,33 +766,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="../Kafka/common_problems.html">
-            
-                <a href="../Kafka/common_problems.html">
-            
-                    
-                    Kafka 常见问题
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.10" data-path="../Kafka/architecture.html">
-            
-                <a href="../Kafka/architecture.html">
-            
-                    
-                    Kafka 架构原理
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.11" data-path="../Kafka/kafka.html">
+        <li class="chapter " data-level="1.9" data-path="../Kafka/kafka.html">
             
                 <a href="../Kafka/kafka.html">
             
@@ -758,9 +777,223 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#1kafka都有哪些特点">
+            
+                    
+                    1.Kafka都有哪些特点
+            
+                </a>
+            
+
+            
         </li>
     
-        <li class="chapter " data-level="1.12" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.9.2" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#2kafka-如何做到高吞吐、低延迟的">
+            
+                    
+                    2.Kafka 如何做到高吞吐、低延迟的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#3在哪些场景下会选择-kafka">
+            
+                    
+                    3.在哪些场景下会选择 Kafka
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#4kafka-的设计架构">
+            
+                    
+                    4.Kafka 的设计架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#5kafka-的-工作流程">
+            
+                    
+                    5.Kafka 的 工作流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#6kafka存储机制">
+            
+                    
+                    6.Kafka存储机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#7offset存储方式">
+            
+                    
+                    7.offset存储方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#8kafka-分区partition的目的">
+            
+                    
+                    8.Kafka 分区(Partition)的目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#9kafka-是如何做到消息的有序性">
+            
+                    
+                    9.Kafka 是如何做到消息的有序性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#10kafka中consumer-group-是什么概念">
+            
+                    
+                    10.kafka中consumer group 是什么概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.11" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#11kafka中的消息丢失、重复消费、乱序问题">
+            
+                    
+                    11.Kafka中的消息丢失、重复消费、乱序问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.12" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#12zookeeper在kafka中的作用是什么">
+            
+                    
+                    12.ZooKeeper在Kafka中的作用是什么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.13" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#13重要参数有哪些">
+            
+                    
+                    13.重要参数有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.14" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#14controller-的职责有哪些">
+            
+                    
+                    14.controller 的职责有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.15" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#15broker、leader、controller挂掉会怎样">
+            
+                    
+                    15.broker、leader、controller挂掉会怎样
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.16" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#16page-cache-带来的好处">
+            
+                    
+                    16.Page Cache 带来的好处
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html">
             
@@ -774,7 +1007,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.12.1" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.1" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#1redis为什么是单线程及高并发快的3大原因详解">
             
@@ -787,7 +1020,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.2" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.2" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#2单线程的redis如何利用多核cpu机器">
             
@@ -800,7 +1033,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.3" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.3" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#3redis的内存淘汰策略">
             
@@ -813,7 +1046,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.4" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.4" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#4redis如何持久化数据">
             
@@ -826,7 +1059,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.5" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.5" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#5redis有哪几种数据结构">
             
@@ -839,7 +1072,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.6" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.6" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#6redis集群有哪几种形式">
             
@@ -852,7 +1085,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.7" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.7" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#7有海量key和value都比较小的数据，在redis中如何存储才更省内存">
             
@@ -865,7 +1098,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.8" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.8" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#8如何保证redis和db中的数据一致性">
             
@@ -878,7 +1111,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.9" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.9" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#9如何解决缓存穿透和缓存雪崩">
             
@@ -891,7 +1124,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.10" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.10" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#10如何用redis实现分布式锁">
             
@@ -904,7 +1137,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.11" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.11" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#11redis为什么用跳表而不用平衡树">
             
@@ -917,7 +1150,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.12" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.12" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#12redis有哪些优缺点">
             
@@ -930,7 +1163,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.13" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.13" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#13redis线程模型">
             
@@ -943,7 +1176,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.14" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.14" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#14bigkey、hotkey问题">
             
@@ -961,7 +1194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11" data-path="../MySQL/mysql.html">
             
                 <a href="../MySQL/mysql.html">
             
@@ -975,12 +1208,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.13.1" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.1" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#1mysql的行锁、表锁、间隙锁、意向锁分别是做什么的">
+                <a href="../MySQL/mysql.html#1事务的四种隔离级别">
             
                     
-                    1.mysql的行锁、表锁、间隙锁、意向锁分别是做什么的
+                    1.事务的四种隔离级别
             
                 </a>
             
@@ -988,12 +1221,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.2" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.2" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#2mysql联合索引最左匹配原则">
+                <a href="../MySQL/mysql.html#2mysql数据库锁">
             
                     
-                    2.Mysql联合索引最左匹配原则
+                    2.MySQL数据库锁
             
                 </a>
             
@@ -1001,12 +1234,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.3" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.3" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#3mysql的慢查询优化方式">
+                <a href="../MySQL/mysql.html#3聚簇索引与非聚簇索引">
             
                     
-                    3.mysql的慢查询优化方式
+                    3.聚簇索引与非聚簇索引
             
                 </a>
             
@@ -1014,12 +1247,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.4" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.4" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#4mysql的索引结构为什么使用b加树">
+                <a href="../MySQL/mysql.html#4mysql联合索引最左匹配原则">
             
                     
-                    4.MySQL的索引结构为什么使用B+树
+                    4.Mysql联合索引最左匹配原则
             
                 </a>
             
@@ -1027,12 +1260,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.5" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.5" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#5yyisam-和-innodb-的区别有哪些">
+                <a href="../MySQL/mysql.html#5利用explain分析sql语句的性能">
             
                     
-                    5.MyISAM 和 InnoDB 的区别有哪些
+                    5.利用EXPLAIN分析sql语句的性能
             
                 </a>
             
@@ -1040,12 +1273,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.6" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.6" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#6mysql数据库系列之数据库设计原则">
+                <a href="../MySQL/mysql.html#6mysql的慢查询优化方式">
             
                     
-                    6.MySQL数据库系列之数据库设计原则
+                    6.mysql的慢查询优化方式
             
                 </a>
             
@@ -1053,12 +1286,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.7" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.7" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#7mysql三大日志-binlog、redo-log和undo-log">
+                <a href="../MySQL/mysql.html#7mysql的索引结构为什么使用b加树">
             
                     
-                    7.mysql三大日志-binlog、redo log和undo log
+                    7.MySQL的索引结构为什么使用B+树
             
                 </a>
             
@@ -1066,12 +1299,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.8" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.8" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#8mysql数据库大表添加字段的方法">
+                <a href="../MySQL/mysql.html#8myisam-和-innodb-的区别有哪些">
             
                     
-                    8.MySql数据库大表添加字段的方法
+                    8.MyISAM 和 InnoDB 的区别有哪些
             
                 </a>
             
@@ -1079,12 +1312,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.9" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.9" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#9如何实现-mysql-的读写分离">
+                <a href="../MySQL/mysql.html#9mysql数据库设计原则">
             
                     
-                    9.如何实现 MySQL 的读写分离
+                    9.MySQL数据库设计原则
             
                 </a>
             
@@ -1092,12 +1325,64 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.10" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.10" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#10mysql数据库之分库分表方案">
+                <a href="../MySQL/mysql.html#10mysql三大日志binlog、redo-log和undo-log">
             
                     
-                    10.MySQL数据库之分库分表方案
+                    10.mysql三大日志binlog、redo log和undo log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.11" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#11mysql数据库大表添加字段的方法">
+            
+                    
+                    11.MySql数据库大表添加字段的方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.12" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#12如何实现-mysql-的读写分离">
+            
+                    
+                    12.如何实现 MySQL 的读写分离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.13" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#13mysql数据库之分库分表方案">
+            
+                    
+                    13.MySQL数据库之分库分表方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.14" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#14mysql分页offset过大性能问题与优化">
+            
+                    
+                    14.MySQL分页offset过大性能问题与优化
             
                 </a>
             
@@ -1110,7 +1395,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html">
             
@@ -1124,7 +1409,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.14.1" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.1" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#1为什么要用dubbo">
             
@@ -1137,7 +1422,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.2" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.2" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#2dubbo是什么">
             
@@ -1150,7 +1435,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.3" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.3" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#3dubbo的使用场景有哪些">
             
@@ -1163,7 +1448,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.4" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.4" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#4dubbo核心功能有哪些">
             
@@ -1176,7 +1461,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.5" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.5" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#5dubbo核心组件有哪些">
             
@@ -1189,7 +1474,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.6" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.6" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#6dubbo服务器注册与发现的流程">
             
@@ -1202,7 +1487,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.7" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.7" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#7dubbo的整体架构设计有哪些分层">
             
@@ -1215,7 +1500,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.8" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.8" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#8dubbomonitor实现原理">
             
@@ -1228,7 +1513,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.9" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.9" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#9dubbo和springcloud有什么哪些区别">
             
@@ -1241,7 +1526,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.10" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.10" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#10dubbo有哪些注册中心">
             
@@ -1254,7 +1539,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.11" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.11" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#11dubbo集群提供了哪些负载均衡策略">
             
@@ -1267,7 +1552,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.12" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.12" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#12dubbo的集群容错方案有哪些">
             
@@ -1280,7 +1565,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.13" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.13" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#13默认的容错方案是failovercluster">
             
@@ -1293,7 +1578,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.14" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.14" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#14说说核心的配置有哪些">
             
@@ -1306,7 +1591,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.15" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.15" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#15dubbo超时设置有哪些方式">
             
@@ -1319,7 +1604,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.16" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.16" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#16服务调用超时会怎么样">
             
@@ -1332,7 +1617,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.17" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.17" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#18dubbo支持哪些协议，它们的优缺点有哪些">
             
@@ -1345,7 +1630,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.18" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.18" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#19dubbo支持哪些序列化方式">
             
@@ -1363,7 +1648,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15" data-path="../K8S/k8s.html">
+        <li class="chapter " data-level="1.13" data-path="../K8S/k8s.html">
             
                 <a href="../K8S/k8s.html">
             
@@ -1376,20 +1661,39 @@
             
         </li>
     
-        <li class="chapter " data-level="1.16" >
+        <li class="chapter " data-level="1.14" data-path="../Spring/spring.html">
             
-                <span>
+                <a href="../Spring/spring.html">
             
                     
-                    Spring Framework
+                    Spring Frameworks
             
-                </span>
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../Spring/spring.html">
+            
+                <a href="../Spring/spring.html#1spring-中经典的-9-种设计模式">
+            
+                    
+                    1.Spring 中经典的 9 种设计模式
+            
+                </a>
             
 
             
         </li>
     
-        <li class="chapter " data-level="1.17" >
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
             
                 <span>
             
@@ -1399,6 +1703,64 @@
                 </span>
             
 
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../架构设计/arch.html">
+            
+                <a href="../架构设计/arch.html">
+            
+                    
+                    架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../架构设计/codereview.html">
+            
+                <a href="../架构设计/codereview.html">
+            
+                    
+                    Code Review
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../架构设计/codereview.html">
+            
+                <a href="../架构设计/codereview.html#code-review-checklist">
+            
+                    
+                    Code Review Checklist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="../架构设计/codereview.html">
+            
+                <a href="../架构设计/codereview.html#常见code-review过程中发现的问题">
+            
+                    
+                    常见Code Review过程中发现的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -1475,6 +1837,20 @@
 &#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x5C06;&#x8868;&#x4E2D;&#x7684;&#x7A7A;&#x95F4;&#x788E;&#x7247;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x6D88;&#x9664;&#x7531;&#x4E8E;&#x5220;&#x9664;&#x6216;&#x8005;&#x66F4;&#x65B0;&#x9020;&#x6210;&#x7684;&#x7A7A;&#x95F4;&#x6D6A;&#x8D39;&#xFF0C;&#x4F46;OPTIMIZE TABLE &#x547D;&#x4EE4;&#x53EA;&#x5BF9;MyISAM&#x3001; BDB &#x548C;InnoDB&#x8868;&#x8D77;&#x4F5C;&#x7528;
 &#x6CE8;&#x610F;&#xFF1A; analyze&#x3001;check&#x3001;optimize&#x6267;&#x884C;&#x671F;&#x95F4;&#x5C06;&#x5BF9;&#x8868;&#x8FDB;&#x884C;&#x9501;&#x5B9A;&#xFF0C;&#x56E0;&#x6B64;&#x4E00;&#x5B9A;&#x6CE8;&#x610F;&#x8981;&#x5728;MySQL&#x6570;&#x636E;&#x5E93;&#x4E0D;&#x7E41;&#x5FD9;&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#x3002;</li>
 </ol>
+<h3 id="mysql-&#x4F18;&#x5316;-sql">MySQL &#x4F18;&#x5316; SQL</h3>
+<ul>
+<li><p>1.&#x6700;&#x5DE6;&#x524D;&#x7F00;&#x5339;&#x914D;&#x539F;&#x5219;&#xFF0C;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x539F;&#x5219;&#xFF0C;mysql&#x4F1A;&#x4E00;&#x76F4;&#x5411;&#x53F3;&#x5339;&#x914D;&#x76F4;&#x5230;&#x9047;&#x5230;&#x8303;&#x56F4;&#x67E5;&#x8BE2;(&gt;&#x3001;&lt;&#x3001;between&#x3001;like)&#x5C31;&#x505C;&#x6B62;&#x5339;&#x914D;&#xFF0C;&#x6BD4;&#x5982;a = 1 and b = 2 and c &gt; 3 and d = 4 &#x5982;&#x679C;&#x5EFA;&#x7ACB;(a,b,c,d)&#x987A;&#x5E8F;&#x7684;&#x7D22;&#x5F15;&#xFF0C;d&#x662F;&#x7528;&#x4E0D;&#x5230;&#x7D22;&#x5F15;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x5EFA;&#x7ACB;(a,b,d,c)&#x7684;&#x7D22;&#x5F15;&#x5219;&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x5230;&#xFF0C;a,b,d&#x7684;&#x987A;&#x5E8F;&#x53EF;&#x4EE5;&#x4EFB;&#x610F;&#x8C03;&#x6574;&#xFF1B;</p>
+</li>
+<li><p>2.=&#x548C;in&#x53EF;&#x4EE5;&#x4E71;&#x5E8F;&#xFF0C;&#x6BD4;&#x5982;a = 1 and b = 2 and c = 3 &#x5EFA;&#x7ACB;(a,b,c)&#x7D22;&#x5F15;&#x53EF;&#x4EE5;&#x4EFB;&#x610F;&#x987A;&#x5E8F;&#xFF0C;mysql&#x7684;&#x67E5;&#x8BE2;&#x4F18;&#x5316;&#x5668;&#x4F1A;&#x5E2E;&#x4F60;&#x4F18;&#x5316;&#x6210;&#x7D22;&#x5F15;&#x53EF;&#x4EE5;&#x8BC6;&#x522B;&#x7684;&#x5F62;&#x5F0F;&#xFF1B;</p>
+</li>
+<li><p>3.&#x5C3D;&#x91CF;&#x9009;&#x62E9;&#x533A;&#x5206;&#x5EA6;&#x9AD8;&#x7684;&#x5217;&#x4F5C;&#x4E3A;&#x7D22;&#x5F15;,&#x533A;&#x5206;&#x5EA6;&#x7684;&#x516C;&#x5F0F;&#x662F;count(distinct col)/count(*)&#xFF0C;&#x8868;&#x793A;&#x5B57;&#x6BB5;&#x4E0D;&#x91CD;&#x590D;&#x7684;&#x6BD4;&#x4F8B;&#xFF0C;&#x6BD4;&#x4F8B;&#x8D8A;&#x5927;&#x6211;&#x4EEC;&#x626B;&#x63CF;&#x7684;&#x8BB0;&#x5F55;&#x6570;&#x8D8A;&#x5C11;&#xFF0C;&#x552F;&#x4E00;&#x952E;&#x7684;&#x533A;&#x5206;&#x5EA6;&#x662F;1&#xFF0C;&#x800C;&#x4E00;&#x4E9B;&#x72B6;&#x6001;&#x3001;&#x6027;&#x522B;&#x5B57;&#x6BB5;&#x53EF;&#x80FD;&#x5728;&#x5927;&#x6570;&#x636E;&#x9762;&#x524D;&#x533A;&#x5206;&#x5EA6;&#x5C31;&#x662F;0&#xFF0C;&#x90A3;&#x53EF;&#x80FD;&#x6709;&#x4EBA;&#x4F1A;&#x95EE;&#xFF0C;&#x8FD9;&#x4E2A;&#x6BD4;&#x4F8B;&#x6709;&#x4EC0;&#x4E48;&#x7ECF;&#x9A8C;&#x503C;&#x5417;&#xFF1F;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E0D;&#x540C;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x4E5F;&#x5F88;&#x96BE;&#x786E;&#x5B9A;&#xFF0C;&#x4E00;&#x822C;&#x9700;&#x8981;join&#x7684;&#x5B57;&#x6BB5;&#x6211;&#x4EEC;&#x90FD;&#x8981;&#x6C42;&#x662F;0.1&#x4EE5;&#x4E0A;&#xFF0C;&#x5373;&#x5E73;&#x5747;1&#x6761;&#x626B;&#x63CF;10&#x6761;&#x8BB0;&#x5F55;&#xFF1B;</p>
+</li>
+<li><p>4.&#x7D22;&#x5F15;&#x5217;&#x4E0D;&#x80FD;&#x53C2;&#x4E0E;&#x8BA1;&#x7B97;&#xFF0C;&#x4FDD;&#x6301;&#x5217;&#x201C;&#x5E72;&#x51C0;&#x201D;&#xFF0C;&#x6BD4;&#x5982;from_unixtime(create_time) = &#x2019;2014-05-29&#x2019;&#x5C31;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x5230;&#x7D22;&#x5F15;&#xFF0C;&#x539F;&#x56E0;&#x5F88;&#x7B80;&#x5355;&#xFF0C;b+&#x6811;&#x4E2D;&#x5B58;&#x7684;&#x90FD;&#x662F;&#x6570;&#x636E;&#x8868;&#x4E2D;&#x7684;&#x5B57;&#x6BB5;&#x503C;&#xFF0C;&#x4F46;&#x8FDB;&#x884C;&#x68C0;&#x7D22;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x628A;&#x6240;&#x6709;&#x5143;&#x7D20;&#x90FD;&#x5E94;&#x7528;&#x51FD;&#x6570;&#x624D;&#x80FD;&#x6BD4;&#x8F83;&#xFF0C;&#x663E;&#x7136;&#x6210;&#x672C;&#x592A;&#x5927;&#x3002;&#x6240;&#x4EE5;&#x8BED;&#x53E5;&#x5E94;&#x8BE5;&#x5199;&#x6210;create_time = unix_timestamp(&#x2019;2014-05-29&#x2019;);</p>
+</li>
+<li><p>5.&#x5C3D;&#x91CF;&#x7684;&#x6269;&#x5C55;&#x7D22;&#x5F15;&#xFF0C;&#x4E0D;&#x8981;&#x65B0;&#x5EFA;&#x7D22;&#x5F15;&#x3002;&#x6BD4;&#x5982;&#x8868;&#x4E2D;&#x5DF2;&#x7ECF;&#x6709;a&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x73B0;&#x5728;&#x8981;&#x52A0;(a,b)&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x90A3;&#x4E48;&#x53EA;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x539F;&#x6765;&#x7684;&#x7D22;&#x5F15;&#x5373;&#x53EF;&#x3002;</p>
+</li>
+</ul>
+<p>&#x5E38;&#x7528;&#x7684;&#x5957;&#x8DEF;&#x662F;&#x5728;&#x5B9A;&#x4F4D;&#x5230;&#x6162;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#x4E4B;&#x540E;&#xFF0C;&#x4F7F;&#x7528; EXPLAIN + SQL &#x6765;&#x4E86;&#x89E3; MySQL &#x5728;&#x6267;&#x884C;&#x8FD9;&#x6761;&#x6570;&#x636E;&#x65F6;&#x7684;&#x4E00;&#x4E9B;&#x7EC6;&#x8282;&#xFF0C;&#x6BD4;&#x5982;&#x662F;&#x5426;&#x8FDB;&#x884C;&#x4E86;&#x4F18;&#x5316;&#x3001;&#x662F;&#x5426;&#x4F7F;&#x7528;&#x4E86;&#x7D22;&#x5F15;&#x7B49;&#x7B49;&#x3002;&#x57FA;&#x4E8E; Explain &#x7684;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x6839;&#x636E; MySQL &#x7684;&#x6267;&#x884C;&#x7EC6;&#x8282;&#x8FDB;&#x4E00;&#x6B65;&#x5206;&#x6790;&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x4F18;&#x5316;&#x641C;&#x7D22;&#x3001;&#x600E;&#x6837;&#x4F18;&#x5316;&#x7D22;&#x5F15;&#x3002;</p>
 
                                 
                                 </section>
@@ -1507,7 +1883,7 @@
                 </a>
                 
                 
-                <a href="db_design.html" class="navigation navigation-next " aria-label="Next page: 数据库设计">
+                <a href="db_design.html" class="navigation navigation-next " aria-label="Next page: 数据库表数据原则">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1518,7 +1894,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SQL优化","level":"1.2","depth":1,"next":{"title":"数据库设计","level":"1.3","depth":1,"path":"DB/db_design.md","ref":"DB/db_design.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"DB/sql.md","mtime":"2021-02-26T10:12:12.453Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-02T08:24:19.986Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SQL优化","level":"1.2","depth":1,"next":{"title":"数据库表数据原则","level":"1.3","depth":1,"path":"DB/db_design.md","ref":"DB/db_design.md","articles":[{"title":"1. 库名","level":"1.3.1","depth":2,"anchor":"#1-库名","path":"DB/db_design.md","ref":"DB/db_design.md#1-库名","articles":[]},{"title":"2. 表结构","level":"1.3.2","depth":2,"anchor":"#2-表结构","path":"DB/db_design.md","ref":"DB/db_design.md#2-表结构","articles":[]},{"title":"3. 列数据类型优化","level":"1.3.3","depth":2,"anchor":"#3-列数据类型优化","path":"DB/db_design.md","ref":"DB/db_design.md#3-列数据类型优化","articles":[]},{"title":"4. 索引设计","level":"1.3.4","depth":2,"anchor":"#4-索引设计","path":"DB/db_design.md","ref":"DB/db_design.md#4-索引设计","articles":[]},{"title":"5. 分库分表、分区表","level":"1.3.5","depth":2,"anchor":"#5-分库分表、分区表","path":"DB/db_design.md","ref":"DB/db_design.md#5-分库分表、分区表","articles":[]},{"title":"6. 字符集","level":"1.3.6","depth":2,"anchor":"#6-字符集","path":"DB/db_design.md","ref":"DB/db_design.md#6-字符集","articles":[]},{"title":"补充:MySQL中数据库设计原则","level":"1.3.7","depth":2,"anchor":"#补充:mysql中数据库设计原则","path":"DB/db_design.md","ref":"DB/db_design.md#补充:mysql中数据库设计原则","articles":[]}]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"DB/sql.md","mtime":"2021-03-04T13:43:30.082Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-04T13:13:18.092Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

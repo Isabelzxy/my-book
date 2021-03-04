@@ -1,0 +1,1896 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>架构设计 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="codereview.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../DB/sql.html">
+            
+                <a href="../DB/sql.html">
+            
+                    
+                    SQL优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../DB/db_design.html">
+            
+                <a href="../DB/db_design.html">
+            
+                    
+                    数据库表数据原则
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../DB/db_design.html">
+            
+                <a href="../DB/db_design.html#1-库名">
+            
+                    
+                    1. 库名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../DB/db_design.html">
+            
+                <a href="../DB/db_design.html#2-表结构">
+            
+                    
+                    2. 表结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../DB/db_design.html">
+            
+                <a href="../DB/db_design.html#3-列数据类型优化">
+            
+                    
+                    3. 列数据类型优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../DB/db_design.html">
+            
+                <a href="../DB/db_design.html#4-索引设计">
+            
+                    
+                    4. 索引设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../DB/db_design.html">
+            
+                <a href="../DB/db_design.html#5-分库分表、分区表">
+            
+                    
+                    5. 分库分表、分区表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../DB/db_design.html">
+            
+                <a href="../DB/db_design.html#6-字符集">
+            
+                    
+                    6. 字符集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../DB/db_design.html">
+            
+                <a href="../DB/db_design.html#补充:mysql中数据库设计原则">
+            
+                    
+                    补充:MySQL中数据库设计原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../JAVA/basic.html">
+            
+                <a href="../JAVA/basic.html">
+            
+                    
+                    JAVA 基础问题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../JAVA/basic.html">
+            
+                <a href="../JAVA/basic.html#1object类中方法详解">
+            
+                    
+                    1.Object类中方法详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../JAVA/basic.html">
+            
+                <a href="../JAVA/basic.html#2hashmap的长度为什么设置为2的n次方">
+            
+                    
+                    2.HashMap的长度为什么设置为2的n次方
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../JAVA/collections.html">
+            
+                <a href="../JAVA/collections.html">
+            
+                    
+                    JAVA 集合
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../JAVA/collections.html">
+            
+                <a href="../JAVA/collections.html#1arraylist与linkedlist的实现和区别">
+            
+                    
+                    1.ArrayList与LinkedList的实现和区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../JAVA/collections.html">
+            
+                <a href="../JAVA/collections.html#2hashmap了解其数据结构、hash冲突如何解决（链表和红黑树）、扩容时机、扩容时避免rehash的优化">
+            
+                    
+                    2.HashMap了解其数据结构、hash冲突如何解决（链表和红黑树）、扩容时机、扩容时避免rehash的优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../JAVA/collections.html">
+            
+                <a href="../JAVA/collections.html#3linkedhashmap了解基本原理、哪两种有序、如何用它实现lru">
+            
+                    
+                    3.LinkedHashMap了解基本原理、哪两种有序、如何用它实现LRU
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../JAVA/collections.html">
+            
+                <a href="../JAVA/collections.html#4treemap了解数据结构、了解其key对象为什么必须要实现compare接口、如何用它实现一致性哈希">
+            
+                    
+                    4.TreeMap了解数据结构、了解其key对象为什么必须要实现Compare接口、如何用它实现一致性哈希
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../JAVA/all_locks.html">
+            
+                <a href="../JAVA/all_locks.html">
+            
+                    
+                    JAVA 锁
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../JAVA/all_locks.html">
+            
+                <a href="../JAVA/all_locks.html#1乐观锁-vs-悲观锁">
+            
+                    
+                    1.乐观锁 VS 悲观锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../JAVA/all_locks.html">
+            
+                <a href="../JAVA/all_locks.html#2自旋锁-vs-适应性自旋锁">
+            
+                    
+                    2.自旋锁 VS 适应性自旋锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../JAVA/all_locks.html">
+            
+                <a href="../JAVA/all_locks.html#3无锁-vs-偏向锁-vs-轻量级锁-vs-重量级锁">
+            
+                    
+                    3.无锁 VS 偏向锁 VS 轻量级锁 VS 重量级锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../JAVA/all_locks.html">
+            
+                <a href="../JAVA/all_locks.html#4公平锁-vs-非公平锁">
+            
+                    
+                    4.公平锁 VS 非公平锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../JAVA/all_locks.html">
+            
+                <a href="../JAVA/all_locks.html#5可重入锁-vs-非可重入锁">
+            
+                    
+                    5.可重入锁 VS 非可重入锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../JAVA/all_locks.html">
+            
+                <a href="../JAVA/all_locks.html#6独享锁-vs-共享锁">
+            
+                    
+                    6.独享锁 VS 共享锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../JAVA/all_locks.html">
+            
+                <a href="../JAVA/all_locks.html#7synchronized-与-reentrantlock-的区别">
+            
+                    
+                    7.Synchronized 与 ReentrantLock 的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../JAVA/threads.html">
+            
+                <a href="../JAVA/threads.html">
+            
+                    
+                    JAVA 并发编程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../JAVA/threads.html">
+            
+                <a href="../JAVA/threads.html#1了解linkedblockingqueue、arrayblockingqueue、delayqueue、synchronousqueue">
+            
+                    
+                    1.了解LinkedBlockingQueue、ArrayBlockingQueue、DelayQueue、SynchronousQueue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../JAVA/threads.html">
+            
+                <a href="../JAVA/threads.html#2了解atomicinteger实现原理、cas适用场景、如何实现乐观锁">
+            
+                    
+                    2.了解AtomicInteger实现原理、CAS适用场景、如何实现乐观锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../JAVA/threads.html">
+            
+                <a href="../JAVA/threads.html#3了解aqs内部实现、及依靠aqs的同步类比如reentrantlock、semaphore、countdownlatch、cyclicbarrier等的实现">
+            
+                    
+                    3.了解AQS内部实现、及依靠AQS的同步类比如ReentrantLock、Semaphore、CountDownLatch、CyclicBarrier等的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../JAVA/threads.html">
+            
+                <a href="../JAVA/threads.html#4threadlocal使用场景和内部实现">
+            
+                    
+                    4.ThreadLocal使用场景和内部实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../JAVA/threads.html">
+            
+                <a href="../JAVA/threads.html#5线程池的工作原理以及几个重要参数的设置">
+            
+                    
+                    5.线程池的工作原理以及几个重要参数的设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../JAVA/threads.html">
+            
+                <a href="../JAVA/threads.html#6如何排查死锁及避免">
+            
+                    
+                    6.如何排查死锁及避免
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../JAVA/threads.html">
+            
+                <a href="../JAVA/threads.html#7concurrenthashmap高并发机制">
+            
+                    
+                    7.ConcurrentHashMap高并发机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../JAVA/threads.html">
+            
+                <a href="../JAVA/threads.html#8copyonwritearraylist并发容器">
+            
+                    
+                    8.CopyOnWriteArrayList并发容器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html">
+            
+                    
+                    JVM
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#1jvm基础回顾">
+            
+                    
+                    1.JVM基础回顾
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#2常见垃圾回收器">
+            
+                    
+                    2.常见垃圾回收器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#3young-gc、old-gc、full-gc、mixed-gc">
+            
+                    
+                    3.young gc、old gc、full gc、mixed gc
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#4知道tlab吗">
+            
+                    
+                    4.知道TLAB吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#5知道plab吗">
+            
+                    
+                    5.知道PLAB吗
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#6产生-concurrent-mode-failure-真正的原因">
+            
+                    
+                    6.产生 concurrent mode failure 真正的原因
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#7新生代的-gc-如何避免全堆扫描">
+            
+                    
+                    7.新生代的 GC 如何避免全堆扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#8简单说下-g1-回收流程">
+            
+                    
+                    8.简单说下 G1 回收流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#9简单说下-cms-回收流程">
+            
+                    
+                    9.简单说下 cms 回收流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#10gc-调优的两大目标是啥">
+            
+                    
+                    10.GC 调优的两大目标是啥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.11" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#11gc-如何调优">
+            
+                    
+                    11.GC 如何调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.12" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#12g1垃圾回收器-vs-cms-垃圾回收器">
+            
+                    
+                    12.G1垃圾回收器 vs CMS 垃圾回收器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.13" data-path="../JAVA/jvm.html">
+            
+                <a href="../JAVA/jvm.html#13哪些对象可以作为gc-roots">
+            
+                    
+                    13.哪些对象可以作为GC Roots
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html">
+            
+                    
+                    Kafka
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#1kafka都有哪些特点">
+            
+                    
+                    1.Kafka都有哪些特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#2kafka-如何做到高吞吐、低延迟的">
+            
+                    
+                    2.Kafka 如何做到高吞吐、低延迟的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#3在哪些场景下会选择-kafka">
+            
+                    
+                    3.在哪些场景下会选择 Kafka
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#4kafka-的设计架构">
+            
+                    
+                    4.Kafka 的设计架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#5kafka-的-工作流程">
+            
+                    
+                    5.Kafka 的 工作流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#6kafka存储机制">
+            
+                    
+                    6.Kafka存储机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#7offset存储方式">
+            
+                    
+                    7.offset存储方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#8kafka-分区partition的目的">
+            
+                    
+                    8.Kafka 分区(Partition)的目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#9kafka-是如何做到消息的有序性">
+            
+                    
+                    9.Kafka 是如何做到消息的有序性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#10kafka中consumer-group-是什么概念">
+            
+                    
+                    10.kafka中consumer group 是什么概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.11" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#11kafka中的消息丢失、重复消费、乱序问题">
+            
+                    
+                    11.Kafka中的消息丢失、重复消费、乱序问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.12" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#12zookeeper在kafka中的作用是什么">
+            
+                    
+                    12.ZooKeeper在Kafka中的作用是什么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.13" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#13重要参数有哪些">
+            
+                    
+                    13.重要参数有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.14" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#14controller-的职责有哪些">
+            
+                    
+                    14.controller 的职责有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.15" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#15broker、leader、controller挂掉会怎样">
+            
+                    
+                    15.broker、leader、controller挂掉会怎样
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.16" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#16page-cache-带来的好处">
+            
+                    
+                    16.Page Cache 带来的好处
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#1redis为什么是单线程及高并发快的3大原因详解">
+            
+                    
+                    1.Redis为什么是单线程、及高并发快的3大原因详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#2单线程的redis如何利用多核cpu机器">
+            
+                    
+                    2.单线程的redis如何利用多核cpu机器？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#3redis的内存淘汰策略">
+            
+                    
+                    3.Redis的内存淘汰策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#4redis如何持久化数据">
+            
+                    
+                    4.redis如何持久化数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#5redis有哪几种数据结构">
+            
+                    
+                    5.redis有哪几种数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#6redis集群有哪几种形式">
+            
+                    
+                    6.redis集群有哪几种形式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#7有海量key和value都比较小的数据，在redis中如何存储才更省内存">
+            
+                    
+                    7.有海量key和value都比较小的数据，在redis中如何存储才更省内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#8如何保证redis和db中的数据一致性">
+            
+                    
+                    8.如何保证redis和DB中的数据一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#9如何解决缓存穿透和缓存雪崩">
+            
+                    
+                    9.如何解决缓存穿透和缓存雪崩
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#10如何用redis实现分布式锁">
+            
+                    
+                    10.如何用redis实现分布式锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#11redis为什么用跳表而不用平衡树">
+            
+                    
+                    11.Redis为什么用跳表而不用平衡树
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.12" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#12redis有哪些优缺点">
+            
+                    
+                    12.Redis有哪些优缺点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.13" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#13redis线程模型">
+            
+                    
+                    13.Redis线程模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.14" data-path="../Redis/redis.html">
+            
+                <a href="../Redis/redis.html#14bigkey、hotkey问题">
+            
+                    
+                    14.Bigkey、Hotkey问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html">
+            
+                    
+                    MySQL
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#1事务的四种隔离级别">
+            
+                    
+                    1.事务的四种隔离级别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#2mysql数据库锁">
+            
+                    
+                    2.MySQL数据库锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#3聚簇索引与非聚簇索引">
+            
+                    
+                    3.聚簇索引与非聚簇索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#4mysql联合索引最左匹配原则">
+            
+                    
+                    4.Mysql联合索引最左匹配原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#5利用explain分析sql语句的性能">
+            
+                    
+                    5.利用EXPLAIN分析sql语句的性能
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#6mysql的慢查询优化方式">
+            
+                    
+                    6.mysql的慢查询优化方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.7" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#7mysql的索引结构为什么使用b加树">
+            
+                    
+                    7.MySQL的索引结构为什么使用B+树
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.8" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#8myisam-和-innodb-的区别有哪些">
+            
+                    
+                    8.MyISAM 和 InnoDB 的区别有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.9" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#9mysql数据库设计原则">
+            
+                    
+                    9.MySQL数据库设计原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.10" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#10mysql三大日志binlog、redo-log和undo-log">
+            
+                    
+                    10.mysql三大日志binlog、redo log和undo log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.11" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#11mysql数据库大表添加字段的方法">
+            
+                    
+                    11.MySql数据库大表添加字段的方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.12" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#12如何实现-mysql-的读写分离">
+            
+                    
+                    12.如何实现 MySQL 的读写分离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.13" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#13mysql数据库之分库分表方案">
+            
+                    
+                    13.MySQL数据库之分库分表方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.14" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#14mysql分页offset过大性能问题与优化">
+            
+                    
+                    14.MySQL分页offset过大性能问题与优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html">
+            
+                    
+                    Dubbo
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#1为什么要用dubbo">
+            
+                    
+                    1.为什么要用Dubbo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#2dubbo是什么">
+            
+                    
+                    2.Dubbo是什么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#3dubbo的使用场景有哪些">
+            
+                    
+                    3.Dubbo的使用场景有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#4dubbo核心功能有哪些">
+            
+                    
+                    4.Dubbo核心功能有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#5dubbo核心组件有哪些">
+            
+                    
+                    5.Dubbo核心组件有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#6dubbo服务器注册与发现的流程">
+            
+                    
+                    6.Dubbo服务器注册与发现的流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#7dubbo的整体架构设计有哪些分层">
+            
+                    
+                    7.Dubbo的整体架构设计有哪些分层
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#8dubbomonitor实现原理">
+            
+                    
+                    8.DubboMonitor实现原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#9dubbo和springcloud有什么哪些区别">
+            
+                    
+                    9.Dubbo和SpringCloud有什么哪些区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#10dubbo有哪些注册中心">
+            
+                    
+                    10.Dubbo有哪些注册中心
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#11dubbo集群提供了哪些负载均衡策略">
+            
+                    
+                    11.Dubbo集群提供了哪些负载均衡策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#12dubbo的集群容错方案有哪些">
+            
+                    
+                    12.Dubbo的集群容错方案有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#13默认的容错方案是failovercluster">
+            
+                    
+                    13.默认的容错方案是FailoverCluster
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.14" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#14说说核心的配置有哪些">
+            
+                    
+                    14.说说核心的配置有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.15" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#15dubbo超时设置有哪些方式">
+            
+                    
+                    15.Dubbo超时设置有哪些方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.16" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#16服务调用超时会怎么样">
+            
+                    
+                    16.服务调用超时会怎么样
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.17" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#18dubbo支持哪些协议，它们的优缺点有哪些">
+            
+                    
+                    18.Dubbo支持哪些协议，它们的优缺点有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.18" data-path="../Dubbo/dubbo.html">
+            
+                <a href="../Dubbo/dubbo.html#19dubbo支持哪些序列化方式">
+            
+                    
+                    19.Dubbo支持哪些序列化方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../K8S/k8s.html">
+            
+                <a href="../K8S/k8s.html">
+            
+                    
+                    K8S
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../Spring/spring.html">
+            
+                <a href="../Spring/spring.html">
+            
+                    
+                    Spring Frameworks
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../Spring/spring.html">
+            
+                <a href="../Spring/spring.html#1spring-中经典的-9-种设计模式">
+            
+                    
+                    1.Spring 中经典的 9 种设计模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
+            
+                <span>
+            
+                    
+                    Spring Boot
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.16" data-path="arch.html">
+            
+                <a href="arch.html">
+            
+                    
+                    架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="codereview.html">
+            
+                <a href="codereview.html">
+            
+                    
+                    Code Review
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="codereview.html">
+            
+                <a href="codereview.html#code-review-checklist">
+            
+                    
+                    Code Review Checklist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="codereview.html">
+            
+                <a href="codereview.html#常见code-review过程中发现的问题">
+            
+                    
+                    常见Code Review过程中发现的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >架构设计</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x7CFB;&#x7EDF;&#x3001;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;">&#x7CFB;&#x7EDF;&#x3001;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;</h2>
+<h3 id="1&#x5982;&#x4F55;&#x505A;&#x7CFB;&#x7EDF;&#x8BBE;&#x8BA1;&#xFF0C;&#x8981;&#x8003;&#x8651;&#x54EA;&#x4E9B;&#x65B9;&#x9762;">1.&#x5982;&#x4F55;&#x505A;&#x7CFB;&#x7EDF;&#x8BBE;&#x8BA1;&#xFF0C;&#x8981;&#x8003;&#x8651;&#x54EA;&#x4E9B;&#x65B9;&#x9762;</h3>
+<p>==&#x5F85;&#x6574;&#x7406;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="codereview.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Code Review">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"架构设计","level":"1.16","depth":1,"next":{"title":"Code Review","level":"1.17","depth":1,"path":"架构设计/codereview.md","ref":"架构设计/codereview.md","articles":[{"title":"Code Review Checklist","level":"1.17.1","depth":2,"anchor":"#code-review-checklist","path":"架构设计/codereview.md","ref":"架构设计/codereview.md#code-review-checklist","articles":[]},{"title":"常见Code Review过程中发现的问题","level":"1.17.2","depth":2,"anchor":"#常见code-review过程中发现的问题","path":"架构设计/codereview.md","ref":"架构设计/codereview.md#常见code-review过程中发现的问题","articles":[]}]},"previous":{"title":"Spring Boot","level":"1.15","depth":1,"ref":"","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"架构设计/arch.md","mtime":"2021-03-02T10:28:28.636Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-04T13:13:18.092Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

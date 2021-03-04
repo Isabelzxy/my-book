@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>数据库设计 · GitBook</title>
+        <title>数据库表数据原则 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,7 +61,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="transaction.html" />
+    <link rel="next" href="db_design.html" />
     
     
     <link rel="prev" href="sql.html" />
@@ -124,20 +124,7 @@
                 <a href="db_design.html">
             
                     
-                    数据库设计
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4" data-path="transaction.html">
-            
-                <a href="transaction.html">
-            
-                    
-                    事务隔离级别,索引,性能
+                    数据库表数据原则
             
                 </a>
             
@@ -146,12 +133,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.1" data-path="db_design.html">
             
-                <a href="transaction.html#事务的四种隔离级别">
+                <a href="db_design.html#1-库名">
             
                     
-                    事务的四种隔离级别
+                    1. 库名
             
                 </a>
             
@@ -159,12 +146,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.2" data-path="db_design.html">
             
-                <a href="transaction.html#数据库锁">
+                <a href="db_design.html#2-表结构">
             
                     
-                    数据库锁
+                    2. 表结构
             
                 </a>
             
@@ -172,12 +159,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.3" data-path="db_design.html">
             
-                <a href="transaction.html#innodb-如何解决幻读">
+                <a href="db_design.html#3-列数据类型优化">
             
                     
-                    InnoDB 如何解决幻读
+                    3. 列数据类型优化
             
                 </a>
             
@@ -185,12 +172,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.4" data-path="db_design.html">
             
-                <a href="transaction.html#聚簇索引与非聚簇索引">
+                <a href="db_design.html#4-索引设计">
             
                     
-                    聚簇索引与非聚簇索引
+                    4. 索引设计
             
                 </a>
             
@@ -198,12 +185,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.5" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.5" data-path="db_design.html">
             
-                <a href="transaction.html#mysql分页offset过大性能问题与优化">
+                <a href="db_design.html#5-分库分表、分区表">
             
                     
-                    MySQL分页offset过大性能问题与优化
+                    5. 分库分表、分区表
             
                 </a>
             
@@ -211,12 +198,70 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.6" data-path="transaction.html">
+        <li class="chapter " data-level="1.3.6" data-path="db_design.html">
             
-                <a href="transaction.html#利用explain分析sql语句的性能">
+                <a href="db_design.html#6-字符集">
             
                     
-                    利用EXPLAIN分析sql语句的性能
+                    6. 字符集
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="db_design.html">
+            
+                <a href="db_design.html#补充:mysql中数据库设计原则">
+            
+                    
+                    补充:MySQL中数据库设计原则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../JAVA/basic.html">
+            
+                <a href="../JAVA/basic.html">
+            
+                    
+                    JAVA 基础问题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../JAVA/basic.html">
+            
+                <a href="../JAVA/basic.html#1object类中方法详解">
+            
+                    
+                    1.Object类中方法详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../JAVA/basic.html">
+            
+                <a href="../JAVA/basic.html#2hashmap的长度为什么设置为2的n次方">
+            
+                    
+                    2.HashMap的长度为什么设置为2的n次方
             
                 </a>
             
@@ -721,33 +766,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="../Kafka/common_problems.html">
-            
-                <a href="../Kafka/common_problems.html">
-            
-                    
-                    Kafka 常见问题
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.10" data-path="../Kafka/architecture.html">
-            
-                <a href="../Kafka/architecture.html">
-            
-                    
-                    Kafka 架构原理
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.11" data-path="../Kafka/kafka.html">
+        <li class="chapter " data-level="1.9" data-path="../Kafka/kafka.html">
             
                 <a href="../Kafka/kafka.html">
             
@@ -758,9 +777,223 @@
             
 
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#1kafka都有哪些特点">
+            
+                    
+                    1.Kafka都有哪些特点
+            
+                </a>
+            
+
+            
         </li>
     
-        <li class="chapter " data-level="1.12" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.9.2" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#2kafka-如何做到高吞吐、低延迟的">
+            
+                    
+                    2.Kafka 如何做到高吞吐、低延迟的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#3在哪些场景下会选择-kafka">
+            
+                    
+                    3.在哪些场景下会选择 Kafka
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#4kafka-的设计架构">
+            
+                    
+                    4.Kafka 的设计架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#5kafka-的-工作流程">
+            
+                    
+                    5.Kafka 的 工作流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#6kafka存储机制">
+            
+                    
+                    6.Kafka存储机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#7offset存储方式">
+            
+                    
+                    7.offset存储方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#8kafka-分区partition的目的">
+            
+                    
+                    8.Kafka 分区(Partition)的目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#9kafka-是如何做到消息的有序性">
+            
+                    
+                    9.Kafka 是如何做到消息的有序性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#10kafka中consumer-group-是什么概念">
+            
+                    
+                    10.kafka中consumer group 是什么概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.11" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#11kafka中的消息丢失、重复消费、乱序问题">
+            
+                    
+                    11.Kafka中的消息丢失、重复消费、乱序问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.12" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#12zookeeper在kafka中的作用是什么">
+            
+                    
+                    12.ZooKeeper在Kafka中的作用是什么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.13" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#13重要参数有哪些">
+            
+                    
+                    13.重要参数有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.14" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#14controller-的职责有哪些">
+            
+                    
+                    14.controller 的职责有哪些
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.15" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#15broker、leader、controller挂掉会怎样">
+            
+                    
+                    15.broker、leader、controller挂掉会怎样
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.16" data-path="../Kafka/kafka.html">
+            
+                <a href="../Kafka/kafka.html#16page-cache-带来的好处">
+            
+                    
+                    16.Page Cache 带来的好处
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html">
             
@@ -774,7 +1007,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.12.1" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.1" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#1redis为什么是单线程及高并发快的3大原因详解">
             
@@ -787,7 +1020,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.2" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.2" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#2单线程的redis如何利用多核cpu机器">
             
@@ -800,7 +1033,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.3" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.3" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#3redis的内存淘汰策略">
             
@@ -813,7 +1046,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.4" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.4" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#4redis如何持久化数据">
             
@@ -826,7 +1059,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.5" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.5" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#5redis有哪几种数据结构">
             
@@ -839,7 +1072,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.6" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.6" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#6redis集群有哪几种形式">
             
@@ -852,7 +1085,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.7" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.7" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#7有海量key和value都比较小的数据，在redis中如何存储才更省内存">
             
@@ -865,7 +1098,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.8" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.8" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#8如何保证redis和db中的数据一致性">
             
@@ -878,7 +1111,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.9" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.9" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#9如何解决缓存穿透和缓存雪崩">
             
@@ -891,7 +1124,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.10" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.10" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#10如何用redis实现分布式锁">
             
@@ -904,7 +1137,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.11" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.11" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#11redis为什么用跳表而不用平衡树">
             
@@ -917,7 +1150,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.12" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.12" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#12redis有哪些优缺点">
             
@@ -930,7 +1163,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.13" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.13" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#13redis线程模型">
             
@@ -943,7 +1176,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.14" data-path="../Redis/redis.html">
+        <li class="chapter " data-level="1.10.14" data-path="../Redis/redis.html">
             
                 <a href="../Redis/redis.html#14bigkey、hotkey问题">
             
@@ -961,7 +1194,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11" data-path="../MySQL/mysql.html">
             
                 <a href="../MySQL/mysql.html">
             
@@ -975,12 +1208,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.13.1" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.1" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#1mysql的行锁、表锁、间隙锁、意向锁分别是做什么的">
+                <a href="../MySQL/mysql.html#1事务的四种隔离级别">
             
                     
-                    1.mysql的行锁、表锁、间隙锁、意向锁分别是做什么的
+                    1.事务的四种隔离级别
             
                 </a>
             
@@ -988,12 +1221,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.2" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.2" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#2mysql联合索引最左匹配原则">
+                <a href="../MySQL/mysql.html#2mysql数据库锁">
             
                     
-                    2.Mysql联合索引最左匹配原则
+                    2.MySQL数据库锁
             
                 </a>
             
@@ -1001,12 +1234,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.3" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.3" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#3mysql的慢查询优化方式">
+                <a href="../MySQL/mysql.html#3聚簇索引与非聚簇索引">
             
                     
-                    3.mysql的慢查询优化方式
+                    3.聚簇索引与非聚簇索引
             
                 </a>
             
@@ -1014,12 +1247,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.4" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.4" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#4mysql的索引结构为什么使用b加树">
+                <a href="../MySQL/mysql.html#4mysql联合索引最左匹配原则">
             
                     
-                    4.MySQL的索引结构为什么使用B+树
+                    4.Mysql联合索引最左匹配原则
             
                 </a>
             
@@ -1027,12 +1260,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.5" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.5" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#5yyisam-和-innodb-的区别有哪些">
+                <a href="../MySQL/mysql.html#5利用explain分析sql语句的性能">
             
                     
-                    5.MyISAM 和 InnoDB 的区别有哪些
+                    5.利用EXPLAIN分析sql语句的性能
             
                 </a>
             
@@ -1040,12 +1273,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.6" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.6" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#6mysql数据库系列之数据库设计原则">
+                <a href="../MySQL/mysql.html#6mysql的慢查询优化方式">
             
                     
-                    6.MySQL数据库系列之数据库设计原则
+                    6.mysql的慢查询优化方式
             
                 </a>
             
@@ -1053,12 +1286,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.7" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.7" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#7mysql三大日志-binlog、redo-log和undo-log">
+                <a href="../MySQL/mysql.html#7mysql的索引结构为什么使用b加树">
             
                     
-                    7.mysql三大日志-binlog、redo log和undo log
+                    7.MySQL的索引结构为什么使用B+树
             
                 </a>
             
@@ -1066,12 +1299,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.8" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.8" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#8mysql数据库大表添加字段的方法">
+                <a href="../MySQL/mysql.html#8myisam-和-innodb-的区别有哪些">
             
                     
-                    8.MySql数据库大表添加字段的方法
+                    8.MyISAM 和 InnoDB 的区别有哪些
             
                 </a>
             
@@ -1079,12 +1312,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.9" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.9" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#9如何实现-mysql-的读写分离">
+                <a href="../MySQL/mysql.html#9mysql数据库设计原则">
             
                     
-                    9.如何实现 MySQL 的读写分离
+                    9.MySQL数据库设计原则
             
                 </a>
             
@@ -1092,12 +1325,64 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13.10" data-path="../MySQL/mysql.html">
+        <li class="chapter " data-level="1.11.10" data-path="../MySQL/mysql.html">
             
-                <a href="../MySQL/mysql.html#10mysql数据库之分库分表方案">
+                <a href="../MySQL/mysql.html#10mysql三大日志binlog、redo-log和undo-log">
             
                     
-                    10.MySQL数据库之分库分表方案
+                    10.mysql三大日志binlog、redo log和undo log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.11" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#11mysql数据库大表添加字段的方法">
+            
+                    
+                    11.MySql数据库大表添加字段的方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.12" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#12如何实现-mysql-的读写分离">
+            
+                    
+                    12.如何实现 MySQL 的读写分离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.13" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#13mysql数据库之分库分表方案">
+            
+                    
+                    13.MySQL数据库之分库分表方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.14" data-path="../MySQL/mysql.html">
+            
+                <a href="../MySQL/mysql.html#14mysql分页offset过大性能问题与优化">
+            
+                    
+                    14.MySQL分页offset过大性能问题与优化
             
                 </a>
             
@@ -1110,7 +1395,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html">
             
@@ -1124,7 +1409,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.14.1" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.1" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#1为什么要用dubbo">
             
@@ -1137,7 +1422,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.2" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.2" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#2dubbo是什么">
             
@@ -1150,7 +1435,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.3" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.3" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#3dubbo的使用场景有哪些">
             
@@ -1163,7 +1448,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.4" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.4" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#4dubbo核心功能有哪些">
             
@@ -1176,7 +1461,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.5" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.5" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#5dubbo核心组件有哪些">
             
@@ -1189,7 +1474,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.6" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.6" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#6dubbo服务器注册与发现的流程">
             
@@ -1202,7 +1487,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.7" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.7" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#7dubbo的整体架构设计有哪些分层">
             
@@ -1215,7 +1500,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.8" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.8" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#8dubbomonitor实现原理">
             
@@ -1228,7 +1513,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.9" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.9" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#9dubbo和springcloud有什么哪些区别">
             
@@ -1241,7 +1526,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.10" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.10" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#10dubbo有哪些注册中心">
             
@@ -1254,7 +1539,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.11" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.11" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#11dubbo集群提供了哪些负载均衡策略">
             
@@ -1267,7 +1552,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.12" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.12" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#12dubbo的集群容错方案有哪些">
             
@@ -1280,7 +1565,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.13" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.13" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#13默认的容错方案是failovercluster">
             
@@ -1293,7 +1578,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.14" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.14" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#14说说核心的配置有哪些">
             
@@ -1306,7 +1591,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.15" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.15" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#15dubbo超时设置有哪些方式">
             
@@ -1319,7 +1604,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.16" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.16" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#16服务调用超时会怎么样">
             
@@ -1332,7 +1617,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.17" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.17" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#18dubbo支持哪些协议，它们的优缺点有哪些">
             
@@ -1345,7 +1630,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.14.18" data-path="../Dubbo/dubbo.html">
+        <li class="chapter " data-level="1.12.18" data-path="../Dubbo/dubbo.html">
             
                 <a href="../Dubbo/dubbo.html#19dubbo支持哪些序列化方式">
             
@@ -1363,7 +1648,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.15" data-path="../K8S/k8s.html">
+        <li class="chapter " data-level="1.13" data-path="../K8S/k8s.html">
             
                 <a href="../K8S/k8s.html">
             
@@ -1376,20 +1661,39 @@
             
         </li>
     
-        <li class="chapter " data-level="1.16" >
+        <li class="chapter " data-level="1.14" data-path="../Spring/spring.html">
             
-                <span>
+                <a href="../Spring/spring.html">
             
                     
-                    Spring Framework
+                    Spring Frameworks
             
-                </span>
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../Spring/spring.html">
+            
+                <a href="../Spring/spring.html#1spring-中经典的-9-种设计模式">
+            
+                    
+                    1.Spring 中经典的 9 种设计模式
+            
+                </a>
             
 
             
         </li>
     
-        <li class="chapter " data-level="1.17" >
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" >
             
                 <span>
             
@@ -1399,6 +1703,64 @@
                 </span>
             
 
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../架构设计/arch.html">
+            
+                <a href="../架构设计/arch.html">
+            
+                    
+                    架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../架构设计/codereview.html">
+            
+                <a href="../架构设计/codereview.html">
+            
+                    
+                    Code Review
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../架构设计/codereview.html">
+            
+                <a href="../架构设计/codereview.html#code-review-checklist">
+            
+                    
+                    Code Review Checklist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="../架构设计/codereview.html">
+            
+                <a href="../架构设计/codereview.html#常见code-review过程中发现的问题">
+            
+                    
+                    常见Code Review过程中发现的问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -1432,7 +1794,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >数据库设计</a>
+        <a href=".." >数据库表数据原则</a>
     </h1>
 </div>
 
@@ -1449,12 +1811,12 @@
                                 
                                 <h2 id="&#x5982;&#x4F55;&#x8BBE;&#x8BA1;&#x6570;&#x636E;&#x5E93;&#x8868;">&#x5982;&#x4F55;&#x8BBE;&#x8BA1;&#x6570;&#x636E;&#x5E93;&#x8868;</h2>
 <p>&#x4EE5;&#x4E0B;&#x6240;&#x6709;&#x89C4;&#x8303;&#x4F1A;&#x6309;&#x7167;&#x3010;&#x9AD8;&#x5371;&#x3011;&#x3001;&#x3010;&#x5F3A;&#x5236;&#x3011;&#x3001;&#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x4E09;&#x4E2A;&#x7EA7;&#x522B;&#x8FDB;&#x884C;&#x6807;&#x6CE8;&#xFF0C;&#x9075;&#x5B88;&#x4F18;&#x5148;&#x7EA7;&#x4ECE;&#x9AD8;&#x5230;&#x4F4E;&#x3002;&#x5BF9;&#x4E8E;&#x4E0D;&#x6EE1;&#x8DB3;&#x3010;&#x9AD8;&#x5371;&#x3011;&#x548C;&#x3010;&#x5F3A;&#x5236;&#x3011;&#x4E24;&#x4E2A;&#x7EA7;&#x522B;&#x7684;&#x8BBE;&#x8BA1;&#xFF0C;DBA&#x4F1A;&#x5F3A;&#x5236;&#x6253;&#x56DE;&#x8981;&#x6C42;&#x4FEE;&#x6539;&#x3002;</p>
-<p><strong>*1. &#x5E93;&#x540D;</strong></p>
+<h3 id="1-&#x5E93;&#x540D;">1. &#x5E93;&#x540D;</h3>
 <p>&#x3010;&#x5F3A;&#x5236;&#x3011;&#x5E93;&#x7684;&#x540D;&#x79F0;&#x5FC5;&#x987B;&#x63A7;&#x5236;&#x5728;32&#x4E2A;&#x5B57;&#x7B26;&#x4EE5;&#x5185;&#xFF0C;&#x76F8;&#x5173;&#x6A21;&#x5757;&#x7684;&#x8868;&#x540D;&#x4E0E;&#x8868;&#x540D;&#x4E4B;&#x95F4;&#x5C3D;&#x91CF;&#x4F53;&#x73B0;join&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x5982;user&#x8868;&#x548C;user<em>login&#x8868;&#x3002;<br>
 &#x3010;&#x5F3A;&#x5236;&#x3011;&#x5E93;&#x7684;&#x540D;&#x79F0;&#x683C;&#x5F0F;&#xFF1A;&#x4E1A;&#x52A1;&#x7CFB;&#x7EDF;&#x540D;&#x79F0;</em>&#x5B50;&#x7CFB;&#x7EDF;&#x540D;&#xFF0C;&#x540C;&#x4E00;&#x6A21;&#x5757;&#x4F7F;&#x7528;&#x7684;&#x8868;&#x540D;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;&#x7EDF;&#x4E00;&#x524D;&#x7F00;&#x3002;<br>
 &#x3010;&#x5F3A;&#x5236;&#x3011;&#x4E00;&#x822C;&#x5206;&#x5E93;&#x540D;&#x79F0;&#x547D;&#x540D;&#x683C;&#x5F0F;&#x662F;&#x5E93;&#x901A;&#x914D;&#x540D;<em>&#x7F16;&#x53F7;&#xFF0C;&#x7F16;&#x53F7;&#x4ECE;0&#x5F00;&#x59CB;&#x9012;&#x589E;&#xFF0C;&#x6BD4;&#x5982;wenda_001&#x4EE5;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x5206;&#x5E93;&#x7684;&#x540D;&#x79F0;&#x683C;&#x5F0F;&#x662F;&#x201C;&#x5E93;&#x901A;&#x914D;&#x540D;</em>&#x65F6;&#x95F4;&#x201D; <br>
 &#x3010;&#x5F3A;&#x5236;&#x3011;&#x521B;&#x5EFA;&#x6570;&#x636E;&#x5E93;&#x65F6;&#x5FC5;&#x987B;&#x663E;&#x5F0F;&#x6307;&#x5B9A;&#x5B57;&#x7B26;&#x96C6;&#xFF0C;&#x5E76;&#x4E14;&#x5B57;&#x7B26;&#x96C6;&#x53EA;&#x80FD;&#x662F;utf8&#x6216;&#x8005;utf8mb4&#x3002;&#x521B;&#x5EFA;&#x6570;&#x636E;&#x5E93;SQL&#x4E3E;&#x4F8B;&#xFF1A;create database db1 default character set utf8;&#x3002;</p>
-<p><strong>2. &#x8868;&#x7ED3;&#x6784;</strong></p>
+<h3 id="2-&#x8868;&#x7ED3;&#x6784;">2. &#x8868;&#x7ED3;&#x6784;</h3>
 <p>&#x3010;&#x5F3A;&#x5236;&#x3011;&#x8868;&#x548C;&#x5217;&#x7684;&#x540D;&#x79F0;&#x5FC5;&#x987B;&#x63A7;&#x5236;&#x5728;32&#x4E2A;&#x5B57;&#x7B26;&#x4EE5;&#x5185;&#xFF0C;&#x8868;&#x540D;&#x53EA;&#x80FD;&#x4F7F;&#x7528;&#x5B57;&#x6BCD;&#x3001;&#x6570;&#x5B57;&#x548C;&#x4E0B;&#x5212;&#x7EBF;&#xFF0C;&#x4E00;&#x5F8B;&#x5C0F;&#x5199;&#x3002;<br>
 &#x3010;&#x5F3A;&#x5236;&#x3011;&#x8868;&#x540D;&#x8981;&#x6C42;&#x6A21;&#x5757;&#x540D;&#x5F3A;&#x76F8;&#x5173;&#xFF0C;&#x5982;&#x5E08;&#x8D44;&#x7CFB;&#x7EDF;&#x91C7;&#x7528;&#x201D;sz&#x201D;&#x4F5C;&#x4E3A;&#x524D;&#x7F00;&#xFF0C;&#x6E20;&#x9053;&#x7CFB;&#x7EDF;&#x91C7;&#x7528;&#x201D;qd&#x201D;&#x4F5C;&#x4E3A;&#x524D;&#x7F00;&#x7B49;&#x3002;<br>
 &#x3010;&#x5F3A;&#x5236;&#x3011;&#x521B;&#x5EFA;&#x8868;&#x65F6;&#x5FC5;&#x987B;&#x663E;&#x5F0F;&#x6307;&#x5B9A;&#x5B57;&#x7B26;&#x96C6;&#x4E3A;utf8&#x6216;utf8mb4&#x3002;<br>
@@ -1467,7 +1829,7 @@
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x8868;&#x4E2D;&#x6240;&#x6709;&#x5B57;&#x6BB5;&#x5FC5;&#x987B;&#x90FD;&#x662F;NOT NULL&#x5C5E;&#x6027;&#xFF0C;&#x4E1A;&#x52A1;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x5B9A;&#x4E49;DEFAULT&#x503C;&#x3002;&#x56E0;&#x4E3A;&#x4F7F;&#x7528;NULL&#x503C;&#x4F1A;&#x5B58;&#x5728;&#x6BCF;&#x4E00;&#x884C;&#x90FD;&#x4F1A;&#x5360;&#x7528;&#x989D;&#x5916;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x3001;&#x6570;&#x636E;&#x8FC1;&#x79FB;&#x5BB9;&#x6613;&#x51FA;&#x9519;&#x3001;&#x805A;&#x5408;&#x51FD;&#x6570;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x504F;&#x5DEE;&#x7B49;&#x95EE;&#x9898;&#x3002;<br>
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x5EFA;&#x8BAE;&#x5BF9;&#x8868;&#x91CC;&#x7684;blob&#x3001;text&#x7B49;&#x5927;&#x5B57;&#x6BB5;&#xFF0C;&#x5782;&#x76F4;&#x62C6;&#x5206;&#x5230;&#x5176;&#x4ED6;&#x8868;&#x91CC;&#xFF0C;&#x4EC5;&#x5728;&#x9700;&#x8981;&#x8BFB;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#x624D;&#x53BB;select&#x3002;<br>
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x53CD;&#x8303;&#x5F0F;&#x8BBE;&#x8BA1;&#xFF1A;&#x628A;&#x7ECF;&#x5E38;&#x9700;&#x8981;join&#x67E5;&#x8BE2;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x5728;&#x5176;&#x4ED6;&#x8868;&#x91CC;&#x5197;&#x4F59;&#x4E00;&#x4EFD;&#x3002;&#x5982;user_name&#x5C5E;&#x6027;&#x5728;user_account&#xFF0C;user_login_log&#x7B49;&#x8868;&#x91CC;&#x5197;&#x4F59;&#x4E00;&#x4EFD;&#xFF0C;&#x51CF;&#x5C11;join&#x67E5;&#x8BE2;&#x3002;</p>
-<p><strong>3. &#x5217;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4F18;&#x5316;</strong></p>
+<h3 id="3-&#x5217;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4F18;&#x5316;">3. &#x5217;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4F18;&#x5316;</h3>
 <p>&#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x8868;&#x4E2D;&#x7684;&#x81EA;&#x589E;&#x5217;(auto_increment&#x5C5E;&#x6027;)&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;bigint&#x7C7B;&#x578B;&#x3002;&#x56E0;&#x4E3A;&#x65E0;&#x7B26;&#x53F7;int&#x5B58;&#x50A8;&#x8303;&#x56F4;&#x4E3A;-2147483648~2147483647(&#x5927;&#x7EA6;21&#x4EBF;&#x5DE6;&#x53F3;)&#xFF0C;&#x6EA2;&#x51FA;&#x540E;&#x4F1A;&#x5BFC;&#x81F4;&#x62A5;&#x9519;&#x3002;<br>
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x4E1A;&#x52A1;&#x4E2D;&#x9009;&#x62E9;&#x6027;&#x5F88;&#x5C11;&#x7684;&#x72B6;&#x6001;status&#x3001;&#x7C7B;&#x578B;type&#x7B49;&#x5B57;&#x6BB5;&#x63A8;&#x8350;&#x4F7F;&#x7528;tinytint&#x6216;&#x8005;smallint&#x7C7B;&#x578B;&#x8282;&#x7701;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x3002;<br>
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x4E1A;&#x52A1;&#x4E2D;IP&#x5730;&#x5740;&#x5B57;&#x6BB5;&#x63A8;&#x8350;&#x4F7F;&#x7528;int&#x7C7B;&#x578B;&#xFF0C;&#x4E0D;&#x63A8;&#x8350;&#x7528;char(15)&#x3002;&#x56E0;&#x4E3A;int&#x53EA;&#x5360;4&#x5B57;&#x8282;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x5982;&#x4E0B;&#x51FD;&#x6570;&#x76F8;&#x4E92;&#x8F6C;&#x6362;&#xFF0C;&#x800C;char(15)&#x5360;&#x7528;&#x81F3;&#x5C11;15&#x5B57;&#x8282;&#x3002;&#x4E00;&#x65E6;&#x8868;&#x6570;&#x636E;&#x884C;&#x6570;&#x5230;&#x4E86;1&#x4EBF;&#xFF0C;&#x90A3;&#x4E48;&#x8981;&#x591A;&#x7528;1.1G&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x3002; SQL&#xFF1A;select inet_aton(&apos;192.168.2.12&apos;); select inet_ntoa(3232236044); PHP: ip2long(&#x2018;192.168.2.12&#x2019;); long2ip(3530427185); <br>
@@ -1476,7 +1838,7 @@
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x5B58;&#x50A8;&#x91D1;&#x94B1;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x5EFA;&#x8BAE;&#x7528;int&#xFF0C;&#x7A0B;&#x5E8F;&#x7AEF;&#x4E58;&#x4EE5;100&#x548C;&#x9664;&#x4EE5;100&#x8FDB;&#x884C;&#x5B58;&#x53D6;&#x3002;&#x56E0;&#x4E3A;int&#x5360;&#x7528;4&#x5B57;&#x8282;&#xFF0C;&#x800C;double&#x5360;&#x7528;8&#x5B57;&#x8282;&#xFF0C;&#x7A7A;&#x95F4;&#x6D6A;&#x8D39;&#x3002;<br>
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x6587;&#x672C;&#x6570;&#x636E;&#x5C3D;&#x91CF;&#x7528;varchar&#x5B58;&#x50A8;&#x3002;&#x56E0;&#x4E3A;varchar&#x662F;&#x53D8;&#x957F;&#x5B58;&#x50A8;&#xFF0C;&#x6BD4;char&#x66F4;&#x7701;&#x7A7A;&#x95F4;&#x3002;MySQL server&#x5C42;&#x89C4;&#x5B9A;&#x4E00;&#x884C;&#x6240;&#x6709;&#x6587;&#x672C;&#x6700;&#x591A;&#x5B58;65535&#x5B57;&#x8282;&#xFF0C;&#x56E0;&#x6B64;&#x5728;utf8&#x5B57;&#x7B26;&#x96C6;&#x4E0B;&#x6700;&#x591A;&#x5B58;21844&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x8D85;&#x8FC7;&#x4F1A;&#x81EA;&#x52A8;&#x8F6C;&#x6362;&#x4E3A;mediumtext&#x5B57;&#x6BB5;&#x3002;&#x800C;text&#x5728;utf8&#x5B57;&#x7B26;&#x96C6;&#x4E0B;&#x6700;&#x591A;&#x5B58;21844&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;mediumtext&#x6700;&#x591A;&#x5B58;2^24/3&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;longtext&#x6700;&#x591A;&#x5B58;2^32&#x4E2A;&#x5B57;&#x7B26;&#x3002;&#x4E00;&#x822C;&#x5EFA;&#x8BAE;&#x7528;varchar&#x7C7B;&#x578B;&#xFF0C;&#x5B57;&#x7B26;&#x6570;&#x4E0D;&#x8981;&#x8D85;&#x8FC7;2700&#x3002;<br>
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x65F6;&#x95F4;&#x7C7B;&#x578B;&#x5C3D;&#x91CF;&#x9009;&#x53D6;timestamp&#x3002;&#x56E0;&#x4E3A;datetime&#x5360;&#x7528;8&#x5B57;&#x8282;&#xFF0C;timestamp&#x4EC5;&#x5360;&#x7528;4&#x5B57;&#x8282;&#xFF0C;&#x4F46;&#x662F;&#x8303;&#x56F4;&#x4E3A;1970-01-01 00:00:01&#x5230;2038-01-01 00:00:00&#x3002;&#x66F4;&#x4E3A;&#x9AD8;&#x9636;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x9009;&#x7528;int&#x6765;&#x5B58;&#x50A8;&#x65F6;&#x95F4;&#xFF0C;&#x4F7F;&#x7528;SQL&#x51FD;&#x6570;unix_timestamp()&#x548C;from_unixtime()&#x6765;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#x3002;</p>
-<p><strong>4. &#x7D22;&#x5F15;&#x8BBE;&#x8BA1;</strong></p>
+<h3 id="4-&#x7D22;&#x5F15;&#x8BBE;&#x8BA1;">4. &#x7D22;&#x5F15;&#x8BBE;&#x8BA1;</h3>
 <p>&#x3010;&#x5F3A;&#x5236;&#x3011;InnoDB&#x8868;&#x5FC5;&#x987B;&#x4E3B;&#x952E;&#x4E3A;id int/bigint auto<em>increment,&#x4E14;&#x4E3B;&#x952E;&#x503C;&#x7981;&#x6B62;&#x88AB;&#x66F4;&#x65B0;&#x3002;<br>
 &#x3010;&#x5F3A;&#x5236;&#x3011;InnoDB&#x548C;MyISAM&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x8868;&#xFF0C;&#x7D22;&#x5F15;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x4E3A;BTREE; MEMORY&#x8868;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x9009;&#x62E9;HASH&#x6216;&#x8005;BTREE&#x7C7B;&#x578B;&#x7D22;&#x5F15;&#x3002;<br>
 &#x3010;&#x5F3A;&#x5236;&#x3011;&#x5355;&#x4E2A;&#x7D22;&#x5F15;&#x4E2D;&#x6BCF;&#x4E2A;&#x7D22;&#x5F15;&#x8BB0;&#x5F55;&#x7684;&#x957F;&#x5EA6;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7;64KB&#x3002;<br>
@@ -1485,7 +1847,7 @@
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x5728;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#x65F6;&#xFF0C;&#x591A;&#x8003;&#x8651;&#x5EFA;&#x7ACB;&#x8054;&#x5408;&#x7D22;&#x5F15;&#xFF0C;&#x5E76;&#x628A;&#x533A;&#x5206;&#x5EA6;&#x6700;&#x9AD8;&#x7684;&#x5B57;&#x6BB5;&#x653E;&#x5728;&#x6700;&#x524D;&#x9762;&#x3002;&#x5982;&#x5217;userid&#x7684;&#x533A;&#x5206;&#x5EA6;&#x53EF;&#x7531;select count(distinct userid)&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x3002;<br>
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x5728;&#x591A;&#x8868;join&#x7684;SQL&#x91CC;&#xFF0C;&#x4FDD;&#x8BC1;&#x88AB;&#x9A71;&#x52A8;&#x8868;&#x7684;&#x8FDE;&#x63A5;&#x5217;&#x4E0A;&#x6709;&#x7D22;&#x5F15;&#xFF0C;&#x8FD9;&#x6837;join&#x6267;&#x884C;&#x6548;&#x7387;&#x6700;&#x9AD8;&#x3002;<br>
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x5EFA;&#x8868;&#x6216;&#x52A0;&#x7D22;&#x5F15;&#x65F6;&#xFF0C;&#x4FDD;&#x8BC1;&#x8868;&#x91CC;&#x4E92;&#x76F8;&#x4E0D;&#x5B58;&#x5728;&#x5197;&#x4F59;&#x7D22;&#x5F15;&#x3002;&#x5BF9;&#x4E8E;MySQL&#x6765;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x8868;&#x91CC;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;key(a,b)&#xFF0C;&#x5219;key(a)&#x4E3A;&#x5197;&#x4F59;&#x7D22;&#x5F15;&#xFF0C;&#x9700;&#x8981;&#x5220;&#x9664;&#x3002;</p>
-<p><strong>5. &#x5206;&#x5E93;&#x5206;&#x8868;&#x3001;&#x5206;&#x533A;&#x8868;</strong></p>
+<h3 id="5-&#x5206;&#x5E93;&#x5206;&#x8868;&#x3001;&#x5206;&#x533A;&#x8868;">5. &#x5206;&#x5E93;&#x5206;&#x8868;&#x3001;&#x5206;&#x533A;&#x8868;</h3>
 <p>&#x3010;&#x5F3A;&#x5236;&#x3011;&#x5206;&#x533A;&#x8868;&#x7684;&#x5206;&#x533A;&#x5B57;&#x6BB5;(partition-key)&#x5FC5;&#x987B;&#x6709;&#x7D22;&#x5F15;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x7EC4;&#x5408;&#x7D22;&#x5F15;&#x7684;&#x9996;&#x5217;&#x3002;<br>
 &#x3010;&#x5F3A;&#x5236;&#x3011;&#x5355;&#x4E2A;&#x5206;&#x533A;&#x8868;&#x4E2D;&#x7684;&#x5206;&#x533A;(&#x5305;&#x62EC;&#x5B50;&#x5206;&#x533A;)&#x4E2A;&#x6570;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7;1024&#x3002;<br>
 &#x3010;&#x5F3A;&#x5236;&#x3011;&#x4E0A;&#x7EBF;&#x524D;RD&#x6216;&#x8005;DBA&#x5FC5;&#x987B;&#x6307;&#x5B9A;&#x5206;&#x533A;&#x8868;&#x7684;&#x521B;&#x5EFA;&#x3001;&#x6E05;&#x7406;&#x7B56;&#x7565;&#x3002;<br>
@@ -1496,9 +1858,28 @@
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x5355;&#x4E2A;&#x5206;&#x533A;&#x6587;&#x4EF6;&#x4E0D;&#x8D85;&#x8FC7;2G&#xFF0C;&#x603B;&#x5927;&#x5C0F;&#x4E0D;&#x8D85;&#x8FC7;50G&#x3002;&#x5EFA;&#x8BAE;&#x603B;&#x5206;&#x533A;&#x6570;&#x4E0D;&#x8D85;&#x8FC7;20&#x4E2A;&#x3002; <br>
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x5355;&#x4E2A;&#x5206;&#x8868;&#x4E0D;&#x8D85;&#x8FC7;500W&#x884C;&#xFF0C;ibd&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x4E0D;&#x8D85;&#x8FC7;2G&#xFF0C;&#x8FD9;&#x6837;&#x624D;&#x80FD;&#x8BA9;&#x6570;&#x636E;&#x5206;&#x5E03;&#x5F0F;&#x53D8;&#x5F97;&#x6027;&#x80FD;&#x66F4;&#x4F73;&#x3002;<br>
 &#x3010;&#x5EFA;&#x8BAE;&#x3011;&#x6C34;&#x5E73;&#x5206;&#x8868;&#x5C3D;&#x91CF;&#x7528;&#x53D6;&#x6A21;&#x65B9;&#x5F0F;&#xFF0C;&#x65E5;&#x5FD7;&#x3001;&#x62A5;&#x8868;&#x7C7B;&#x6570;&#x636E;&#x5EFA;&#x8BAE;&#x91C7;&#x7528;&#x65E5;&#x671F;&#x8FDB;&#x884C;&#x5206;&#x8868;&#x3002;</p>
-<p><strong>6. &#x5B57;&#x7B26;&#x96C6;</strong></p>
+<h3 id="6-&#x5B57;&#x7B26;&#x96C6;">6. &#x5B57;&#x7B26;&#x96C6;</h3>
 <p>&#x3010;&#x5F3A;&#x5236;&#x3011;&#x6570;&#x636E;&#x5E93;&#x672C;&#x8EAB;&#x5E93;&#x3001;&#x8868;&#x3001;&#x5217;&#x6240;&#x6709;&#x5B57;&#x7B26;&#x96C6;&#x5FC5;&#x987B;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;&#x4E3A;utf8&#x6216;utf8mb4&#x3002;<br>
 &#x3010;&#x5F3A;&#x5236;&#x3011;&#x524D;&#x7AEF;&#x7A0B;&#x5E8F;&#x5B57;&#x7B26;&#x96C6;&#x6216;&#x8005;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x96C6;&#xFF0C;&#x4E0E;&#x6570;&#x636E;&#x5E93;&#x3001;&#x8868;&#x7684;&#x5B57;&#x7B26;&#x96C6;&#x5FC5;&#x987B;&#x4E00;&#x81F4;&#xFF0C;&#x7EDF;&#x4E00;&#x4E3A;utf8&#x3002;</p>
+<h3 id="&#x8865;&#x5145;mysql&#x4E2D;&#x6570;&#x636E;&#x5E93;&#x8BBE;&#x8BA1;&#x539F;&#x5219;">&#x8865;&#x5145;:MySQL&#x4E2D;&#x6570;&#x636E;&#x5E93;&#x8BBE;&#x8BA1;&#x539F;&#x5219;</h3>
+<ul>
+<li><p>1.&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;&#x53EF;&#x4EE5;&#x6B63;&#x786E;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x7684;&#x6700;&#x5C0F;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x5B58;&#x50A8;&#x7684;&#x6267;&#x884C;&#x6548;&#x7387;&#x4E5F;&#x4E0D;&#x4E00;&#x6837;&#x3002;&#x6700;&#x597D;&#x4F7F;&#x7528;&#x9002;&#x5EA6;&#x7684;&#x6574;&#x578B;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x4F8B;&#x5982;int&#x4E4B;&#x7C7B;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x6837;&#x5728;&#x505A;&#x67E5;&#x8BE2;&#x6216;&#x8005;&#x5B57;&#x6BB5;&#x6392;&#x5E8F;&#x7684;&#x65F6;&#x5019;&#x901F;&#x5EA6;&#x662F;&#x6700;&#x5FEB;&#x7684;&#x3002;</p>
+</li>
+<li><p>2.&#x5C3D;&#x91CF;&#x907F;&#x514D;NULL&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x4F1A;&#x589E;&#x52A0;&#x6570;&#x636E;&#x5E93;&#x5904;&#x7406;&#x7684;&#x5F00;&#x9500;&#x3002;&#x4F46;&#x662F;&#x4E5F;&#x8981;&#x8003;&#x8651;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#xFF0C;&#x4E0D;&#x8981;&#x4E00;&#x5473;&#x7684;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x7A7A;&#x503C;&#x800C;&#x5168;&#x90E8;&#x8BBE;&#x7F6E;&#x4E3A;not null&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x8BBE;&#x7F6E;&#x60C5;&#x51B5;&#x8981;&#x6839;&#x636E;&#x9879;&#x76EE;&#x7684;&#x5177;&#x4F53;&#x4E1A;&#x52A1;&#x6765;&#x3002;</p>
+</li>
+<li><p>3.&#x6CE8;&#x610F;char&#x548C;varchar&#x7684;&#x4F7F;&#x7528;&#xFF0C;char&#x9002;&#x5408;&#x5B58;&#x50A8;&#x7684;&#x5927;&#x5C0F;&#x57FA;&#x672C;&#x56FA;&#x5B9A;&#x5728;&#x4E00;&#x4E2A;&#x8303;&#x56F4;&#x4E4B;&#x5185;&#xFF0C;&#x7ECF;&#x5E38;&#x53D1;&#x751F;&#x53D8;&#x52A8;&#x7684;&#x6570;&#x636E;&#x3002;&#x800C;varchar&#x5219;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;varchar&#x9002;&#x5408;&#x90A3;&#x79CD;&#x5927;&#x5C0F;&#x4E0D;&#x56FA;&#x5B9A;&#xFF0C;&#x5E76;&#x672A;&#x7ECF;&#x5E38;&#x53D1;&#x751F;&#x6539;&#x52A8;&#x7684;&#x6570;&#x636E;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;varchar&#x5B9A;&#x4E49;&#x7684;&#x957F;&#x5EA6;&#x6700;&#x597D;&#x53EF;&#x4EE5;&#x521A;&#x597D;&#x591F;&#x7528;&#xFF0C;&#x4E0D;&#x7136;&#x4F1A;&#x7167;&#x6210;&#x8D44;&#x6E90;&#x7684;&#x6D6A;&#x8D39;&#xFF0C;&#x5F71;&#x54CD;&#x6574;&#x4F53;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6027;&#x80FD;&#x548C;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x3002;</p>
+</li>
+<li><p>4.&#x80FD;&#x7528;&#x6574;&#x6570;&#x6807;&#x793A;&#xFF0C;&#x6700;&#x597D;&#x5229;&#x7528;&#x6574;&#x6570;&#x6807;&#x793A;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x5F00;&#x9500;&#x6700;&#x5C0F;&#xFF0C;&#x6548;&#x7387;&#x4E5F;&#x662F;&#x6700;&#x9AD8;&#x7684;&#x3002;</p>
+</li>
+<li><p>5.&#x4E00;&#x4E2A;&#x8868;&#x5B57;&#x6BB5;&#x8981;&#x9650;&#x5236;&#x5728;&#x4E00;&#x5B9A;&#x8303;&#x56F4;&#x4E4B;&#x5185;&#xFF0C;&#x4E0D;&#x8981;&#x592A;&#x957F;&#xFF0C;&#x4E0D;&#x7136;&#x5728;&#x67E5;&#x8BE2;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x4ED8;&#x51FA;&#x5F88;&#x5927;&#x7684;&#x4EE3;&#x4EF7;&#xFF0C;&#x6700;&#x597D;&#x5206;&#x6210;&#x5E38;&#x7528;&#x7684;&#x548C;&#x975E;&#x5E38;&#x7528;&#x7684;&#x5B57;&#x6BB5;&#x3002;</p>
+</li>
+<li><p>6.&#x5728;&#x8BBE;&#x8BA1;&#x8868;&#x548C;&#x8BBE;&#x8BA1;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x8981;&#x4E3B;&#x8981;&#x5C3D;&#x91CF;&#x907F;&#x514D;&#x5927;&#x89C4;&#x6A21;&#x7684;&#x5173;&#x8054;&#x67E5;&#x8BE2;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x6837;&#x4F1A;&#x4E25;&#x91CD;&#x5F71;&#x54CD;&#x6570;&#x636E;&#x5E93;&#x7684;&#x67E5;&#x8BE2;&#x6548;&#x7387;&#x3002;</p>
+</li>
+<li><p>7.&#x5728;&#x8BBE;&#x8BA1;&#x6570;&#x636E;&#x5E93;&#x7684;&#x65F6;&#x5019;&#x8981;&#x6839;&#x636E;&#x5177;&#x4F53;&#x7684;&#x4E1A;&#x52A1;&#x8BBE;&#x8BA1;&#x51FA;&#x5408;&#x7406;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8868;&#x548C;&#x5B57;&#x6BB5;&#x3002;&#x4E0D;&#x4EC5;&#x8981;&#x8003;&#x8651;&#x8303;&#x5F0F;&#xFF0C;&#x4E5F;&#x8981;&#x8003;&#x8651;&#x53CD;&#x8303;&#x5F0F;&#x3002;&#x5728;&#x4E0D;&#x5F71;&#x54CD;&#x6570;&#x636E;&#x5B89;&#x5168;&#x548C;&#x6570;&#x636E;&#x5197;&#x4F59;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x9002;&#x5F53;&#x7684;&#x8003;&#x8651;&#x6DF7;&#x5408;&#x8303;&#x5F0F;&#x7684;&#x8BBE;&#x8BA1;&#x3002;</p>
+</li>
+<li><p>8.&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x8868;&#x548C;&#x6C47;&#x603B;&#x8868;&#x80FD;&#x8868;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x7684;&#x67E5;&#x8BE2;&#x4F18;&#x5316;&#x3002;</p>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -1531,7 +1912,7 @@
                 </a>
                 
                 
-                <a href="transaction.html" class="navigation navigation-next " aria-label="Next page: 事务隔离级别,索引,性能">
+                <a href="db_design.html#1-库名" class="navigation navigation-next " aria-label="Next page: 1. 库名">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1542,7 +1923,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"数据库设计","level":"1.3","depth":1,"next":{"title":"事务隔离级别,索引,性能","level":"1.4","depth":1,"path":"DB/transaction.md","ref":"DB/transaction.md","articles":[{"title":"事务的四种隔离级别","level":"1.4.1","depth":2,"anchor":"#事务的四种隔离级别","path":"DB/transaction.md","ref":"DB/transaction.md#事务的四种隔离级别","articles":[]},{"title":"数据库锁","level":"1.4.2","depth":2,"anchor":"#数据库锁","path":"DB/transaction.md","ref":"DB/transaction.md#数据库锁","articles":[]},{"title":"InnoDB 如何解决幻读","level":"1.4.3","depth":2,"anchor":"#innodb-如何解决幻读","path":"DB/transaction.md","ref":"DB/transaction.md#innodb-如何解决幻读","articles":[]},{"title":"聚簇索引与非聚簇索引","level":"1.4.4","depth":2,"anchor":"#聚簇索引与非聚簇索引","path":"DB/transaction.md","ref":"DB/transaction.md#聚簇索引与非聚簇索引","articles":[]},{"title":"MySQL分页offset过大性能问题与优化","level":"1.4.5","depth":2,"anchor":"#mysql分页offset过大性能问题与优化","path":"DB/transaction.md","ref":"DB/transaction.md#mysql分页offset过大性能问题与优化","articles":[]},{"title":"利用EXPLAIN分析sql语句的性能","level":"1.4.6","depth":2,"anchor":"#利用explain分析sql语句的性能","path":"DB/transaction.md","ref":"DB/transaction.md#利用explain分析sql语句的性能","articles":[]}]},"previous":{"title":"SQL优化","level":"1.2","depth":1,"path":"DB/sql.md","ref":"DB/sql.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"DB/db_design.md","mtime":"2021-02-26T10:12:12.452Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-02T08:24:19.986Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"数据库表数据原则","level":"1.3","depth":1,"next":{"title":"1. 库名","level":"1.3.1","depth":2,"anchor":"#1-库名","path":"DB/db_design.md","ref":"DB/db_design.md#1-库名","articles":[]},"previous":{"title":"SQL优化","level":"1.2","depth":1,"path":"DB/sql.md","ref":"DB/sql.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"DB/db_design.md","mtime":"2021-03-04T13:53:18.925Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-04T13:13:18.092Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
