@@ -39,6 +39,10 @@ Dubbo 是一款高性能、轻量级的开源 RPC 框架，提供服务自动注
 - 服务消费者Consumer，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。
 - 服务消费者Consumer和提供者Provider，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心Monitor。
 
+#### Dubbo服务暴露的过程？
+
+Dubbo会在Spring实例化完bean之后，在刷新容器最后一步发送ContextRefreshEvent事件的时候，通知实现了ApplicationListener的serviceBean类进行回调onApplicationEvent事件方法，Dubbo会在这个方法中调用ServiceBean父类ServiceConfig的export方法，而该方法真正实现了服务的发布
+
 ### 7.Dubbo的整体架构设计有哪些分层
 
 ![dubbo_2](../_images/dubbo_2.png)
@@ -89,7 +93,7 @@ Consumer 端在发起调用之前会先走 filter 链；provider 端在接收到
 
 ### 11.Dubbo集群提供了哪些负载均衡策略
 
-- Random LoadBalance: 随机选取提供者策略，有利于动态调整提供者权重。截面碰撞率高，调用次数越多，分布越均匀。
+- Random LoadBalance(默认): 随机选取提供者策略，有利于动态调整提供者权重。截面碰撞率高，调用次数越多，分布越均匀。
 
 - RoundRobin LoadBalance: 轮循选取提供者策略，平均分布，但是存在请求累积的问题。
 
@@ -99,20 +103,20 @@ Consumer 端在发起调用之前会先走 filter 链；provider 端在接收到
 
 ### 12.Dubbo的集群容错方案有哪些
 
-- Failover Cluster：失败自动切换，当出现失败，重试其它服务器。通常用于读操作，但重试会带来更长延迟。
+- Failover Cluster(默认)：失败自动切换，当出现失败，重试其它服务器。通常用于读操作，但重试会带来更长延迟。
 - Failfast Cluster：快速失败，只发起一次调用，失败立即报错。通常用于非幂等性的写操作，比如新增记录。
 - Failsafe Cluster：失败安全，出现异常时，直接忽略。通常用于写入审计日志等操作。
 - Failback Cluster：失败自动恢复，后台记录失败请求，定时重发。通常用于消息通知操作。
 - Forking Cluster：并行调用多个服务器，只要一个成功即返回。通常用于实时性要求较高的读操作，但需要浪费更多服务资源。可通过 forks=”2″ 来设置最大并行数。
 - Broadcast Cluster：广播调用所有提供者，逐个调用，任意一台报错则报错 。通常用于通知所有提供者更新缓存或日志等本地资源信息。
 
-默认的容错方案是 Failover Cluster。
-
-### 13.默认的容错方案是FailoverCluster
+**默认的容错方案是 Failover Cluster**
 
 Spring 容器在启动的时候，会读取到 Spring 默认的一些 schema 以及 Dubbo 自定义的 schema，每个 schema 都会对应一个自己的 NamespaceHandler，NamespaceHandler 里面通过 BeanDefinitionParser 来解析配置信息并转化为需要加载的 bean 对象！
 
-### 14.说说核心的配置有哪些
+读操作建议使用Failover失败自动切换，写操作建议使用Failfst快速失败，并一次调用失败就立即报错
+
+### 13.说说核心的配置有哪些
 
 <dubbo:service/>
 服务配置
@@ -160,22 +164,54 @@ Spring 容器在启动的时候，会读取到 Spring 默认的一些 schema 以
 
 如果是SpringBoot项目就只需要注解，或者开Application配置文件
 
-### 15.Dubbo超时设置有哪些方式
+常用的：
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">  
+    <!--服务名称-->
+    <dubbo:application name="hello-world-app"  />  
+     <!--注册中心地址配置-->
+    <dubbo:registry address="multicast://224.5.6.7:1234" />  
+     <!--协议配置-->
+    <dubbo:protocol name="dubbo" port="20880" />  
+     <!--服务配置-->
+    <dubbo:service interface="com.alibaba.dubbo.demo.DemoService" ref="demoServiceLocal" />  
+     <!--引用配置-->
+    <dubbo:reference id="demoServiceRemote" interface="com.alibaba.dubbo.demo.DemoService" />  
+</beans>
+```
+
+#### Dubbo有哪几种配置方式？
+
+- XML配置
+- API配置
+- 注解配置
+- 属性配置
+
+### 14.Dubbo超时设置有哪些方式
 
 Dubbo 超时设置有两种方式：
 
 - 服务提供者端设置超时时间，在Dubbo的用户文档中，推荐如果能在服务端多配置就尽量多配置，因为服务提供者比消费者更清楚自己提供的服务特性。
 - 服务消费者端设置超时时间，如果在消费者端设置了超时时间，以消费者端为主，即优先级更高。因为服务调用方设置超时时间控制性更灵活。如果消费方超时，服务端线程不会定制，会产生警告。
 
-### 16.服务调用超时会怎么样
+#### 服务调用超时会怎么样
 
 dubbo 在调用服务不成功时，默认是会重试两次。
 
-### 17.Dubbo使用的是什么通信框架
+### 15.Dubbo启动时如果依赖服务不可用怎么办
+
+Dubbo缺省会在启动时检查依赖的服务是否可用，不可用时会抛出异常，阻止Spring初始化完成，默认check=“true”,可以通过check=“false”关闭检查。
+
+### 16.Dubbo使用的是什么通信框架
 
 默认使用 Netty 作为通讯框架。
 
-### 18.Dubbo支持哪些协议，它们的优缺点有哪些
+### 17.Dubbo支持哪些协议，它们的优缺点有哪些
 
 - Dubbo： 单一长连接和 NIO 异步通讯，适合大并发小数据量的服务调用，以及消费者远大于提供者。传输协议 TCP，异步 Hessian 序列化。Dubbo推荐使用dubbo协议。
 
@@ -191,14 +227,41 @@ dubbo 在调用服务不成功时，默认是会重试两次。
 
 - Redis：基于 Redis 实现的RPC协议。
 
-### 19.Dubbo支持哪些序列化方式
+### 18.Dubbo支持哪些序列化方式
 
 默认使用 Hessian 序列化，还有 Duddo、FastJson、Java 自带序列化。
-\
 
-### Reference:
+### 19.Dubbo如何优雅停机
 
-https://juejin.cn/post/6844904127076499463
+Dubbo是通过jdk的shutDownHook来完成优雅停机的，所以如果使用Kill-9 PID等强制关闭指令，是不会执行优雅停机的，只是通过kill PID时，才会执行。
+
+### 20.如何解决服务调用链过长的问题
+
+Dubbo可以使用Pinpoint和Apache Skywalking实现分布式服务追踪
+
+### 21.在Provider上可以配置的Consumer端的属性有哪些
+
+关键几个：
+
+- timeout：方法调用超时
+- retries：失败重试次数，默认重试2次
+- loadbalance：负载均衡算法，默认随机（random）（roundrobin,leastactive，ConsisitenHash，分别表示：轮询，最少活跃调用，一致Hash）
+- actives：消费者端，最大并发调用限制
+
+```
+<dubbo:service interface="com.alibaba.hello.api.HelloService" version="1.0.0" ref="helloService"
+   timeout="300" retry="2" loadbalance="random" actives="0" />
+ 
+<dubbo:service interface="com.alibaba.hello.api.WorldService" version="1.0.0" ref="helloService"
+    timeout="300" retry="2" loadbalance="random" actives="0" >
+    <dubbo:method name="findAllPerson" timeout="10000" retries="9" loadbalance="leastactive" actives="5" />
+<dubbo:service/>
+```
+
+### 22.Dubbo的管理控制台能做什么
+
+路由规则，动态配置，服务降级，访问控制，权重调整，负载均衡，等管理功能
+
 
 
 
