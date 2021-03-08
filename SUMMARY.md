@@ -3,7 +3,7 @@
 * [Introduction](README.md)
 
 * [SQL优化](DB/sql.md)
-* [数据库表数据原则](DB/db_design.md)
+* [数据库表设计原则](DB/db_design.md)
     * [1. 库名](DB/db_design.md#1-库名)
     * [2. 表结构](DB/db_design.md#2-表结构)
     * [3. 列数据类型优化](DB/db_design.md#3-列数据类型优化)
@@ -15,6 +15,18 @@
 * [JAVA 基础问题](JAVA/basic.md)
     * [1.Object类中方法详解](JAVA/basic.md#1object类中方法详解)
     * [2.HashMap的长度为什么设置为2的n次方](JAVA/basic.md#2hashmap的长度为什么设置为2的n次方)
+    * [3.JAVA中基本类型和长度](JAVA/basic.md#3java中基本类型和长度)
+    * [4.十大经典排序算法](JAVA/basic.md#4十大经典排序算法)
+        * [1.冒泡排序](JAVA/basic.md#1冒泡排序)
+        * [2.选择排序](JAVA/basic.md#2选择排序)
+        * [3.插入排序](JAVA/basic.md#3插入排序)
+        * [4.希尔排序](JAVA/basic.md#4希尔排序)
+        * [5.归并排序](JAVA/basic.md#5归并排序)
+        * [6.快速排序](JAVA/basic.md#6快速排序)
+        * [7.堆排序](JAVA/basic.md#7堆排序)
+        * [8.计数排序](JAVA/basic.md#8计数排序)
+        * [9.桶排序](JAVA/basic.md#9.桶排序)
+        * [10.基数排序](JAVA/basic.md#10基数排序)
 
 * [JAVA 集合](JAVA/collections.md)
     * [1.ArrayList与LinkedList的实现和区别](JAVA/collections.md#1arraylist与linkedlist的实现和区别)
@@ -58,7 +70,7 @@
 
 * [Kafka](Kafka/kafka.md)
     * [1.Kafka都有哪些特点](Kafka/kafka.md#1kafka都有哪些特点)
-    * [2.Kafka 如何做到高吞吐、低延迟的](Kafka/kafka.md#2kafka-如何做到高吞吐、低延迟的)
+    * [2.Kafka 为什么那么快、如何做到高吞吐、低延迟的](Kafka/kafka.md#2kafka-为什么那么快、如何做到高吞吐、低延迟的)
     * [3.在哪些场景下会选择 Kafka](Kafka/kafka.md#3在哪些场景下会选择-kafka)
     * [4.Kafka 的设计架构](Kafka/kafka.md#4kafka-的设计架构)
     * [5.Kafka 的 工作流程](Kafka/kafka.md#5kafka-的-工作流程)
@@ -139,6 +151,8 @@
 * [Spring Boot]()
 
 * [架构设计](架构设计/arch.md)
+    * [1.系统高可用，要考虑哪些方面，系统高可用性的方法](架构设计/arch.md#1系统高可用，要考虑哪些方面，系统高可用性的方法)
+    * [2.如何做系统设计](架构设计/arch.md#2如何做系统设计)
 
 * [Code Review](架构设计/codereview.md)
     * [Code Review Checklist](架构设计/codereview.md#code-review-checklist)
