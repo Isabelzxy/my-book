@@ -557,6 +557,39 @@ HashMap中，如果key经过hash算法得出的数组索引位置全部不相同
 - HashMap是线程不安全的，不要在并发的环境中同时操作HashMap，建议使用ConcurrentHashMap。
 - JDK1.8引入红黑树大程度优化了HashMap的性能。
 
+### 2.HashMap的长度为什么设置为2的n次方
+
+构造函数中控制长度必须为2的n次方.
+
+首先在构造方法中, 有下面这段代码, 其中initialCapacity是我们传入的自定义map容量大小(如果不设置, 默认是16)
+
+```
+int capacity = 1;
+while (capacity < initialCapacity)
+    capacity <<= 1
+```
+
+initialCapacity = 8, 这样capacity = 1, 要向左移动3次, 刚开始移动之前capacity=1, 根据移位运算, 移动第1次, capacity=2, 移动第2次, capacity=4,移动第3次, capacity=8, 此时会跳出循环, 最终capacity = 8 = 2的3次方<br/>
+initialCapacity = 5, 这样capacity = 1, 要向左移动3次, 刚开始移动之前capacity=1, 根据移位运算, 移动第1次, capacity=2, 移动第2次, capacity=4,移动第3次, capacity=8, 此时会跳出循环, 最终capacity = 8 = 2的3次方<br/>
+所以同理, 如果输入是5, 6, 7, 8, 最终的capacity=8, 也就是对于某个数A, 找到大于等于A中最小的数B, 并且B=2的n次方 . 因为HashMap中要求Entry数组的长度是2的n次方, 后面我们会知道这种方式的好处 .<br/>
+所以在这个地方, 就严格控制了长度必须是2的n次方 .
+
+#### 这种方式好处.
+
+上面说了构造函数中, 限制了capacity必须是2的n次方 . 并且在扩容的时候, 也是直接乘以2进行扩容, 保证还是2的n次方 .
+
+好处 :
+这里的h是”int hash = hash(key.hashCode());”, 也就是根据key的hashCode再次进行一次hash操作计算出来的 .length是Entry数组的长度 .<br/>
+一般我们利用hash码, 计算出在一个数组的索引, 常用方式是”h % length”, 也就是求余的方式 .<br/>
+可能是这种方式效率不高, SUN大师们发现, “当容量一定是2^n时，h & (length - 1) == h % length” . **按位运算特别快** .<br/>
+
+对于length = 16, 对应二进制”1 0000”, length-1=”0 1111”<br/>
+假设此时h = 17 .<br/>
+(1) 使用”h % length”, 也就是”17 % 16”, 结果是1 .<br/>
+(2) 使用”h & (length - 1)”, 也就是 “1 0001 & 0 1111”, 结果也是1 .<br/>
+我们会发现, 因为”0 1111”低位都是”1”, 进行”&”操作, 就能成功保留”1 0001”对应的低位, 将高位的都丢弃, 低位是多少, 最后结果就是多少 .<br/>
+刚好低位的范围是”0~15”, 刚好是长度为length=16的所有索引 .
+
 ### 3.LinkedHashMap了解基本原理、哪两种有序、如何用它实现LRU
 
 #### 概述

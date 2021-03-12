@@ -14,7 +14,6 @@
 
 * [JAVA 基础问题](JAVA/basic.md)
     * [1.Object类中方法详解](JAVA/basic.md#1object类中方法详解)
-    * [2.HashMap的长度为什么设置为2的n次方](JAVA/basic.md#2hashmap的长度为什么设置为2的n次方)
     * [3.JAVA中基本类型和长度](JAVA/basic.md#3java中基本类型和长度)
     * [4.十大经典排序算法](JAVA/basic.md#4十大经典排序算法)
         * [1.冒泡排序](JAVA/basic.md#1冒泡排序)
@@ -27,10 +26,21 @@
         * [8.计数排序](JAVA/basic.md#8计数排序)
         * [9.桶排序](JAVA/basic.md#9.桶排序)
         * [10.基数排序](JAVA/basic.md#10基数排序)
+    * [5.常见的设计模式](JAVA/basic.md#5常见的设计模式)
+        * [1.单例模式(singleton)](JAVA/basic.md#1单例模式-singleton)
+        * [2.简单工厂(StaticFactory Method)](JAVA/basic.md#2简单工厂-staticfactory-method)
+        * [3.工厂方法(Factory Method)和抽象工厂(Abstract Factory)](JAVA/basic.md#3工厂方法-factory-method-和-抽象工厂-abstract-factory)
+        * [4.代理模式(Proxy)](JAVA/basic.md#4代理模式-proxy)
+        * [5.命令模式(Command)](JAVA/basic.md#5命令模式-command)
+        * [6.策略模式(Strategy)](JAVA/basic.md#6策略模式-strategy)
+        * [7.门面模式(Facade)](JAVA/basic.md#7门面模式-facade)
+        * [8.桥接模式(Bridge)](JAVA/basic.md#8桥接模式-bridge)
+        * [9.观察者模式(Observer)](JAVA/basic.md#9观察者模式-observer)
 
 * [JAVA 集合](JAVA/collections.md)
     * [1.ArrayList与LinkedList的实现和区别](JAVA/collections.md#1arraylist与linkedlist的实现和区别)
     * [2.HashMap了解其数据结构、hash冲突如何解决（链表和红黑树）、扩容时机、扩容时避免rehash的优化](JAVA/collections.md#2hashmap了解其数据结构、hash冲突如何解决（链表和红黑树）、扩容时机、扩容时避免rehash的优化)
+    * [2.HashMap的长度为什么设置为2的n次方](JAVA/collections.md#2hashmap的长度为什么设置为2的n次方)
     * [3.LinkedHashMap了解基本原理、哪两种有序、如何用它实现LRU](JAVA/collections.md#3linkedhashmap了解基本原理、哪两种有序、如何用它实现lru)
     * [4.TreeMap了解数据结构、了解其key对象为什么必须要实现Compare接口、如何用它实现一致性哈希](JAVA/collections.md#4treemap了解数据结构、了解其key对象为什么必须要实现compare接口、如何用它实现一致性哈希)
 
@@ -52,6 +62,9 @@
     * [6.如何排查死锁及避免](JAVA/threads.md#6如何排查死锁及避免)
     * [7.ConcurrentHashMap高并发机制](JAVA/threads.md#7concurrenthashmap高并发机制)
     * [8.CopyOnWriteArrayList并发容器](JAVA/threads.md#8copyonwritearraylist并发容器)
+    * [9.如何判断当前线程是否持有锁](JAVA/threads.md#9如何判断当前线程是否持有锁)
+    * [10.深入分析Volatile的实现原理](JAVA/threads.md#10深入分析volatile的实现原理)
+    * [11.Java内存模型(JMM)](JAVA/threads.md#11java内存模型-及-volatile)
 
 * [JVM](JAVA/jvm.md)
     * [1.JVM基础回顾](JAVA/jvm.md#1jvm基础回顾)
@@ -67,6 +80,7 @@
     * [11.GC 如何调优](JAVA/jvm.md#11gc-如何调优)
     * [12.G1垃圾回收器 vs CMS 垃圾回收器](JAVA/jvm.md#12g1垃圾回收器-vs-cms-垃圾回收器)
     * [13.哪些对象可以作为GC Roots](JAVA/jvm.md#13哪些对象可以作为gc-roots)
+    * [14.线程问题排查](JAVA/jvm.md#14线程问题排查)
 
 * [Kafka](Kafka/kafka.md)
     * [1.Kafka都有哪些特点](Kafka/kafka.md#1kafka都有哪些特点)
