@@ -2130,6 +2130,32 @@ private Entry getEntry(ThreadLocal<?> key) {
 }
 ```
 
+### 5.线程及状态
+
+##### 创建线程有三种方式：
+
+- 继承 Thread 重写 run 方法
+
+- 实现 Runnable 接口
+
+- 实现 Callable 接口 （有返回值）
+
+##### 线程有哪些状态？
+
+- NEW（初始），新建状态，线程被创建出来，但尚未启动时的线程状态；
+
+- RUNNABLE（就绪状态），表示可以运行的线程状态，它可能正在运行，或者是在排队等待操作系统给它分配 CPU 资源；
+
+- BLOCKED（阻塞），阻塞等待锁的线程状态，表示处于阻塞状态的线程正在等待监视器锁，比如等待执行 synchronized 代码块或者使用 synchronized 标记的方法；
+
+- WAITING（等待），等待状态，一个处于等待状态的线程正在等待另一个线程执行某个特定的动作，比如，一个线程调用了 Object.wait() 方法，那它就在等待另一个线程调用 Object.notify() 或 Object.notifyAll() 方法；
+
+- TIMED_WAITING（超时等待），计时等待状态，和等待状态（WAITING）类似，它只是多了超时时间，比如调用了有超时时间设置的方法 Object.wait(long timeout) 和 Thread.join(long timeout) 等这些方法时，它才会进入此状态；
+
+- TERMINATED，终止状态，表示线程已经执行完成。
+
+![thread_pool_3](../_images/thread_pool_3.png)
+
 ### 5.线程池的工作原理以及几个重要参数的设置
 
 使用线程池的优势:
@@ -2167,30 +2193,6 @@ ThreadPoolExecutor执行execute方法分下面 4 种情况:
 - 4、如果创建新线程将使当前运行的线程超出maximumPoolSize，任务将被拒绝，并调用RejectedExecutionHandler.rejectedExecution()方法。
 
 ThreadPoolExecutor采取上述步骤的总体设计思路，是为了在执行execute()方法时，尽可能地避免获取全局锁（那将会是一个严重的可伸缩瓶颈）。在ThreadPoolExecutor完成预热之后（当前运行的线程数大于等于corePoolSize），几乎所有的execute()方法调用都是执行步骤 2，而步骤2不需要获取全局锁。
-
-##### 创建线程有三种方式：
-
-- 继承 Thread 重写 run 方法
-
-- 实现 Runnable 接口
-
-- 实现 Callable 接口 （有返回值）
-
-##### 线程有哪些状态？
-
-- NEW（初始），新建状态，线程被创建出来，但尚未启动时的线程状态；
-
-- RUNNABLE（就绪状态），表示可以运行的线程状态，它可能正在运行，或者是在排队等待操作系统给它分配 CPU 资源；
-
-- BLOCKED（阻塞），阻塞等待锁的线程状态，表示处于阻塞状态的线程正在等待监视器锁，比如等待执行 synchronized 代码块或者使用 synchronized 标记的方法；
-
-- WAITING（等待），等待状态，一个处于等待状态的线程正在等待另一个线程执行某个特定的动作，比如，一个线程调用了 Object.wait() 方法，那它就在等待另一个线程调用 Object.notify() 或 Object.notifyAll() 方法；
-
-- TIMED_WAITING（超时等待），计时等待状态，和等待状态（WAITING）类似，它只是多了超时时间，比如调用了有超时时间设置的方法 Object.wait(long timeout) 和 Thread.join(long timeout) 等这些方法时，它才会进入此状态；
-
-- TERMINATED，终止状态，表示线程已经执行完成。
-
-![thread_pool_3](../_images/thread_pool_3.png)
 
 ##### 线程池的状态有那些？
 
@@ -2290,7 +2292,13 @@ public ThreadPoolExecutor(int corePoolSize,//线程池的核心线程数量
 
     * DiscardPolicy：不处理，丢弃掉
 
-    
+### 5.sleep 与 wait 区别
+
+- 1.对于sleep()方法，我们首先要知道该方法是属于Thread 类中的。而wait()方法，则是属于Object 类中的。
+- 2.sleep()方法导致了程序暂停执行指定的时间，让出cpu 该其他线程，但是他的监控状态依然保持者，当指定的时间到了又会自动恢复运行状态。
+- 3.在调用sleep()方法的过程中，线程不会释放对象锁。
+- 4.而当调用wait()方法的时候，线程会放弃对象锁，进入等待此对象的等待锁定池，只有针对此对象调用notify()方法后本线程才进入对象锁定池准备获取对象锁进入运行状态。
+
 ### 6.如何排查死锁及避免
 
 死锁的本质，举个例子如果此时有一个线程 A ，按照先获持有锁 a 再获取锁 b的顺序获得锁，同时另外一个线程 B，按照先获取锁 b 再获取锁 a 的顺序获取锁。
